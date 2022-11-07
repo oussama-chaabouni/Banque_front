@@ -121,7 +121,7 @@ export class TradingComponent implements AfterViewInit {
         isTransparent: false,
         interval: '1m',
         height: 800,
-        width:800,
+        width: 1200,
         showIntervalTabs: true,
         locale: 'fr',
       };

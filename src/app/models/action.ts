@@ -5,6 +5,6 @@ export class Action{
   high: any;
   close: any;
   low: any;
+  valeurActuelle:any;
   capital: any;
-  TitreActions: any;
 }

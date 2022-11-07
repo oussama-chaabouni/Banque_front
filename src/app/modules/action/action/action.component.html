@@ -1,5 +1,19 @@
-
 <div class="tradingview-widget-container" #containerDivTape id="tape"></div>
+<br><br>
+
+<div class="h-full discover-grid-wrapper" fxLayout="column" >
+  <div fxFlex="none">
+    <div vexContainer>
+      <h4 *ngFor="let e of listTitres" class="display-1 mt-4 mb-1 page-title" fxLayout="row" fxLayoutAlign="start center">
+        <span class="block" style="font-size: 30px" >Montant du portefeuille: {{e.solde}}</span>
+      </h4>
+      <div fxLayout="row" fxLayoutAlign="start center" class="pt-6">
+        <nav class="vex-tabs border-0" fxFlex="auto" mat-tab-nav-bar>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
 
 <br><br>
 <div class="post d-flex flex-column-fluid" id="kt_post">
@@ -143,7 +157,8 @@
             <th class="min-w-125px">High</th>
             <th class="min-w-125px">Volume</th>
             <th class="min-w-125px">Capital</th>
-            <th class="min-w-125px">Delete</th>
+            <th class="min-w-125px">Valeur Actuelle</th>
+            <th class="min-w-125px">Vendre</th>
           </tr>
           <!--end::Table row-->
           </thead>
@@ -161,8 +176,9 @@
             <td>{{c.high}}</td>
             <td> {{c.volume}}</td>
             <td> {{c.capital}}</td>
+            <td> {{c.valeurActuelle}}</td>
             <td><button type="button" class="btn btn-outline-danger"
-                        (click)="deleteAction(c.idAction)" >Delete</button></td>
+                        (click)="sellAction(c.idAction)" >Vendre</button></td>
 
             <!--end::Action=-->
           </tr>

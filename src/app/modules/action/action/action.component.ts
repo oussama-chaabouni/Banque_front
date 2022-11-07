@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActionService} from "../../../services/action.service";
 import { Action } from '../../../models/action';
+import { CompteTitre } from '../../../models/compteTitre';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 //import * as CanvasJS from 'src/assets/canvasjs.min';
@@ -15,13 +16,19 @@ export class ActionComponent implements OnInit {
   private config: any;
   listActions: any;
   Action!: Action;
+  CompteTitre!: CompteTitre;
   branches: any = [];
   selectedValue = null;
+  listTitres: any;
+  branches2 : any = [];
   constructor(private actionService: ActionService,public dialog: MatDialog) {
     this.config = {
       itemsPerPage: 5,
       currentPage: 1,
       totalItems: 5
+    }
+    this.CompteTitre = {
+      solde:null
     }
   }
   tickers = [
@@ -63,11 +70,19 @@ export class ActionComponent implements OnInit {
   selected = " ";
   private widgetId: string;
   private settings: any;
+
+  getData(){
+
+  }
+
+
   ngOnInit(): void {
     this.actionService.getAllActions().subscribe((response: any) => {
       this.branches = response;
     });
+
     this.getAllActions();
+    setInterval(() => this.getAllActions(), 40000);
     this.Action = {
       idAction: null,
       symbole: null,
@@ -76,7 +91,11 @@ export class ActionComponent implements OnInit {
       close: null,
       low: null,
       capital: null,
-      TitreActions: null,
+      valeurActuelle:null,
+    }
+    this.retrieveCompteTitre(1);
+    this.CompteTitre = {
+      solde:null
     }
   }
 
@@ -122,12 +141,19 @@ export class ActionComponent implements OnInit {
 
   addAction(p:any,id:any) {
     this.actionService.addAction(p, id).subscribe(() => {
-      this.getAllActions();
+      this.retrieveCompteTitre(id);
     });
   }
   deleteAction(idL: any) {
     this.actionService.deleteAction(idL).subscribe(() => this.getAllActions());
 
+  }
+  sellAction(idL: any) {
+    this.actionService.sellAction(idL).subscribe(() => this.retrieveCompteTitre(idL));
+  }
+  retrieveCompteTitre(idL: any) {
+    this.actionService.retrieveCompteTitre(idL).subscribe(res => this.listTitres = res);
+    this.actionService.getAllActions().subscribe(res => this.listActions = res);
   }
   openDialog(template: any) : void {
     this.dialog.open(template, {

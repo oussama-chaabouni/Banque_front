@@ -21,5 +21,11 @@ export class ActionService {
   deleteAction(idAction: any) {
     return this.httpClient.delete(` ${this.API_URL}/delete-action/${idAction}`);
   }
+  sellAction(idAction: any) {
+    return this.httpClient.delete(` ${this.API_URL}/sell-action/${idAction}`);
+  }
+  retrieveCompteTitre(idAction: any) {
+    return this.httpClient.get(` ${this.API_URL}/retrieve-titre/${idAction}`);
+  }
 
 }
