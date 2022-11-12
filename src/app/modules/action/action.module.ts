@@ -7,11 +7,11 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import {TradingComponent} from "../trading/trading.component";
 import * as CanvasJSAngularChart from 'src/assets/canvasjs.angular.component';
 import {MatTabsModule} from "@angular/material/tabs";
-
+import { NgApexchartsModule } from "ng-apexcharts";
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 @NgModule({
   declarations: [
@@ -26,6 +26,8 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
         MatInputModule,
         FormsModule,
         MatTabsModule,
+        NgApexchartsModule,
+      ReactiveFormsModule
 
     ]
 })

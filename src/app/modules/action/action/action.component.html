@@ -48,7 +48,7 @@
                   <input matInput type = "number" name="test" [(ngModel)]="Action.capital"  [ngModelOptions]="{standalone: true}" >
                 </mat-form-field>
                 <div>
-                  <button type="button" class="btn btn-success" type = "submit"  value="Submit" > Valider </button>
+                  <button class="btn btn-success" type = "submit"  value="Submit" > Valider </button>
                 </div>
               </form>
 
@@ -203,4 +203,50 @@
   <!--end::Container-->
 </div>
 <br>
+<div id="chart">
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [labels]="chartOptions.labels"
+    [responsive]="chartOptions.responsive"
+  ></apx-chart>
+</div>
+<br><br>
+<form class="example-form" appearance="fill"(ngSubmit)="updateBarChart(1,Time,confiance,selectedOption2)" >
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Horizon</mat-label>
+    <input  matInput type="number"  [(ngModel)]="Time" [ngModelOptions]="{standalone: true}" min="1" max="250" >
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label >Intervalle de confiance</mat-label>
+    <input matInput type="number"  [(ngModel)]="confiance" [ngModelOptions]="{standalone: true}" min="1" max="99"  >
+  </mat-form-field>
+  <br><br>
+  <mat-form-field appearance="fill"  >
+    <mat-label>Choisir</mat-label>
+    <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
+      <mat-option *ngFor="let a of optionsCh" [value]="a" >
+        {{a}}
+      </mat-option>
+
+    </mat-select>
+  </mat-form-field >
+    <div>
+      <button class="btn btn-success" type = "submit"  value="Submit" > Actualiser </button>
+    </div>
+</form>
+<br><br><br><br>
+<div id="Barchart">
+  <apx-chart
+    [series]="chartOptionsBar.series"
+    [chart]="chartOptionsBar.chart"
+    [dataLabels]="chartOptionsBar.dataLabels"
+    [plotOptions]="chartOptionsBar.plotOptions"
+    [yaxis]="chartOptionsBar.yaxis"
+    [xaxis]="chartOptionsBar.xaxis"
+    [legend]="chartOptionsBar.legend"
+    [colors]="chartOptionsBar.colors"
+    [grid]="chartOptionsBar.grid"
+  ></apx-chart>
+</div>
 <app-trading></app-trading>

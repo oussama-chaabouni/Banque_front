@@ -27,5 +27,11 @@ export class ActionService {
   retrieveCompteTitre(idAction: any) {
     return this.httpClient.get(` ${this.API_URL}/retrieve-titre/${idAction}`);
   }
+  VarTheorique(Year: any,Time: any,confiance: any) {
+    return this.httpClient.get(` ${this.API_URL}/VarTheorique?year=${Year}&time=${Time}&confiance=${confiance}`);
+  }
 
+  VarHistorique(Year: any,Time: any,confiance: any) {
+    return this.httpClient.get(` ${this.API_URL}/VarHistorique?year=${Year}&time=${Time}&confiance=${confiance}`);
+  }
 }

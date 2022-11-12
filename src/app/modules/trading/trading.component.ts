@@ -22,6 +22,7 @@ export class TradingComponent implements AfterViewInit {
   @ViewChild( 'containerDivTape', { static: false } ) containerDivTape: ElementRef;
   selectedOption:any ;
   tickers = [
+    "LSE:ABF",
     "AMZN",
     "MULN",
     "AAPL",
