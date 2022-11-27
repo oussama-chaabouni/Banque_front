@@ -13,12 +13,6 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./modules/errors/errors.module').then((m) => m.ErrorsModule),
   },
-  {
-    path: '',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./_metronic/layout/layout.module').then((m) => m.LayoutModule),
-  },
 
   {
     path: 'transaction',
@@ -35,6 +29,13 @@ export const routes: Routes = [
   {
     path: 'reclamation',
     loadChildren: () => import('./modules/reclamation/reclamation.module').then((m ) => m.ReclamationModule)
+  },
+
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./_metronic/layout/layout.module').then((m) => m.LayoutModule),
   },
 
 

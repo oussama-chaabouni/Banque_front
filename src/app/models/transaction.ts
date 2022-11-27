@@ -9,6 +9,5 @@ export class Transaction {
   statut!:any;
   codeRaison!:any;
   dateOperation!:any;
-  Solde!:any;
 
 }

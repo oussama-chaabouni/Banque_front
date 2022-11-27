@@ -23,8 +23,8 @@ export class TransactionService {
     return this.http.put('http://localhost:8082/banque-en-ligne/transaction/modify-transaction', transaction);
   }
 
-  deleteTransaction(transactionId: any) {
-    return this.http.delete('http://localhost:8082/banque-en-ligne/transaction/remove-transaction/' + transactionId);
+  deleteTransaction(idTransaction: any) {
+    return this.http.delete('http://localhost:8082/banque-en-ligne/transaction/remove-transaction/' + idTransaction);
   }
 
 

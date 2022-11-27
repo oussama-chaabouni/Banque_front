@@ -3,6 +3,10 @@ import {Transaction} from "../../models/transaction";
 import {TransactionService} from "../../services/transaction.service";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {NgForm} from "@angular/forms";
+type Tabs =
+  | 'kt_table_widget_6_tab_1'
+  | 'kt_table_widget_6_tab_2'
+  | 'kt_table_widget_6_tab_3';
 
 @Component({
   selector: 'app-transaction',
@@ -16,19 +20,40 @@ export class TransactionComponent implements OnInit {
   form:boolean=false;
   transaction!:Transaction;
   closeResult!: string;
-  Virement_Immédiat: any="Virement_Immédiat";
-  Virement_Différé: any="Virement_Différé";
+  Virement_Immediat: any="Virement_Immédiat";
+  Virement_Differe: any="Virement_Différé";
   Virement_Permanent: any="Virement_Permanent";
-  Dépot: any="Dépot";
+  Depot: any="Dépot";
   Retrait: any="Retrait";
   Paiement: any="Paiement";
-  success: string="success";
-  failed: string ="failed";
+  successdepot: string="dépot avec succés";
+  faileddepot: string ="dépot sans succés";
+  successretrait: string="retrait avec succés";
+  failedretrait: string="retrait sans succés";
+  successpaiement: string="Paiement avec Succés";
+  failedpaiement: string="Echec de Paiement";
+  successvir_imm: string="virement immédiat effectué avec succès";
+  failedvir_imm: string="Echec du virement immédiat";
+  successvir_dif: string="virement différé effectué avec succès";
+  successvir_per: string="virement Permanent effectué avec succès";
+
   transaction_type: ({ transaction_type: string } | { transaction_type: string } | { transaction_type: string } | { transaction_type: string } | { transaction_type: string } | { transaction_type: string })[];
 
   constructor(private transactionService: TransactionService, private modalService: NgbModal){ //,private toast:NgToastService
 
   }
+
+
+  activeTab: Tabs = 'kt_table_widget_6_tab_1';
+
+  setTab(tab: Tabs) {
+    this.activeTab = tab;
+  }
+
+  activeClass(tab: Tabs) {
+    return tab === this.activeTab ? 'show active' : '';
+  }
+
   ngOnInit(): void {
     this.getTransactions();
     this.transaction= {
@@ -41,8 +66,7 @@ export class TransactionComponent implements OnInit {
       motif:null,
       statut:null,
       codeRaison:null,
-      dateOperation:null,
-      Solde:null,
+      dateOperation:null
     }
 
     this.transaction_type=[
@@ -76,8 +100,8 @@ export class TransactionComponent implements OnInit {
 
   }
 
-  deleteTransaction(transactionId:any){
-    this.transactionService.deleteTransaction(transactionId).subscribe(()=>this.getTransactions());
+  deleteTransaction(idTransaction:any){
+    this.transactionService.deleteTransaction(idTransaction).subscribe(()=>this.getTransactions());
    // this.toast.warning({detail:"Success Message", summary:"Transaction deleted Successfully", duration:5000})
 
   }
@@ -106,7 +130,7 @@ export class TransactionComponent implements OnInit {
   }
 
   save(f: NgForm){ //f de type ngForm
-    console.log(f.value['rib'],f.value['typeTransaction'], f.value['montant'],f.value['motif'], f.value['statut'],f.value['codeRaison'], f.value['dateOperation'], f.value['Solde']); //pour recuperer le contunu de differents input du form dans la partie console(inspecter)
+    console.log(f.value['rib'],f.value['typeTransaction'], f.value['montant'],f.value['motif'], f.value['statut'],f.value['codeRaison'], f.value['dateOperation']); //pour recuperer le contunu de differents input du form dans la partie console(inspecter)
 
   }
 
