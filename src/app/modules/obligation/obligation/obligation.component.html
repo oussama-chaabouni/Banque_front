@@ -1,0 +1,77 @@
+<h1>Simuler le rendement de l'obligation</h1>
+<form   style="background-color: #ffffff; width: 500px;text-align: center;  margin: 0 auto;   border-radius: 25px;" >
+  <br>
+  <br>
+
+    <mat-label>Prix Obligation</mat-label>
+  <br>
+  <mat-slider style="background-color: #ffffff"
+              thumbLabel
+              [displayWith]="formatLabel"
+              tickInterval="100"
+              step="1000"
+              min="0"
+              max="10000"
+              aria-label="units"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              name="selectedAmount1" [(ngModel)]="prixOblig"  >
+  </mat-slider>
+
+
+
+  <br>
+  <br>
+  <mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Maturité</mat-label>
+  <input  matInput type="number"  [(ngModel)]="maturite" [ngModelOptions]="{standalone: true}" min="1" max="90" >
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Coupon</mat-label>
+    <input  matInput type="number"  [(ngModel)]="coupon" [ngModelOptions]="{standalone: true}" min="0.01" max="9"  step="0.01">
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Taux interet</mat-label>
+    <input  matInput type="number"  [(ngModel)]="interet" [ngModelOptions]="{standalone: true}" min="0.01" max="9"  step="0.01">
+  </mat-form-field>
+
+  <br>
+  <br>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Fréquence de Paiement</mat-label>
+    <mat-select [(ngModel)]="freqPaiement" [ngModelOptions]="{standalone: true}">
+      <mat-option value="mensuel"  >Mensuel</mat-option>
+      <mat-option  value="annuel" >Annuel</mat-option>
+      <mat-option value="semiannuel" >Semi Annuel</mat-option>
+
+      <mat-option value="trimestriel" >Trimestriel</mat-option>
+    </mat-select>
+
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Fréquence du coupon</mat-label>
+    <mat-select [(ngModel)]="freqCoupon" [ngModelOptions]="{standalone: true}">
+      <mat-option value="mensuel"  >Mensuel</mat-option>
+      <mat-option  value="annuel" >Annuel</mat-option>
+      <mat-option value="semiannuel" >Semi Annuel</mat-option>
+
+      <mat-option value="trimestriel" >Trimestriel</mat-option>
+    </mat-select>
+
+  </mat-form-field>
+  <br>
+  <br>
+
+  <button type="submit" class="btn btn-primary" (click)="sim()">Simuler</button>
+  <br>
+  <br>
+</form>
+<br>
+<br>
+<input style="width: 900px;font-size: 22px; background-color: transparent;    display: block;margin-right: auto;margin-left: auto;" name="selectedAmount" [(ngModel)]="selectedAmount"   >
+
+<br>

@@ -18,6 +18,11 @@ const Routing: Routes = [
       import('../modules/action/action.module').then((m) => m.ActionModule),
   },
   {
+    path: 'obligation',
+    loadChildren: () =>
+      import('../modules/obligation/obligation.module').then((m) => m.ObligationModule),
+  },
+  {
     path: 'builder',
     loadChildren: () =>
       import('./builder/builder.module').then((m) => m.BuilderModule),
