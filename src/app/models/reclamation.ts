@@ -9,6 +9,4 @@ export class Reclamation {
   statut!:any;
   codeRaison!:any;
   dateOperation!:any;
-  solde!:any;
-  idTransaction!:any;
 }

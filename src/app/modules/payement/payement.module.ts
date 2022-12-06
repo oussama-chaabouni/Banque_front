@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {PayementComponent} from "./payement.component";
 import {FormsModule} from "@angular/forms";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {InlineSVGModule} from "ng-inline-svg";
 
 const routes: Routes = [
   {
@@ -19,6 +21,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
+    Ng2SearchPipeModule,
+    InlineSVGModule
 
   ]
 })

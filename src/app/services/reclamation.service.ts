@@ -12,7 +12,7 @@ export class ReclamationService {
   }
 
   getReclamations() {
-    return this.http.get('http://localhost:8082/banque-en-ligne/reclamation/retrieve-all-transactions');
+    return this.http.get('http://localhost:8082/banque-en-ligne/reclamation/retrieve-all-reclamations');
   }
 
   addReclamation(reclamation: any) {
@@ -23,7 +23,7 @@ export class ReclamationService {
     return this.http.put('http://localhost:8082/banque-en-ligne/reclamation/modify-reclamation', reclamation);
   }
 
-  deleteReclamation(reclamationId: any) {
-    return this.http.delete('http://localhost:8082/banque-en-ligne/reclamation/remove-reclamation/' + reclamationId);
+  deleteReclamation(idReclamation: any) {
+    return this.http.delete('http://localhost:8082/banque-en-ligne/reclamation/remove-reclamation/' + idReclamation);
   }
 }

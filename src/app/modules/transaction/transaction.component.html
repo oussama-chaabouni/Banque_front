@@ -33,9 +33,7 @@
     <!-- end::Header -->
     <!-- begin::Body -->
 
-          <div class="col-md-12">
-
-<!-- Ajout kolha -->
+<!-- HEDHI KI NJI NAJOUTI -->
       <ng-template #mymodal1 let-modal1>
         <div class="modal-header">
           <h4 class="modal-title" id="modal-basic-title" >Add new Transaction</h4>
@@ -50,6 +48,12 @@
               <input name ="rib" type="number" required  ngModel #r="ngModel" placeholder="Rib Teneur De Compte" [(ngModel)]="transaction.rib">
             </div>
             <div class="alert alert-danger" *ngIf="r.invalid && r.touched">Rib Est Un Champ Requis </div>
+
+            <div class="row" class="col-md-6">
+              <input name ="ribben" type="number" required  ngModel #r="ngModel" placeholder="Rib Beneficiaire" [(ngModel)]="transaction.beneficiairerib">
+            </div>
+            <div class="alert alert-danger" *ngIf="r.invalid && r.touched">Rib Beneficiaire Est Un Champ Requis </div>
+
 
             <div class="row" class="col-md-6">
               <select
@@ -97,37 +101,46 @@
         </div>
       </ng-template>
 
-
+            <!-- end::Header -->
+            <!-- begin::Body -->
             <div class="card-body py-3">
               <!-- begin::Table container -->
               <div class="table-responsive">
                 <!-- begin::Table -->
-                <table class="table align-middle gs-0 gy-4">
+                <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
                   <!-- begin::Table head -->
                   <thead>
-                  <tr class="fw-bolder text-muted bg-light">
-
+                  <tr class="fw-bolder text-muted">
             <th>Rib Teneur De Compte</th>
+                    <th>Rib Beneficiaire</th>
             <th>Type De Transaction</th>
             <th>Montant</th>
             <th>Motif</th>
             <th>Statut De Transaction</th>
             <th>Code Raison</th>
             <th>Date Operation</th>
-            <th> </th>
+            <th>Actions</th>
                   </tr>
                   </thead>
                   <!-- end::Table head -->
 
                   <!-- begin::Table body -->
-            <tbody>
-            <tr *ngFor='let p of listTransactions'>
+
+                  <tbody>
+            <tr *ngFor='let p of listTransactions | filter:term'>
 
               <td>
                 <div class="d-flex align-items-center">
                 <div class="d-flex justify-content-start flex-column">
                   <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.rib}}</a>
                 </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="d-flex justify-content-start flex-column">
+                    <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.beneficiairerib}}</a>
+                  </div>
                 </div>
               </td>
 
@@ -173,8 +186,15 @@
               <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.dateOperation}}</a></td>
 
 
-              <td><button type="button" class="btn btn-outline-primary"
-                          (click)="open(mymodal)">edit</button>
+              <td><span type="button" class="
+                  btn btn-icon btn-bg-light btn-active-color-primary btn-sm
+                  me-1" [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'"
+                  class="svg-icon svg-icon-3"
+                  (click)="open(mymodal)" [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'">
+                edit
+              >
+              </span>
+
                 <ng-template #mymodal let-modal>
                   <div class="modal-header">
                     <h4 class="modal-title" id="modal-basic-title">Edit</h4>
@@ -192,6 +212,10 @@
                         <div class="row" class="col-md-5">
                           <label>Rib</label>
                           <input type="number" [(ngModel)]="p.rib" [ngModelOptions]="{standalone : true}" />
+                        </div>
+                        <div class="row" class="col-md-5">
+                          <label>Rib Beneficiaire</label>
+                          <input type="number" [(ngModel)]="p.beneficiairerib" [ngModelOptions]="{standalone : true}" />
                         </div>
                         <div class="row" class="col-md-5">
                           <label>Type De Transaction</label>
@@ -215,7 +239,7 @@
                         </div>
                         <div class="row" class="col-md-5">
                           <label>Date D'Operation</label>
-                          <input type="number" [(ngModel)]="p.dateOperation" [ngModelOptions]="{standalone : true}" />
+                          <input type="datetime-local" [(ngModel)]="p.dateOperation" [ngModelOptions]="{standalone : true}" />
                         </div>
 
 
@@ -230,12 +254,14 @@
                     </form>
                   </div>
                 </ng-template>
-                <button type="button" class="btn btn-outline-danger"
-                        (click)="deleteTransaction(p.idTransaction)">delete</button>
+                <span type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+                        [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
+                        class="svg-icon svg-icon-3" (click)="deleteTransaction(p.idTransaction)">delete</span>
+
               </td>
             </tr>
             </tbody>
           </table>
         </div>
       </div>
-    </div>
+

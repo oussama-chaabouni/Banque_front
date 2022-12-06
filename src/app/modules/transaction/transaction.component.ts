@@ -61,6 +61,7 @@ export class TransactionComponent implements OnInit {
       idTransaction:null,
 
       rib:null,
+      beneficiairerib:null,
       typeTransaction:null,
       montant:null,
       motif:null,
@@ -130,7 +131,7 @@ export class TransactionComponent implements OnInit {
   }
 
   save(f: NgForm){ //f de type ngForm
-    console.log(f.value['rib'],f.value['typeTransaction'], f.value['montant'],f.value['motif'], f.value['statut'],f.value['codeRaison'], f.value['dateOperation']); //pour recuperer le contunu de differents input du form dans la partie console(inspecter)
+    console.log(f.value['rib'],f.value['beneficiairerib'],f.value['typeTransaction'], f.value['montant'],f.value['motif'], f.value['statut'],f.value['codeRaison'], f.value['dateOperation']); //pour recuperer le contunu de differents input du form dans la partie console(inspecter)
 
   }
 

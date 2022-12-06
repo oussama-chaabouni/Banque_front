@@ -18,14 +18,22 @@ export class ReclamationComponent implements OnInit {
   transaction:Transaction[]=[];
   reclamation!:Reclamation;
   closeResult!: string;
-  Virement_Immédiat: any="Virement_Immédiat";
-  Virement_Différé: any="Virement_Différé";
+  Virement_Immediat: any="Virement_Immédiat";
+  Virement_Differe: any="Virement_Différé";
   Virement_Permanent: any="Virement_Permanent";
-  Dépot: any="Dépot";
+  Depot: any="Dépot";
   Retrait: any="Retrait";
   Paiement: any="Paiement";
-  success: string="success";
-  failed: string ="failed";
+  successdepot: string="dépot avec succés";
+  faileddepot: string ="dépot sans succés";
+  successretrait: string="retrait avec succés";
+  failedretrait: string="retrait sans succés";
+  successpaiement: string="Paiement avec Succés";
+  failedpaiement: string="Echec de Paiement";
+  successvir_imm: string="virement immédiat effectué avec succès";
+  failedvir_imm: string="Echec du virement immédiat";
+  successvir_dif: string="virement différé effectué avec succès";
+  successvir_per: string="virement Permanent effectué avec succès";
   transaction_type: ({ transaction_type: string } | { transaction_type: string } | { transaction_type: string } | { transaction_type: string } | { transaction_type: string } | { transaction_type: string })[];
 
   constructor(private reclamationService: ReclamationService, private modalService: NgbModal){
@@ -44,8 +52,6 @@ export class ReclamationComponent implements OnInit {
       statut:null,
       codeRaison:null,
       dateOperation:null,
-      solde:null,
-      idTransaction:null,
     }
 
     this.transaction_type=[
@@ -79,8 +85,8 @@ export class ReclamationComponent implements OnInit {
 
   }
 
-  deleteReclamation(reclamationId:any){
-    this.reclamationService.deleteReclamation(reclamationId).subscribe(()=>this.getReclamations());
+  deleteReclamation(idReclamation:any){
+    this.reclamationService.deleteReclamation(idReclamation).subscribe(()=>this.getReclamations());
     // this.toast.warning({detail:"Success Message", summary:"Transaction deleted Successfully", duration:5000})
 
   }
@@ -109,7 +115,7 @@ export class ReclamationComponent implements OnInit {
   }
 
   save(f: NgForm){ //f de type ngForm
-    console.log(f.value['rib'],f.value['typeTransaction'], f.value['montant'],f.value['motif'], f.value['statut'],f.value['codeRaison'], f.value['dateOperation'], f.value['solde'],f.value['idTransaction']); //pour recuperer le contunu de differents input du form dans la partie console(inspecter)
+    console.log(f.value['rib'],f.value['typeTransaction'], f.value['montant'],f.value['motif'], f.value['statut'],f.value['codeRaison'], f.value['dateOperation']); //pour recuperer le contunu de differents input du form dans la partie console(inspecter)
   }
 
 }

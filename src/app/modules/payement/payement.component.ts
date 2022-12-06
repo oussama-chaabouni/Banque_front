@@ -23,8 +23,8 @@ export class PayementComponent implements OnInit {
 
 
   Paiement: any="Paiement";
-  success: string="Paiement avec Succés";
-  failed: string ="Echec de Paiement";
+  successpayement: string="Paiement avec Succés";
+  failedpayement: string ="Echec de Paiement";
 
 
   constructor(private payementService: PayementService, private modalService: NgbModal){} //,private toast:NgToastService
@@ -63,6 +63,12 @@ export class PayementComponent implements OnInit {
   editPayement(payement:Payement){
     this.payementService.editPayement(payement).subscribe();
     //this.toast.info({detail:"Success Message", summary:"Payement edited Successfully", duration:5000})
+
+  }
+
+  deleteTransaction(idPayement:any){
+    this.payementService.deletePayement(idPayement).subscribe(()=>this.getPayements());
+    // this.toast.warning({detail:"Success Message", summary:"Transaction deleted Successfully", duration:5000})
 
   }
 

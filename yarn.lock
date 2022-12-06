@@ -2345,13 +2345,13 @@
   "resolved" "https://registry.npmjs.org/atob/-/atob-2.1.2.tgz"
   "version" "2.1.2"
 
-"autoprefixer@^10.4.2":
-  "integrity" "sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg=="
-  "resolved" "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.4.13.tgz"
-  "version" "10.4.13"
+"autoprefixer@10.4.5":
+  "integrity" "sha512-Fvd8yCoA7lNX/OUllvS+aS1I7WRBclGXsepbvT8ZaPgrH24rgXpZzF0/6Hh3ZEkwg+0AES/Osd196VZmYoEFtw=="
+  "resolved" "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.4.5.tgz"
+  "version" "10.4.5"
   dependencies:
-    "browserslist" "^4.21.4"
-    "caniuse-lite" "^1.0.30001426"
+    "browserslist" "^4.20.2"
+    "caniuse-lite" "^1.0.30001332"
     "fraction.js" "^4.2.0"
     "normalize-range" "^0.1.2"
     "picocolors" "^1.0.0"
@@ -2535,7 +2535,7 @@
     "escalade" "^3.1.1"
     "node-releases" "^1.1.71"
 
-"browserslist@^4.19.1":
+"browserslist@^4.19.1", "browserslist@^4.20.2":
   "integrity" "sha512-CBHJJdDmgjl3daYjN5Cp5kbTf1mUhZoS+beLklHIvkOWscs83YAhLlF3Wsh/lciQYAcbBJgTOD44VtG31ZM4Hw=="
   "resolved" "https://registry.npmjs.org/browserslist/-/browserslist-4.21.4.tgz"
   "version" "4.21.4"
@@ -2674,7 +2674,7 @@
   "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001245.tgz"
   "version" "1.0.30001245"
 
-"caniuse-lite@^1.0.30001299", "caniuse-lite@^1.0.30001400", "caniuse-lite@^1.0.30001426":
+"caniuse-lite@^1.0.30001299", "caniuse-lite@^1.0.30001332", "caniuse-lite@^1.0.30001400":
   "integrity" "sha512-n7cosrHLl8AWt0wwZw/PJZgUg3lV0gk9LMI7ikGJwhyhgsd2Nb65vKvmSexCqq/J7rbH3mFG6yZZiPR5dLPW5A=="
   "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001426.tgz"
   "version" "1.0.30001426"
@@ -3134,9 +3134,9 @@
     "ms" "2.1.2"
 
 "decode-uri-component@^0.2.0":
-  "integrity" "sha512-hjf+xovcEn31w/EUYdTXQh/8smFL/dzYjohQGEIgjyNavaJfBY2p5F527Bo1VPATxv0VYTUC2bOcXvqFwk78Og=="
-  "resolved" "https://registry.npmjs.org/decode-uri-component/-/decode-uri-component-0.2.0.tgz"
-  "version" "0.2.0"
+  "integrity" "sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ=="
+  "resolved" "https://registry.npmjs.org/decode-uri-component/-/decode-uri-component-0.2.2.tgz"
+  "version" "0.2.2"
 
 "deep-equal@^1.0.1":
   "integrity" "sha512-yd9c5AdiqVcR+JjcwUQb9DkhJc8ngNr0MahEBGvDiJw8puWab2yZlh+nkasOnZP+EGTAP6rRp2JzJhJZzvNF8g=="
@@ -3341,9 +3341,9 @@
   "version" "5.0.4"
 
 "engine.io@~6.2.0":
-  "integrity" "sha512-4KzwW3F3bk+KlzSOY57fj/Jx6LyRQ1nbcyIadehl+AnXjKT7gDO0ORdRi/84ixvMKTym6ZKuxvbzN62HDDU1Lg=="
-  "resolved" "https://registry.npmjs.org/engine.io/-/engine.io-6.2.0.tgz"
-  "version" "6.2.0"
+  "integrity" "sha512-ECceEFcAaNRybd3lsGQKas3ZlMVjN3cyWwMP25D2i0zWfyiytVbTpRPa34qrr+FHddtpBVOmq4H/DCv1O0lZRA=="
+  "resolved" "https://registry.npmjs.org/engine.io/-/engine.io-6.2.1.tgz"
+  "version" "6.2.1"
   dependencies:
     "@types/cookie" "^0.4.1"
     "@types/cors" "^2.8.12"
@@ -5090,6 +5090,11 @@
   "resolved" "https://registry.npmjs.org/ng-inline-svg/-/ng-inline-svg-13.1.2.tgz"
   "version" "13.1.2"
 
+"ng2-search-filter@^0.5.1":
+  "integrity" "sha512-noN8R+Gyxo5ZuboEOvq+u0zKio6pEf1IVYQTCZfAfXm6ONmzWu/M2xK0di9oVUprDbPBQXCGUuvD5i2GD+35HA=="
+  "resolved" "https://registry.npmjs.org/ng2-search-filter/-/ng2-search-filter-0.5.1.tgz"
+  "version" "0.5.1"
+
 "ngx-clipboard@^14.0.1":
   "integrity" "sha512-zJaFi09D2bq9X1RYvFixE0AfYOI7E8mUO8S0GXcq76HisuE816HRl+8A46G+NML5GPA3Lr5qaGnQJN533So+8g=="
   "resolved" "https://registry.npmjs.org/ngx-clipboard/-/ngx-clipboard-14.0.2.tgz"
@@ -5112,6 +5117,13 @@
   dependencies:
     "highlight.js" "^10.0.0"
     "highlightjs-line-numbers.js" "^2.8.0"
+    "tslib" "^2.0.0"
+
+"ngx-paypal@^7.0.0":
+  "integrity" "sha512-5kiqJbqZh7ETZy5xGTkbbgey/Oj0oViLZZgpWLPT1H23SoKK5ph+cgAj8orIdZLhHmlOpN60qpuP4lpF+OGx6g=="
+  "resolved" "https://registry.npmjs.org/ngx-paypal/-/ngx-paypal-7.0.0.tgz"
+  "version" "7.0.0"
+  dependencies:
     "tslib" "^2.0.0"
 
 "ngx-window-token@>=4.0.0 <6.0.0":

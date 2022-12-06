@@ -13,24 +13,6 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./modules/errors/errors.module').then((m) => m.ErrorsModule),
   },
-
-  {
-    path: 'transaction',
-    loadChildren: () => import('./modules/transaction/transaction.module').then((m )=> m.TransactionModule)
-  },
-  /*{  HEDHI LEL REDIRECTION LI TALBETHA 3MANEWEL
-    path: 'ajoutertransaction',
-    loadChildren: () => import('./views/pages/addtransaction/add-transaction.module').then(m => m.AddTransactionModule)
-  }, */
-  {
-    path: 'payement',
-    loadChildren: () => import('./modules/payement/payement.module').then((m ) => m.PayementModule)
-  },
-  {
-    path: 'reclamation',
-    loadChildren: () => import('./modules/reclamation/reclamation.module').then((m ) => m.ReclamationModule)
-  },
-
   {
     path: '',
     canActivate: [AuthGuard],

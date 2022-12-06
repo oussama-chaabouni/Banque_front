@@ -1,0 +1,220 @@
+<div class="card mb-5 mb-xl-10">
+  <div
+    class="card-header border-0 cursor-pointer"
+    role="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#kt_account_profile_details"
+    aria-expanded="true"
+    aria-controls="kt_account_profile_details"
+  >
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0">Paiement Avec RIB</h3>
+    </div>
+  </div>
+  <div id="kt_account_profile_details" class="collapse show">
+    <form novalidate="" class="form">
+      <div class="card-body border-top p-9">
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Votre Rib</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="monRib" type="number" required  placeholder="Votre Rib Ici" [(ngModel)]="monRib"
+                  type="text"
+                  class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                  value="Votre Rib Ici"
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Nom Beneficiaire</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="beneficiaire" type="text" required placeholder="Rib Destinataire Ici" [(ngModel)]="beneficiaire"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                       value="Beneficiaire"
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Rib Beneficiaire</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="ribDestinataire" type="number" required   placeholder="Rib Beneficiaire Ici" [(ngModel)]="beneficiaire_rib"
+                       class="form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0"
+                       value="Rib Beneficiaire Ici"
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Montant</label
+          >
+          <div class="col-lg-8 fv-row">
+            <input  name ="montant" type="number" required placeholder="Montant à Transferer "[(ngModel)]="montant"
+              class="form-control form-control-lg form-control-solid"value="Montant "
+            />
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Motif Du Paiement</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input type="text" required placeholder="Motif Du Paiement" [(ngModel)]="motif"
+                       class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 "
+                       name="motif"
+                       value="Motif Du Paiement Ici"
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="isLoading"
+          (click)="saveSettings()"
+        >
+          <button type="submit" class="btn contact-btn" (click)="Paiement()">Payer</button>
+
+        </button>
+      </div>
+
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+      </div>
+
+    </form>
+  </div>
+
+<br> <br> <br><br> <br> <br>
+  <div class="card mb-5 mb-xl-10">
+    <div
+      class="card-header border-0 cursor-pointer"
+      role="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#kt_account_profile_details"
+      aria-expanded="true"
+      aria-controls="kt_account_profile_details"
+    >
+      <div class="card-title m-0">
+        <h3 class="fw-bolder m-0">Paiement Avec PayPal Ou Carte Bancaire</h3>
+      </div>
+    </div>
+    <div id="kt_account_profile_details" class="collapse show">
+      <form novalidate="" class="form">
+        <div class="card-body border-top p-9">
+
+
+          <div class="row mb-6">
+            <label class="col-lg-4 col-form-label fw-bold fs-6"
+            >Choisissez La Methode Du Paiement</label
+            >
+            <div class="col-lg-8">
+              <div class="row">
+                <div class="col-lg-6 fv-row">
+                  <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card-footer d-flex justify-content-end py-6 px-9">
+        </div>
+
+      </form>
+    </div>
+
+
+
+  </div>
+
+
+  <div class="card mb-5 mb-xl-10">
+    <div
+      class="card-header border-0 cursor-pointer"
+      role="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#kt_account_profile_details"
+      aria-expanded="true"
+      aria-controls="kt_account_profile_details"
+    >
+      <div class="card-title m-0">
+        <h3 class="fw-bolder m-0">Paiement Avec RazorPay: Notre nouvelle methode de Paiement en ligne</h3>
+      </div>
+    </div>
+    <div id="kt_account_profile_details" class="collapse show">
+      <form name="form" (ngSubmit)="f.form.valid && initPay()" #f="ngForm" novalidate>
+        <div class="form-group">
+          <div class="alert alert-danger" role="alert" *ngIf="error">Payment failed: {{ error }}</div>
+          <div class="alert alert-success" role="alert" *ngIf="paymentId">Payment Success. Payment ID: {{ paymentId }}</div>
+        </div>
+        <div class="form-group">
+          <label for="rib">Votre Rib</label> <input type="text" class="form-control" name="ribb" [(ngModel)]="form.rib" required  #name="ngModel" />
+
+        </div>
+        <div class="form-group">
+          <label for="name">Nom Beneficiaire</label> <input type="text" class="form-control" name="name" [(ngModel)]="form.name" required  #name="ngModel" />
+
+        </div>
+        <div class="form-group">
+          <label for="customerRib">Rib Beneficiaire</label> <input type="text" class="form-control" name="customerRib" [(ngModel)]="form.customerRib" required #email="ngModel" />
+          <div class="alert alert-danger" role="alert" *ngIf="f.submitted && email.invalid">Email is required!</div>
+        </div>
+        <div class="form-group">
+          <label for="amount">Montant à payer</label> <input type="number" class="form-control" name="amount" [(ngModel)]="form.amount" required #amount="ngModel" />
+
+        </div>
+        <div class="form-group">
+          <label for="motif">Motif</label> <input type="text" class="form-control" name="phone" [(ngModel)]="form.motif" required #phone="ngModel" />
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Payer</button>
+        </div>
+      </form>
+    </div>
+
+
+
+  </div>
+
+
+
+</div>

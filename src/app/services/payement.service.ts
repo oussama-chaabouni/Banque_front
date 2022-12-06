@@ -23,7 +23,7 @@ export class PayementService {
     return this.http.put('http://localhost:8082/banque-en-ligne/payement/modify-payement', payement);
   }
 
-  deletePayement(payementId: any) {
-    return this.http.delete('http://localhost:8082/banque-en-ligne/payement/remove-payement/' + payementId);
+  deletePayement(idPayement: any) {
+    return this.http.delete('http://localhost:8082/banque-en-ligne/payement/remove-payement/' + idPayement);
   }
 }
