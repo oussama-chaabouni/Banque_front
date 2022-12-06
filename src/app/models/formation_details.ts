@@ -1,6 +1,6 @@
 export class Formation_details {
 
-  Id !:any;
+  Idp !:any;
   Etat !:any;
   idEmploye !:any;
   idF!:any;

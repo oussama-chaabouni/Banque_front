@@ -24,12 +24,15 @@ export class OrderServiceService {
       amount: order.amount,
       motif: order.motif,
 
+
+
       /*customerName: order.name,
       email: order.email,
       phoneNumber: order.phone,
       amount: order.amount */
 
     }, httpOptions);
+    console.log("amounttt " +order.rib);
   }
 
 }

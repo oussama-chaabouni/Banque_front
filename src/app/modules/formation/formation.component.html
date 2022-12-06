@@ -62,7 +62,7 @@
       <div class="alert alert-danger" *ngIf="mot.invalid && mot.touched">Description Est Un Champ Requis </div>
 
       <div class="row" class="col-md-6">
-        <input name="Date_debut" type="date_operation" placeholder="Date Debut" required  ngModel #st="ngModel" [(ngModel)]="formation.Date_debut "
+        <input name="Date_debut" type="datetime-local" placeholder="Date Debut" required  ngModel #st="ngModel" [(ngModel)]="formation.Date_debut "
                [ngModelOptions]="{standalone : true}">
       </div>
       <div class="alert alert-danger" *ngIf="st.invalid && st.touched">Date Debut Est Un Champ Requis </div>
@@ -143,23 +143,23 @@
 
                   <div class="row" class="col-md-5">
                     <label>Nom De La Formation</label>
-                    <input type="text" [(ngModel)]="p.Nom_Formation" [ngModelOptions]="{standalone : true}" />
+                    <input type="text" [(ngModel)]="p.nom_Formation" [ngModelOptions]="{standalone : true}" />
                   </div>
                   <div class="row" class="col-md-5">
                     <label>Departement</label>
-                    <input type="text" [(ngModel)]="p.Departement" [ngModelOptions]="{standalone : true}" />
+                    <input type="text" [(ngModel)]="p.departement" [ngModelOptions]="{standalone : true}" />
                   </div>
                   <div class="row" class="col-md-5">
                     <label>Description</label>
-                    <input type="text" [(ngModel)]="p.Description" [ngModelOptions]="{standalone : true}" />
+                    <input type="text" [(ngModel)]="p.description" [ngModelOptions]="{standalone : true}" />
                   </div>
                   <div class="row" class="col-md-5">
                     <label>Date Debut</label>
-                    <input type="datetime-local" [(ngModel)]="p.Date_debut" [ngModelOptions]="{standalone : true}" />
+                    <input type="datetime-local" [(ngModel)]="p.date_debut" [ngModelOptions]="{standalone : true}" />
                   </div>
                   <div class="row" class="col-md-5">
                     <label>Duree</label>
-                    <input type="number" [(ngModel)]="p.Duree" [ngModelOptions]="{standalone : true}" />
+                    <input type="number" [(ngModel)]="p.duree" [ngModelOptions]="{standalone : true}" />
                   </div>
 
                 </div>
@@ -175,7 +175,10 @@
           </ng-template>
           <span type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
                 [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
-                class="svg-icon svg-icon-3" (click)="deleteFormation(p.Id)">Supprimer</span>
+                class="svg-icon svg-icon-3" (click)="deleteFormation(p.id)">Supprimer</span>
+          <span type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+                [inlineSVG]="'./assets/media/icons/duotune/arrows/arr075.svg'"
+                class="svg-icon svg-icon-3" (click)="deleteFormation(p.id)">AjouterFormation</span>
 
         </td>
       </tr>

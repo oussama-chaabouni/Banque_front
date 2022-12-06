@@ -8,18 +8,12 @@
     aria-controls="kt_account_profile_details"
   >
     <div class="card-title m-0">
-      <h3 class="fw-bolder m-0">Dépot D'Argent</h3>
+      <h3 class="fw-bolder m-0">Virement Immediat</h3>
     </div>
   </div>
   <div id="kt_account_profile_details" class="collapse show">
     <form novalidate="" class="form">
       <div class="card-body border-top p-9">
-        <label >Choisir type du compte:</label>
-
-        <select name="typevirement" [(ngModel)]="typevirement">
-          <option value="0"selected>Compte courant</option>
-          <option value="1">Compte epargne</option>
-        </select>
 
         <div class="row mb-6">
           <label class="col-lg-4 col-form-label required fw-bold fs-6"
@@ -42,6 +36,26 @@
             </div>
           </div>
         </div>
+
+
+        <div class="row mb-6">
+
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Compte à Créditer</label>
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <select class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 " aria-label=".form-select-sm example" name="typevirement" [(ngModel)]="typevirement">
+                  <option value="0"selected>Compte courant</option>
+                  <option value="1">Compte epargne</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
         <div class="row mb-6">
           <label class="col-lg-4 col-form-label required fw-bold fs-6"
           >Rib Destinataire</label
@@ -56,7 +70,9 @@
                     mb-3 mb-lg-0
                   "
                        value="Rib Destinataire Ici"
-                       (keyup)="nameOfUserByRibb($event)" />
+                       (keyup)="nameOfUserByRibb($event)"
+                       (keyup)="nameOfUserByRibbEpargne($event)"
+                />
               </div>
      <!--         <p > {{nom}} </p>  -->
 

@@ -1,10 +1,11 @@
 export class Salaire {
 
-  idSalaire !:any;
-  Salaire !:any;
-  SalaireNet !:any;
-  NbHeureSup !:any;
-  PrixHeureSup !:any;
-  TotalTax !:any;
+  idsalaire !:any;
+  nomemploye!:any;
+  salaire !:any;
+  salairenet !:any;
+  nbheuresup !:any;
+  prixheuresup !:any;
+  totaltax !:any;
 
 }

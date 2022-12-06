@@ -26,7 +26,9 @@ export class VirementdiffereComponent implements OnInit {
 
   JobData: any;
 
-
+  typevirement:any;
+  nom =" ";
+  transferTo: any;
 
 
   ngOnInit(): void {
@@ -44,15 +46,51 @@ export class VirementdiffereComponent implements OnInit {
   virementDiffere() {
     console.log("JobData " + this.JobData);
 
-
+    console.log("xxxx  transferToRib " + this.transferTo);
+    if (this.typevirement == 0) {
       this.transactionService.virementDiffere(this.JobData).subscribe(res => {
 
-    //   this.toast.success({detail:"Success", summary:"deposit successful", duration:5000});
+        //   this.toast.success({detail:"Success", summary:"deposit successful", duration:5000});
 
 
-    }, error => {
-    });
+      });
+    } else {
+      this.transactionService.virementDiffereEpargne(this.JobData).subscribe(res => {
+      });
+    }
   }
+
+
+  nameOfUserByRibb(transferTo:any) {
+    if(transferTo != null) {
+      this.transactionService.nameOfUserByRib(this.JobData.transferTo).subscribe(res => {
+        if(res != null) {
+          this.nom = res;
+        }
+        else{
+          this.nom = "";
+        }
+
+        console.log("xxxx " + res)
+      });
+    }
+  }
+
+  nameOfUserByRibbEpargne(transferTo:any) {
+    if(transferTo != null) {
+      this.transactionService.nameOfUserByRibEpargne(this.JobData.transferTo).subscribe(res => {
+        if(res != null) {
+          this.nom = res;
+        }
+        else{
+          this.nom = "";
+        }
+
+        console.log("xxxx " + res)
+      });
+    }
+  }
+
 
 
   saveSettings() {

@@ -21,7 +21,7 @@ export class VirementimmediatComponent implements OnInit {
   //, private toast:NgToastService
   listTransactions: any;
   listAccounts: any;
-  nom =" ";
+
   form = false;
   transaction!: Transaction;
   TransactionsObject!: transactionObject;
@@ -32,6 +32,8 @@ export class VirementimmediatComponent implements OnInit {
   b2: any;
   fromAccount: any;
 
+
+  nom =" ";
   transferFromRib: any;
   transferToRib: any;
   montant: any;
@@ -146,6 +148,21 @@ export class VirementimmediatComponent implements OnInit {
     }
   }
 
+  nameOfUserByRibbEpargne(transferToRib:any) {
+    if(transferToRib != null) {
+      this.transactionService.nameOfUserByRibEpargne(this.transferToRib).subscribe(res => {
+        if(res != null) {
+          this.nom = res;
+        }
+        else{
+          this.nom = "";
+        }
+
+        console.log("xxxx " + res)
+      });
+    }
+  }
+
 
   virementImmediat() {
     console.log("xxx type de vireent +"+this.typevirement);
@@ -167,6 +184,7 @@ export class VirementimmediatComponent implements OnInit {
             //           this.toast.error({detail:"Success", summary:"Veuillez Ecrire Le Motif", duration:5000});
           }
           console.log("xxxx  transferToRib "+this.transferToRib);
+          //0=compte courant
           if(this.typevirement ==0){
             this.transactionService.virementImmediat(this.transferFromRib, this.transferToRib, this.montant, this.motif).subscribe((res: string) => {
 

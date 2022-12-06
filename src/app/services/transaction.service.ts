@@ -69,13 +69,22 @@ export class TransactionService {
     /*bech ya9rali les retours de type string 5ater 93ad ytala3Li f err */
     var body =[{}]  ;        //http://localhost:8082/banque-en-ligne/transaction/scheduleVirementDiffere
     return this.http.post('http://localhost:8082/banque-en-ligne/transaction/scheduleVirementDiffere', JobData);
-
-
   }
+  virementDiffereEpargne(JobData: any) {
+    /*bech ya9rali les retours de type string 5ater 93ad ytala3Li f err */
+    var body =[{}]  ;        //http://localhost:8082/banque-en-ligne/transaction/scheduleVirementDiffereEpargne
+    return this.http.post('http://localhost:8082/banque-en-ligne/transaction/scheduleVirementDiffereEpargne', JobData);
+  }
+
   virementPermanent(JobDataVirementPermanent:any) {
     /*bech ya9rali les retours de type string 5ater 93ad ytala3Li f err */
     var body =[{}]  ;        //http://localhost:8082/banque-en-ligne/transaction/scheduleVirementpermanent
     return this.http.post('http://localhost:8082/banque-en-ligne/transaction/scheduleVirementpermanent', JobDataVirementPermanent);
+  }
+  virementPermanentEpargne(JobDataVirementPermanent:any) {
+    /*bech ya9rali les retours de type string 5ater 93ad ytala3Li f err */
+    var body =[{}]  ;        //http://localhost:8082/banque-en-ligne/transaction/scheduleVirementpermanentEpargne
+    return this.http.post('http://localhost:8082/banque-en-ligne/transaction/scheduleVirementpermanentEpargne', JobDataVirementPermanent);
   }
 
   retrait(retrait_amount: any,monRib:any) {
@@ -85,21 +94,48 @@ export class TransactionService {
     console.log("xxxx "+monRib.toString());
     return this.http.post("http://localhost:8082/banque-en-ligne/transaction/retrait?retrait_amount="+retrait_amount+"&monRib="+monRib,body,{ responseType: 'text' });
   }
+  retraitEpargne(retrait_amount: any,monRib:any) {
+    var body =[{}]  ;
+    //http://localhost:8082/banque-en-ligne/transaction/retraitEpargne?retrait_amount=1&monRib=1234
+    console.log("xxxx "+retrait_amount);
+    console.log("xxxx "+monRib.toString());
+    return this.http.post("http://localhost:8082/banque-en-ligne/transaction/retraitEpargne?retrait_amount="+retrait_amount+"&monRib="+monRib,body,{ responseType: 'text' });
+  }
+
+
   depot(monRib: any,deposit_amount:any) {
     var body =[{}]  ;
     //http://localhost:8082/banque-en-ligne/transaction/depot?deposit_amount=10&monRib=1233333
     return this.http.post("http:///localhost:8082/banque-en-ligne/transaction/depot?deposit_amount="+deposit_amount+"&monRib="+monRib,body.toString(),{ responseType: 'text' });
   }
+  depotEpargne(monRib: any,deposit_amount:any) {
+    var body =[{}]  ;
+    //http://localhost:8082/banque-en-ligne/transaction/depotEpargne?deposit_amount=10&monRib=1233333
+    return this.http.post("http:///localhost:8082/banque-en-ligne/transaction/depotEpargne?deposit_amount="+deposit_amount+"&monRib="+monRib,body.toString(),{ responseType: 'text' });
+  }
+
   paiement(beneficiaire: any,beneficiaire_rib:any,monRib:any,motif:any,montant:any) {
     var body =[{}]  ;
     //http://localhost:8082/banque-en-ligne/transaction/payement?beneficiaire=ESPRIT&beneficiaire_rib=12345653423&monRib=1232222&motif=paiement%20ecole&montant=500
     return this.http.post("http://localhost:8082/banque-en-ligne/transaction/payement?beneficiaire="+beneficiaire+"&beneficiaire_rib="+beneficiaire_rib+"&monRib="+monRib+"&motif="+motif+"&montant="+montant,body,{ responseType: 'text' });
   }
+  paiementEpargne(beneficiaire: any,beneficiaire_rib:any,monRib:any,motif:any,montant:any) {
+    var body =[{}]  ;
+    //http://localhost:8082/banque-en-ligne/transaction/payementEpargne?beneficiaire=ESPRIT&beneficiaire_rib=12345653423&monRib=1232222&motif=paiement%20ecole&montant=500
+    return this.http.post("http://localhost:8082/banque-en-ligne/transaction/payementEpargne?beneficiaire="+beneficiaire+"&beneficiaire_rib="+beneficiaire_rib+"&monRib="+monRib+"&motif="+motif+"&montant="+montant,body,{ responseType: 'text' });
+  }
+
 
   nameOfUserByRib(rib:any) {
 //http://localhost:8082/banque-en-ligne/transaction/GetNomClientParRib/1232222
     console.log("yyyyy "+rib);
 return this.http.get("http://localhost:8082/banque-en-ligne/transaction/GetNomClientParRib/"+rib, { responseType: 'text'});
+  }
+
+  nameOfUserByRibEpargne(rib:any) {
+//http://localhost:8082/banque-en-ligne/transaction/GetNomClientParRibEpargne/1235
+    console.log("yyyyy "+rib);
+    return this.http.get("http://localhost:8082/banque-en-ligne/transaction/GetNomClientParRibEpargne/"+rib, { responseType: 'text'});
   }
 
 

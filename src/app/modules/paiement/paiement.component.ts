@@ -41,6 +41,9 @@ export class PaiementComponent implements OnInit {
   b2: any;
   fromAccount: any;
 
+  typevirement:any;
+
+
   beneficiaire: any;
   beneficiaire_rib: any;
   monRib: any;
@@ -80,6 +83,7 @@ export class PaiementComponent implements OnInit {
       "color": "#3399cc"
     }
   };
+
   initPay(): void {
     this.paymentId = '';
     this.error = '';
@@ -88,10 +92,17 @@ export class PaiementComponent implements OnInit {
         this.options.key = data.secretId;
         this.options.order_id = data.razorpayOrderId;
         this.options.amount = data.applicationFee; //paise
-        this.options.prefill.rib = "1233333";
-        this.options.prefill.name = "ESPRIT ECOLE";
-        this.options.prefill.customerRib = "11112222";
-        this.options.prefill.motif = "Paiement Ecole";
+        this.options.prefill.rib = this.form.rib;
+        this.options.prefill.name = this.form.name;
+        this.options.prefill.customerRib = this.form.customerRib;
+        this.options.prefill.motif = this.form.motif;
+
+        console.log("amount " + this.options.amount);
+        console.log("rib " + this.options.prefill.rib);
+        console.log("name " + this.options.prefill.name);
+        console.log("customerrib " + this.options.prefill.customerRib);
+        console.log("motif " + this.options.prefill.motif);
+
 
         //ken chnadfa3 akther men 1000 chnadfa3 b @esprit.tn (razor1)
         //ken chnadfa3 a9al men 1000 chnadfa3 b @gmail.com (razor2)
@@ -111,7 +122,7 @@ export class PaiementComponent implements OnInit {
         this.error = err.error.message;
       }
     );///CUSTOMER RIB FEL PAIEMENT TYPE STRING W F TRANSACTION TYPE STRING
-    this.transactionService.paiement(this.options.prefill.name, this.options.prefill.customerRib, this.options.prefill.rib, this.options.prefill.motif, this.options.amount).subscribe(this.monRib);
+    this.transactionService.paiement(this.form.name, this.form.customerRib, this.form.rib, this.form.motif, this.form.amount).subscribe(this.monRib);
   }
   /////
 

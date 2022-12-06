@@ -19,6 +19,11 @@ export class FormationService {
     return this.http.get('http://localhost:8082/banque-en-ligne/formation/retrieve-all-formations');
   }
 
+  getFormationsDetails() {
+    //  http://localhost:8082/banque-en-ligne/formation/retrieve-all-formations-details
+    return this.http.get('http://localhost:8082/banque-en-ligne/formation/retrieve-all-formations-details');
+  }
+
   addFormation(formation: any) {
     return this.http.post('http://localhost:8082/banque-en-ligne/formation/add-formation', formation);
   }
@@ -45,7 +50,7 @@ export class FormationService {
   ParticiperFormation(id:any, idp:any ){
     var body =[{}]  ;
     //http://localhost:8082/banque-en-ligne/formation/participer/2/1
-    return this.http.post("http:///localhost:8082/banque-en-ligne/formation/participer="+id+"/"+idp,body,{ responseType: 'text' });
+    return this.http.post("http:///localhost:8082/banque-en-ligne/formation/participer/"+id+"/"+idp,body,{ responseType: 'text' });
 
   }
 

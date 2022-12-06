@@ -1,0 +1,59 @@
+<!-- begin::Header -->
+<div class="card-header border-0">
+  <h3 class="card-title fw-bolder text-dark">Formations Disponibles</h3>
+  <div class="card-toolbar">
+    <!-- begin::Menu -->
+    <button
+      type="button"
+      class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
+      data-kt-menu-trigger="click"
+      data-kt-menu-placement="bottom-end"
+      data-kt-menu-flip="top-end"
+    >
+      <span
+        [inlineSVG]="'./assets/media/icons/duotune/general/gen024.svg'"
+        class="svg-icon svg-icon-2"
+      ></span>
+    </button>
+    <app-dropdown-menu1></app-dropdown-menu1>
+    <!-- end::Menu -->
+  </div>
+</div>
+<!-- end::Header -->
+<!-- begin::Body -->
+<tr *ngFor='let p of listFormations | filter:term'>
+<div class="card-body pt-2">
+  <!-- begin::Item -->
+  <div class="d-flex align-items-center mb-8">
+    <!-- begin::Bullet -->
+    <span class="bullet bullet-vertical h-40px bg-success"></span> <br>
+    <!-- end::Bullet -->
+
+    <!-- begin::Description -->
+    <div class="flex-grow-1">
+      <h3 class="badge badge-primary text-wrap" style="width: 30rem;"> {{p.nom_Formation }}</h3>
+
+      <th>Departement</th><span class="text-muted fw-bold d-block">{{p.departement}}</span>
+      <th>Description:</th><span class="text-muted fw-bold d-block">{{p.description}}</span>
+      <th>Commence le:</th> <span class="text-muted fw-bold d-block">{{p.date_debut}} </span>
+      <th>Duree:</th> <span class="text-muted fw-bold d-block">{{p.duree}} </span>
+
+      <div class="text-center">         <!-- idformation,idemploye -->
+      <button class="badge badge-success "  (click)="ParticiperFormation()" (click)="findallMyformation()">
+        Participer
+      </button>
+        </div>
+
+    </div>
+    <!-- end::Description -->
+    <!-- begin::Checkbox -->
+    <span class="badge badge-light-success fs-8 fw-bolder">New</span>
+
+
+    <!-- end::Checkbox -->
+
+  </div>
+  <!-- end:Item -->
+</div>
+</tr>
+<!-- end::Body -->

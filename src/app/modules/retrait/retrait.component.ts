@@ -38,7 +38,7 @@ export class RetraitComponent implements OnInit {
   retrait_amount: any;
   monRib: any;
 
-
+  typevirement:any;
 
 
   AGIOS="";
@@ -64,29 +64,35 @@ export class RetraitComponent implements OnInit {
     console.log("mon rib "+this.monRib);
     console.log("retrait amount "+this.retrait_amount);
 
-    this.transactionService.retrait(this.retrait_amount,this.monRib).subscribe(res => {
-      if(res.includes("montant retiré =0")){
+    if (this.typevirement == 0) {
+      this.transactionService.retrait(this.retrait_amount, this.monRib).subscribe(res => {
+        if (res.includes("montant retiré =0")) {
 
-  //      this.toast.info({detail:"Info", summary:"please enter a value greater than 0 ", duration:5000});
-      }
-      if(res.includes("Solde insuffisant")){
+          //      this.toast.info({detail:"Info", summary:"please enter a value greater than 0 ", duration:5000});
+        }
+        if (res.includes("Solde insuffisant")) {
 
-  //      this.toast.warning({detail:"Error", summary:"You Have insufficient Funds!", duration:5000});
-      }
+          //      this.toast.warning({detail:"Error", summary:"You Have insufficient Funds!", duration:5000});
+        }
 
-      if(res.includes("/")){
-        console.log("AGIOS yes"+res.substring(0,res.length-1));
-        this.AGIOS=res.substring(0,res.length-1);
+        if (res.includes("/")) {
+          console.log("AGIOS yes" + res.substring(0, res.length - 1));
+          this.AGIOS = res.substring(0, res.length - 1);
 
 
-        //      this.toast.warning({detail:"Error", summary:"You Have insufficient Funds!", duration:5000});
-      }
-      if(res.includes("retrait avec succés")){
+          //      this.toast.warning({detail:"Error", summary:"You Have insufficient Funds!", duration:5000});
+        }
+        if (res.includes("retrait avec succés")) {
 
-  //      this.toast.success({detail:"Success", summary:"withdrawal successful", duration:5000});
-      }
-    }, err=>{
-    });
+          //      this.toast.success({detail:"Success", summary:"withdrawal successful", duration:5000});
+        }
+      }, err => {
+      });
+
+    }  else {
+      this.transactionService.retraitEpargne(this.retrait_amount, this.monRib).subscribe(res => {
+      });
+    }
   }
 
   SimulateurAgios() {

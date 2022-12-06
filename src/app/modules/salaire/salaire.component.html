@@ -36,7 +36,7 @@
 <!-- HEDHI KI NJI NAJOUTI -->
       <ng-template #mymodal1 let-modal1>
         <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title" >Add new Salaire</h4>
+          <h4 class="modal-title" >Add new Salaire</h4>
           <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
             <span aria-hidden="true" (click)="cancel()">×</span>
           </button>
@@ -44,32 +44,37 @@
         </div>
         <div class="container">
           <form #f="ngForm" (ngSubmit)="addSalaire(salaire)">
+
             <div class="row" class="col-md-6">
-              <input name ="rib" type="number" required  ngModel #r="ngModel" placeholder="Salaire" [(ngModel)]="salaire.Salaire">
+              <input name ="nomemploye" type="text" required  ngModel #r="ngModel" placeholder="Nom Employe" [(ngModel)]="salaire.nomemploye">
+            </div>
+            <div class="alert alert-danger" *ngIf="r.invalid && r.touched">Nom Employe Est Un Champ Requis </div>
+            <div class="row" class="col-md-6">
+              <input name ="salaire" type="number" required  ngModel #r="ngModel" placeholder="Salaire" [(ngModel)]="salaire.salaire">
             </div>
             <div class="alert alert-danger" *ngIf="r.invalid && r.touched">Salaire Est Un Champ Requis </div>
 
             <div class="row" class="col-md-6">
-              <input name ="montant" type="number" placeholder="Salaire Net" required  ngModel #mon="ngModel" [(ngModel)]="salaire.SalaireNet">
+              <input name ="salairenet" type="number" placeholder="Salaire Net" required  ngModel #mon="ngModel" [(ngModel)]="salaire.salairenet">
             </div>
             <div class="alert alert-danger" *ngIf="mon.invalid && mon.touched">Salaire Net Est Un Champ Requis </div>
 
 
             <div class="row" class="col-md-6">
-              <input name ="motif" type="number" placeholder="Nb Heure Sup" required  ngModel #mot="ngModel" [(ngModel)]="salaire.NbHeureSup"
+              <input name ="motif" type="number" placeholder="Nb Heure Sup" required  ngModel #mot="ngModel" [(ngModel)]="salaire.nbheuresup"
                      [ngModelOptions]="{standalone : true}">
             </div>
             <div class="alert alert-danger" *ngIf="mot.invalid && mot.touched">NbHeureSup Est Un Champ Requis </div>
 
             <div class="row" class="col-md-6">
-              <input name="statut" type="number" placeholder="Prix Heure Suplementaire" required  ngModel #st="ngModel" [(ngModel)]="salaire.PrixHeureSup"
+              <input name="prixheure" type="number" placeholder="Prix Heure Suplementaire" required  ngModel #st="ngModel" [(ngModel)]="salaire.prixheuresup"
                      [ngModelOptions]="{standalone : true}">
             </div>
             <div class="alert alert-danger" *ngIf="st.invalid && st.touched">PrixHeureSup Est Un Champ Requis </div>
 
 
             <div class="row" class="col-md-6">
-              <input name="code_raison" type="number" placeholder="Total du Tax" required  ngModel #cr="ngModel" [(ngModel)]="salaire.TotalTax">
+              <input name="code_raison" type="number" placeholder="Total du Tax" required  ngModel #cr="ngModel" [(ngModel)]="salaire.totaltax">
             </div>
             <div class="alert alert-danger" *ngIf="cr.invalid && cr.touched">Total Tax Est Un Champ Requis </div>
 
@@ -93,6 +98,7 @@
                   <!-- begin::Table head -->
                   <thead>
                   <tr class="fw-bolder text-muted">
+                    <th>NomEmploye</th>
             <th>Salaire</th>
             <th>Salaire Net</th>
             <th>Nombre Heures Supplementaires</th>
@@ -107,19 +113,18 @@
 
                   <tbody>
             <tr *ngFor='let p of listSalaires | filter:term'>
-
+              <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.nomemploye}}</a></td>
               <td>
                 <div class="d-flex align-items-center">
                 <div class="d-flex justify-content-start flex-column">
-                  <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.Salaire}}</a>
+                  <a  class="badge badge-light-success fs-7 fw-bold">{{p.salaire}}</a>
                 </div>
                 </div>
               </td>
-
-              <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.SalaireNet}}</a></td>
-              <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.NbHeureSup}}</a></td>
-              <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.PrixHeureSup}}</a></td>
-              <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.TotalTax}}</a></td>
+              <td><a class="badge badge-light-success fs-7 fw-bold">{{p.salairenet}}</a></td>
+              <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.nbheuresup}}</a></td>
+              <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.prixheuresup}}</a></td>
+              <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.totaltax}}</a></td>
 
 
 
@@ -147,24 +152,28 @@
                       <div class="modal-body">
 
                         <div class="row" class="col-md-5">
-                          <label>Rib</label>
-                          <input type="number" [(ngModel)]="p.Salaire" [ngModelOptions]="{standalone : true}" />
+                          <label>Nom Employe</label>
+                          <input type="text" [(ngModel)]="p.nomemploye" [ngModelOptions]="{standalone : true}" />
+                        </div>
+                        <div class="row" class="col-md-5">
+                          <label>Salaire</label>
+                          <input type="number" [(ngModel)]="p.salaire" [ngModelOptions]="{standalone : true}" />
                         </div>
                         <div class="row" class="col-md-5">
                           <label>Salaire Net</label>
-                          <input type="number" [(ngModel)]="p.SalaireNet" [ngModelOptions]="{standalone : true}" />
+                          <input type="number" [(ngModel)]="p.salairenet" [ngModelOptions]="{standalone : true}" />
                         </div>
                         <div class="row" class="col-md-5">
-                          <label>Nombre Heures Supplementaires</label>
-                          <input type="number" [(ngModel)]="p.NbHeureSup" [ngModelOptions]="{standalone : true}" />
+                          <label>Nombre d'Heures Supplementaires</label>
+                          <input type="number" [(ngModel)]="p.nbheuresup" [ngModelOptions]="{standalone : true}" />
                         </div>
                         <div class="row" class="col-md-5">
                           <label>Rémunération Heure Supplémentaire</label>
-                          <input type="number" [(ngModel)]="p.PrixHeureSup" [ngModelOptions]="{standalone : true}" />
+                          <input type="number" [(ngModel)]="p.prixheureSup" [ngModelOptions]="{standalone : true}" />
                         </div>
                         <div class="row" class="col-md-5">
-                          <label>Statut De Salaire</label>
-                          <input type="number" [(ngModel)]="p.TotalTax" [ngModelOptions]="{standalone : true}" />
+                          <label>Tax Total</label>
+                          <input type="number" [(ngModel)]="p.totaltax" [ngModelOptions]="{standalone : true}" />
                         </div>
 
 
@@ -181,7 +190,7 @@
                 </ng-template>
                 <span type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
                         [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
-                        class="svg-icon svg-icon-3" (click)="deleteSalaire(p.idSalaire)">supprimer</span>
+                        class="svg-icon svg-icon-3" (click)="deleteSalaire(p.idsalaire)">supprimer</span>
 
               </td>
             </tr>

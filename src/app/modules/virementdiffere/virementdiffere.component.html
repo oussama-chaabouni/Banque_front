@@ -8,7 +8,7 @@
     aria-controls="kt_account_profile_details"
   >
     <div class="card-title m-0">
-      <h3 class="fw-bolder m-0">Dépot D'Argent</h3>
+      <h3 class="fw-bolder m-0">Virement Différé</h3>
     </div>
   </div>
   <div id="kt_account_profile_details" class="collapse show">
@@ -36,6 +36,25 @@
             </div>
           </div>
         </div>
+
+        <div class="row mb-6">
+
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Compte à Créditer</label>
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <select class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 " aria-label=".form-select-sm example" name="typevirement" [(ngModel)]="typevirement">
+                  <option value="0"selected>Compte courant</option>
+                  <option value="1">Compte epargne</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
         <div class="row mb-6">
           <label class="col-lg-4 col-form-label required fw-bold fs-6"
           >Rib Destinataire</label
@@ -50,12 +69,27 @@
                     mb-3 mb-lg-0
                   "
                        value="Rib Destinataire Ici"
+                       (keyup)="nameOfUserByRibb($event)"
+                       (keyup)="nameOfUserByRibbEpargne($event)"
                 />
               </div>
+              <!--         <p > {{nom}} </p>  -->
 
             </div>
           </div>
         </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Nom Destinataire</label
+          >
+          <div class="col-lg-8 fv-row">
+            <input  name ="nomdest" type="text" required placeholder="Nom Destinataire "[(ngModel)]="nom"
+                    class="form-control form-control-lg form-control-solid"
+            />
+          </div>
+        </div>
+
         <div class="row mb-6">
           <label class="col-lg-4 col-form-label required fw-bold fs-6"
           >Montant à Transferer</label
@@ -63,7 +97,7 @@
           <div class="col-lg-8">
             <div class="row">
               <div class="col-lg-6 fv-row">
-                <input name ="montant" type="number" required   placeholder="Rib Destinataire Ici" [(ngModel)]="JobData.montant"
+                <input name ="montant" type="number" required   placeholder="Montant à Transferer Ici" [(ngModel)]="JobData.montant"
                        type="text"
                        class="
                     form-control form-control-lg form-control-solid

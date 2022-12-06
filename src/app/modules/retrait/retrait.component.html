@@ -11,9 +11,27 @@
       <h3 class="fw-bolder m-0">Retrait D'Argent</h3>
     </div>
   </div>
-  <div id="kt_account_profile_details" class="collapse show">
+  <div class="collapse show">
     <form novalidate="" class="form">
       <div class="card-body border-top p-9">
+
+
+        <div class="row mb-6">
+
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Compte à Débiter</label>
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <select class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 " aria-label=".form-select-sm example" name="typevirement" [(ngModel)]="typevirement">
+                  <option value="0"selected>Compte courant</option>
+                  <option value="1">Compte epargne</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+        </div>
 
         <div class="row mb-6">
           <label class="col-lg-4 col-form-label required fw-bold fs-6"
@@ -55,6 +73,8 @@
           (click)="saveSettings()"
         >
           <button type="submit" class="btn contact-btn" (click)="retrait()"> Retrait</button>
+          <br/>
+          <button type="submit" class="btn contact-btn" (click)="retrait()"> AGIOS RETIRE De Votre Compte:</button>
           <input  name ="AGIOS" type="number" required value="AGIOS"[(ngModel)]="AGIOS"
                   class="form-control form-control-lg form-control-solid"
                   placeholder="AGIOS"/>

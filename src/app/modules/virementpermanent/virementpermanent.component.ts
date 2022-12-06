@@ -16,13 +16,6 @@ export class VirementpermanentComponent implements OnInit {
   private unsubscribe: Subscription[] = [];
 
 
-  periode: ({ periode: string } | { periode: string } | { periode: string })[];
-
-  mensuel: string="Mensuel (Chaque Mois)";
-  trimestriel: string="Trimestriel (Chaque 3 Mois)";
-  semestriel: string="Semestriel (Chaque 6 Mois)";
-
-
   constructor(private transactionService: TransactionService, private modalService: NgbModal, private cdr: ChangeDetectorRef) {
     //, private toast:NgToastService
 
@@ -34,7 +27,9 @@ export class VirementpermanentComponent implements OnInit {
   }
 
   ScheduledInfoVirementPermanent: any;
-
+  typevirement:any;
+  nom =" ";
+  transferTo: any;
 
 
 
@@ -51,26 +46,54 @@ export class VirementpermanentComponent implements OnInit {
       transferTo:null,
 
     }
-
-    this.periode=[
-      {periode:"Mensuel (Chaque Mois)", },
-      {periode:"Trimestriel (Chaque 3 Mois)"},
-      {periode:"Semestriel (Chaque 6 Mois)"}
-
-    ]
   }
 
   virementDiffere() {
     console.log("ScheduledInfoVirementPermanent " + this.ScheduledInfoVirementPermanent);
 
-
+    console.log("xxxx  transferToRib " + this.transferTo);
+    if (this.typevirement == 0) {
       this.transactionService.virementPermanent(this.ScheduledInfoVirementPermanent).subscribe(res => {
 
     //   this.toast.success({detail:"Success", summary:"deposit successful", duration:5000});
 
 
-    }, error => {
-    });
+      });
+    } else {
+      this.transactionService.virementPermanentEpargne(this.ScheduledInfoVirementPermanent).subscribe(res => {
+      });
+    }
+  }
+
+
+  nameOfUserByRibb(transferTo:any) {
+    if(transferTo != null) {
+      this.transactionService.nameOfUserByRib(this.ScheduledInfoVirementPermanent.transferTo).subscribe(res => {
+        if(res != null) {
+          this.nom = res;
+        }
+        else{
+          this.nom = "";
+        }
+
+        console.log("xxxx " + res)
+      });
+    }
+  }
+
+  nameOfUserByRibbEpargne(transferTo:any) {
+    if(transferTo != null) {
+      this.transactionService.nameOfUserByRibEpargne(this.ScheduledInfoVirementPermanent.transferTo).subscribe(res => {
+        if(res != null) {
+          this.nom = res;
+        }
+        else{
+          this.nom = "";
+        }
+
+        console.log("xxxx " + res)
+      });
+    }
   }
 
 

@@ -1,28 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Transaction} from "../../models/transaction";
 import {TransactionService} from "../../services/transaction.service";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {NgForm} from "@angular/forms";
 import {Formation} from "../../models/formation";
 import {FormationService} from "../../services/formation.service";
+import {Formation_details} from "../../models/formation_details";
 type Tabs =
   | 'kt_table_widget_6_tab_1'
   | 'kt_table_widget_6_tab_2'
   | 'kt_table_widget_6_tab_3';
 
 @Component({
-  selector: 'app-formation',
-  templateUrl: './formation.component.html',
-  styleUrls: ['./formation.component.scss']
+  selector: 'app-formationfront',
+  templateUrl: './formationfront.component.html',
+  styleUrls: ['./formationfront.component.scss']
 })
-export class FormationComponent implements OnInit {
+export class FormationfrontComponent implements OnInit {
 
   term: string;
   listFormations:any;
+  listFormationsDetails:any;
   listMyFormations:any;
   listEmployesParticipants:any;
+
+  id:any;
+  idp:any;
+
   form:boolean=false;
   formation!:Formation;
+  formation_details!:Formation_details;
   closeResult!: string;
 
   constructor(private formationService: FormationService, private modalService: NgbModal){ //,private toast:NgToastService
@@ -53,6 +60,23 @@ export class FormationComponent implements OnInit {
 
 
     }
+
+    this.formation_details= {
+
+      Idp :null,
+    Etat :null,
+    idEmploye :null,
+    idF:null,
+
+
+    }
+  }
+
+  @ViewChild('myButton') myButton : ElementRef;
+
+  triggerClick() {
+    let el: HTMLElement = this.myButton.nativeElement as HTMLElement;
+    setTimeout(()=> el.click(), 5000);
   }
 
   getFormations(){
@@ -62,7 +86,15 @@ export class FormationComponent implements OnInit {
       console.log(this.listFormations);
     })
   }
-  addFormation(t:any) {
+  getFormationsDetails() {
+    this.formationService.getFormationsDetails().subscribe(res=> {
+      this.listFormationsDetails = res
+      console.log(this.listFormationsDetails);
+    })
+  }
+
+
+    addFormation(t:any) {
     this.formationService.addFormation(t).subscribe(()=> {
       this.getFormations();
       this.form = false;
@@ -85,12 +117,16 @@ export class FormationComponent implements OnInit {
 
   }
 
-  ParticiperFormation(id:any, idp:any){
-    this.formationService.ParticiperFormation(id,idp).subscribe(()=>this.findallMyformation(idp));
+  ParticiperFormation(){
+ //   console.log(Id);
+ //   console.log(Idp);
+
+    this.formationService.ParticiperFormation(1,1).subscribe(()=>this.findallMyformation());
+
   }
 
-  findallMyformation(idp:any){
-    this.formationService.findallMyformation(idp).subscribe(res=> {
+  findallMyformation(){
+    this.formationService.findallMyformation(1).subscribe(res=> {
       this.listMyFormations = res
       console.log(this.listMyFormations);
     })
@@ -108,15 +144,6 @@ export class FormationComponent implements OnInit {
     this.formationService.desincrireFormation(idp,id).subscribe(()=>this.getFormations());
 
   }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -146,6 +173,10 @@ export class FormationComponent implements OnInit {
   save(f: NgForm){ //f de type ngForm
     console.log(f.value['Departement'],f.value['Nom_Formation'], f.value['Duree'],f.value['Description'], f.value['Date_debut']); //pour recuperer le contunu de differents input du form dans la partie console(inspecter)
 
+  }
+
+  reloadpagefindallMyformation() {
+    window.location.replace("/findallMyformation");
   }
 
 }

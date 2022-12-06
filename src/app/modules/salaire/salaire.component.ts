@@ -21,7 +21,6 @@ export class SalaireComponent implements OnInit {
   salaire!:Salaire;
   closeResult!: string;
 
-  salaire_type: ({ salaire_type: string } | { salaire_type: string } | { salaire_type: string } | { salaire_type: string } | { salaire_type: string } | { salaire_type: string })[];
 
   constructor(private salaireService: SalaireService, private modalService: NgbModal){ //,private toast:NgToastService
 
@@ -42,12 +41,13 @@ export class SalaireComponent implements OnInit {
     this.getSalaires();
     this.salaire= {
 
-      idSalaire :null,
-    Salaire :null,
-    SalaireNet :null,
-    NbHeureSup :null,
-    PrixHeureSup :null,
-    TotalTax :null,
+      idsalaire :null,
+      nomemploye:null,
+    salaire :null,
+    salairenet :null,
+    nbheuresup :null,
+    prixheuresup :null,
+    totaltax :null,
     }
   }
 
