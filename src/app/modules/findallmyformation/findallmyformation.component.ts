@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Transaction} from "../../models/transaction";
 import {TransactionService} from "../../services/transaction.service";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
@@ -6,17 +6,21 @@ import {NgForm} from "@angular/forms";
 import {Formation} from "../../models/formation";
 import {FormationService} from "../../services/formation.service";
 import {Formation_details} from "../../models/formation_details";
+import {BehaviorSubject} from "rxjs";
 type Tabs =
   | 'kt_table_widget_6_tab_1'
   | 'kt_table_widget_6_tab_2'
   | 'kt_table_widget_6_tab_3';
 
 @Component({
-  selector: 'app-findallMyformation',
-  templateUrl: './findallMyformation.component.html',
-  styleUrls: ['./findallMyformation.component.scss']
+  selector: 'app-findallmyformation',
+  templateUrl: './findallmyformation.component.html',
+  styleUrls: ['./findallmyformation.component.scss']
 })
-export class FindallMyformationComponent implements OnInit {
+export class FindallmyformationComponent implements OnInit {
+
+  isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoading: boolean;
 
   term: string;
   listFormations:any;
@@ -27,15 +31,34 @@ export class FindallMyformationComponent implements OnInit {
   id:any;
   idp:any;
 
+
   form:boolean=false;
   formation!:Formation;
   formation_details!:Formation_details;
   closeResult!: string;
 
-  constructor(private formationService: FormationService, private modalService: NgbModal){ //,private toast:NgToastService
+
+  Id :any;
+  Departement :any;
+  Nom_Formation :any;
+  Duree:any;
+  Description:any;
+  Date_debut:any;
+  etatformation:any;
+
+
+  constructor(private formationService: FormationService, private cdr: ChangeDetectorRef, private modalService: NgbModal){ //,private toast:NgToastService
 
   }
 
+  saveSettings()
+  {
+    this.isLoading$.next(true);
+    setTimeout(() => {
+      this.isLoading$.next(false);
+      this.cdr.detectChanges();
+    }, 1500);
+  }
 
   activeTab: Tabs = 'kt_table_widget_6_tab_1';
 
@@ -47,16 +70,17 @@ export class FindallMyformationComponent implements OnInit {
     return tab === this.activeTab ? 'show active' : '';
   }
 
-  ngOnInit(): void {
-    this.getFormations();
+  ngOnInit(): void {    //NGONINIT MA3NETHA LKHEDMA LI BECH TETKHDEM PAR DEFAUT
+    this.findallMyformation();
     this.formation= {
 
-    Id :null,
-    Departement :null,
-    Nom_Formation :null,
-    Duree:null,
-    Description:null,
-    Date_debut:null,
+      Id :null,
+      Departement :null,
+      Nom_Formation :null,
+      Duree:null,
+      Description:null,
+      Date_debut:null,
+      etatformation:null,
 
 
     }
@@ -64,9 +88,9 @@ export class FindallMyformationComponent implements OnInit {
     this.formation_details= {
 
       Idp :null,
-    Etat :null,
-    idEmploye :null,
-    idF:null,
+      Etat :null,
+      idEmploye :null,
+      idF:null,
 
 
     }
@@ -79,13 +103,7 @@ export class FindallMyformationComponent implements OnInit {
     setTimeout(()=> el.click(), 5000);
   }
 
-  getFormations(){
 
-    this.formationService.getFormations().subscribe(res=> {
-      this.listFormations = res
-      console.log(this.listFormations);
-    })
-  }
   getFormationsDetails() {
     this.formationService.getFormationsDetails().subscribe(res=> {
       this.listFormationsDetails = res
@@ -94,54 +112,17 @@ export class FindallMyformationComponent implements OnInit {
   }
 
 
-    addFormation(t:any) {
-    this.formationService.addFormation(t).subscribe(()=> {
-      this.getFormations();
-      this.form = false;
-      //this.toast.success({detail:"Success Message", summary:"Transaction added Successfully", duration:5000})
+  findallMyformation(){ //this.idemploye
 
-    }, err=>{
-      //this.toast.error({detail:"Error Message", summary:"Transaction Failed", duration:5000})
-    })
-  }
 
-  editformation(formation:Formation){
-    this.formationService.editFormation(formation).subscribe();
-    //this.toast.info({detail:"Success Message", summary:"Transaction edited Successfully", duration:5000})
-
-  }
-
-  deleteFormation(Id:any){
-    this.formationService.deleteFormation(Id).subscribe(()=>this.getFormations());
-   // this.toast.warning({detail:"Success Message", summary:"Transaction deleted Successfully", duration:5000})
-
-  }
-
-  ParticiperFormation(){
- //   console.log(Id);
- //   console.log(Idp);
-
-    this.formationService.ParticiperFormation(1,1).subscribe(()=>this.findallMyformation());
-
-  }
-
-  findallMyformation(){
-    this.formationService.findallMyformation(1).subscribe(res=> {
+    this.formationService.findallMyformation(2).subscribe(res=> {
       this.listMyFormations = res
-      console.log(this.listMyFormations);
+
     })
   }
 
-  afficherEmployesParticipants(id:any){
-    this.formationService.afficherEmployesParticipants(id).subscribe(res=> {
-      this.listEmployesParticipants = res
-      console.log(this.listEmployesParticipants);
-    })
-
-  }
-
-  desincrireFormation(idp:any,id:any){
-    this.formationService.desincrireFormation(idp,id).subscribe(()=>this.getFormations());
+  desincrireFormation(id:any){
+    this.formationService.desincrireFormation(2,id).subscribe(()=>this.findallMyformation());
 
   }
 

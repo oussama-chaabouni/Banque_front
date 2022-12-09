@@ -6,5 +6,6 @@ export class Formation {
   Duree!:any;
   Description!:any;
   Date_debut!:any;
+  etatformation!:any;
 
 }

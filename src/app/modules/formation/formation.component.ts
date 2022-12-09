@@ -25,6 +25,19 @@ export class FormationComponent implements OnInit {
   formation!:Formation;
   closeResult!: string;
 
+  Id:any;
+  Departement :any;
+  Nom_Formation :any;
+  Duree:any;
+  Description:any;
+  Date_debut:any;
+  Commence_Bientot:any="Commence_Bientot";
+  En_cours: any="En_cours";
+  Termine: any="Terminé";
+
+  etatformation: ({ etatformation: string } | { etatformation: string } | { etatformation: string })[];
+
+
   constructor(private formationService: FormationService, private modalService: NgbModal){ //,private toast:NgToastService
 
   }
@@ -50,9 +63,17 @@ export class FormationComponent implements OnInit {
     Duree:null,
     Description:null,
     Date_debut:null,
+      etatformation:null,
 
 
     }
+
+    this.etatformation=[
+      {etatformation:"Commence_Bientot"},
+      {etatformation:"En_cours"},
+      {etatformation:"Terminé"}
+
+    ]
   }
 
   getFormations(){
@@ -85,19 +106,11 @@ export class FormationComponent implements OnInit {
 
   }
 
-  ParticiperFormation(id:any, idp:any){
-    this.formationService.ParticiperFormation(id,idp).subscribe(()=>this.findallMyformation(idp));
-  }
 
-  findallMyformation(idp:any){
-    this.formationService.findallMyformation(idp).subscribe(res=> {
-      this.listMyFormations = res
-      console.log(this.listMyFormations);
-    })
-  }
 
-  afficherEmployesParticipants(id:any){
-    this.formationService.afficherEmployesParticipants(id).subscribe(res=> {
+  afficherEmployesParticipants(Id:any){
+    //idformation
+    this.formationService.afficherEmployesParticipants(Id).subscribe(res=> {
       this.listEmployesParticipants = res
       console.log(this.listEmployesParticipants);
     })

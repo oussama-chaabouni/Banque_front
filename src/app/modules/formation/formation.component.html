@@ -45,31 +45,38 @@
   <div class="container">
     <form #f="ngForm" (ngSubmit)="addFormation(formation)">
       <div class="row" class="col-md-6">
-        <input name ="NomFormation" type="text" required  ngModel #r="ngModel" placeholder="Nom Formation" [(ngModel)]="formation.Nom_Formation">
+        <input name ="NomFormation" type="text" required  ngModel #r="ngModel" placeholder="Nom Formation" [(ngModel)]="Nom_Formation">
       </div>
       <div class="alert alert-danger" *ngIf="r.invalid && r.touched">Nom Formation Est Un Champ Requis </div>
 
       <div class="row" class="col-md-6">
-        <input name ="Departement" type="text" placeholder="Departement" required  ngModel #mon="ngModel" [(ngModel)]="formation.Departement">
+        <input name ="Departement" type="text" placeholder="Departement" required  ngModel #mon="ngModel" [(ngModel)]="Departement">
       </div>
       <div class="alert alert-danger" *ngIf="mon.invalid && mon.touched">Departement Est Un Champ Requis </div>
 
 
       <div class="row" class="col-md-6">
-        <input name ="Description" type="text" placeholder="Description" required  ngModel #mot="ngModel" [(ngModel)]="formation.Description "
+        <input name ="Description" type="text" placeholder="Description" required  ngModel #mot="ngModel" [(ngModel)]="Description "
                [ngModelOptions]="{standalone : true}">
       </div>
       <div class="alert alert-danger" *ngIf="mot.invalid && mot.touched">Description Est Un Champ Requis </div>
 
       <div class="row" class="col-md-6">
-        <input name="Date_debut" type="datetime-local" placeholder="Date Debut" required  ngModel #st="ngModel" [(ngModel)]="formation.Date_debut "
+        <input name="Date_debut" type="datetime-local" placeholder="Date Debut" required  ngModel #st="ngModel" [(ngModel)]="Date_debut "
                [ngModelOptions]="{standalone : true}">
       </div>
       <div class="alert alert-danger" *ngIf="st.invalid && st.touched">Date Debut Est Un Champ Requis </div>
 
+      <div class="row" class="col-md-6">
+        <select
+          [(ngModel)]="formation.etatformation" [ngModelOptions]="{standalone : true}">
+          <option type="text" *ngFor="let formation of etatformation" [value]="formation.etatformation" >
+            {{formation.etatformation}}
+        </select>
+      </div>
 
       <div class="row" class="col-md-6">
-        <input name="Duree" type="number" placeholder="Duree" required  ngModel #cr="ngModel" [(ngModel)]="formation.Duree">
+        <input name="Duree" type="number" placeholder="Duree" required  ngModel #cr="ngModel" [(ngModel)]="Duree">
         <div class="alert alert-danger" *ngIf="cr.invalid && cr.touched">Duree Est Un Champ Requis </div>
 
       </div>
@@ -95,6 +102,7 @@
         <th>Departement</th>
         <th>Description</th>
         <th>Date Debut</th>
+        <th>Etat De La formation</th>
         <th>Duree</th>
         <th>Actions</th>
       </tr>
@@ -117,6 +125,15 @@
         <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.departement}}</a></td>
         <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.description}}</a></td>
         <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.date_debut}}</a></td>
+
+        <div *ngIf="p.etatformation==Commence_Bientot">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.etatformation}}</span></td></div>
+        <div *ngIf="p.etatformation==En_cours">
+          <td><span class="badge badge-light-info fs-7 fw-bold">{{p.etatformation}}</span></td></div>
+        <div *ngIf="p.etatformation==Termine">
+          <td><span class="badge badge-light-warning fs-7 fw-bold">{{p.etatformation}}</span></td></div>
+
+
         <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.duree}}</a></td>
 
 
@@ -158,6 +175,10 @@
                     <input type="datetime-local" [(ngModel)]="p.date_debut" [ngModelOptions]="{standalone : true}" />
                   </div>
                   <div class="row" class="col-md-5">
+                    <label>Etat Formation</label>
+                    <input type="text" [(ngModel)]="p.etatformation" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
                     <label>Duree</label>
                     <input type="number" [(ngModel)]="p.duree" [ngModelOptions]="{standalone : true}" />
                   </div>
@@ -177,8 +198,10 @@
                 [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
                 class="svg-icon svg-icon-3" (click)="deleteFormation(p.id)">Supprimer</span>
           <span type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
-                [inlineSVG]="'./assets/media/icons/duotune/arrows/arr075.svg'"
-                class="svg-icon svg-icon-3" (click)="deleteFormation(p.id)">AjouterFormation</span>
+
+                class="svg-icon svg-icon-3" (click)="afficherEmployesParticipants(p.id)">Afficher Employes Participants</span>
+
+          <!--  [inlineSVG]="'./assets/media/icons/duotune/arrows/arr075.svg'" -->
 
         </td>
       </tr>

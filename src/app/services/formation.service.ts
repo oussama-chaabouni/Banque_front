@@ -48,6 +48,7 @@ export class FormationService {
 
 
   ParticiperFormation(id:any, idp:any ){
+    console.log("id formation: "+id);
     var body =[{}]  ;
     //http://localhost:8082/banque-en-ligne/formation/participer/2/1
     return this.http.post("http:///localhost:8082/banque-en-ligne/formation/participer/"+id+"/"+idp,body,{ responseType: 'text' });
@@ -60,9 +61,9 @@ export class FormationService {
 
   }
 
-  afficherEmployesParticipants(id : any) {
-    //http://localhost:8082/banque-en-ligne/formation/afficheEmployesParticipant/2
-    return this.http.get("http://localhost:8082/banque-en-ligne/formation/afficherEmployesParticipants/"+id);
+  afficherEmployesParticipants(id: any) {
+    //http://localhost:8082/banque-en-ligne/formation/afficherEmployesParticipant/1
+    return this.http.get("http://localhost:8082/banque-en-ligne/formation/afficherEmployesParticipant/"+id);
 
   }
 

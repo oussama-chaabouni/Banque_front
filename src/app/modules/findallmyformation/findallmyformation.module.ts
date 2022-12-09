@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import {FindallMyformationComponent} from "./findallMyformation.component";
+import {FindallmyformationComponent} from "./findallmyformation.component";
 import {FormsModule} from "@angular/forms";
 import {InlineSVGModule} from "ng-inline-svg";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
@@ -11,13 +11,13 @@ import {DropdownMenusModule} from "../../_metronic/partials";
 const routes: Routes = [
   {
     path: '',
-    component: FindallMyformationComponent
+    component: FindallmyformationComponent
   }
 ]
 
 @NgModule({
-  declarations: [FindallMyformationComponent],
-  bootstrap: [FindallMyformationComponent],
+  declarations: [FindallmyformationComponent],
+  bootstrap: [FindallmyformationComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -28,4 +28,4 @@ const routes: Routes = [
 
   ]
 })
-export class FindallMyformationModule {}
+export class FindallmyformationModule {}

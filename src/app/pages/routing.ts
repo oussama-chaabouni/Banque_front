@@ -104,8 +104,12 @@ const Routing: Routes = [
     loadChildren: () => import('../modules/formationfront/formationfront.module').then((m )=> m.FormationfrontModule)
   },
   {
-    path: 'findallMyformation',
-    loadChildren: () => import('../modules/findallMyformation/findallMyformation.module').then((m )=> m.FindallMyformationModule)
+    path: 'formation_details',
+    loadChildren: () => import('../modules/formation_details/formation_details.module').then((m )=> m.Formation_detailsModule)
+  },
+  {
+    path: 'findallmyformation',
+    loadChildren: () => import('../modules/findallmyformation/findallmyformation.module').then((m )=> m.FindallmyformationModule)
   },
   {
     path: 'paypal-button',
