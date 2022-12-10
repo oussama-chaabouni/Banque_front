@@ -1,0 +1,46 @@
+<p></p>
+
+   <div   class="card-body pt-0">
+   
+           <!--begin::Table-->
+           <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
+             <!--begin::Table head-->
+             <thead>
+             <!--begin::Table row-->
+             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+               <!-- {{listCredits.length}} -->
+               <th class="min-w-125px">Montant Credit</th>
+               <th class="min-w-125px">Taux d'interet</th>
+               <th class="min-w-125px">Objectif Credit</th>
+               <th class="min-w-125px">Statut Credit</th>
+               <th class="min-w-125px">Score</th>
+             </tr>
+             <!--end::Table row-->
+             </thead>
+             <!--end::Table head-->
+             <!--begin::Table body-->
+             <tbody class="fw-bold text-gray-600">
+             <tr *ngFor='let c of listCredits'>
+                <ng-container *ngIf="c.statusCredit == 'REFUSE'">
+               <td>{{c.montantTotal}}</td>
+               <td>{{c.interet}}</td>
+               <td>{{c.objectifCredit}}</td>
+               <td>{{c.statusCredit}}</td>
+               <td>{{c.score}}</td>
+                </ng-container>   
+                
+                <!--<td><button type="button" class="btn btn-outline-danger"
+                           (click)="deleteAction(c.idAction)" >Delete</button></td> -->
+   
+               <!--end::Action=-->
+             </tr>
+   
+   
+   
+             </tbody>
+             <!--end::Table body-->
+           </table>
+           <!--end::Table-->
+         </div>
+         <!--end::Card body--> 
+   

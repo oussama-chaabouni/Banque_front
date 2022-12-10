@@ -1,0 +1,101 @@
+<style>
+    select:invalid { color: gray; }
+    </style>
+<form novalidate="" class="form">
+    <div class="card-body border-top p-9">
+        <div class="row mb-6">
+            <label class="col-lg-4 col-form-label required fw-bold fs-6"
+            >Montant de Votre Crédit</label
+            >
+            <div class="col-lg-8 fv-row">
+            <input
+                type="number"
+                class="form-control form-control-lg form-control-solid"
+                placeholder="0.00"
+                name="selectedAmount1" 
+                [(ngModel)]="credit1.montantTotal"
+                [ngModelOptions]="{standalone: true}"
+                value="Keenthemes"
+            />
+            </div>
+        </div>
+
+        <div class="row mb-6">
+            <label class="col-lg-4 col-form-label required fw-bold fs-6"
+            >Objéctif de Votre Crédit</label>
+            <div class="col-lg-8 fv-row">
+                <select 
+                        class="form-select form-select-solid form-select-lg fw-bold"
+                        id="ObjectifCredit"
+                        [(ngModel)]="credit1.objectifCredit"
+                        name="ObjectifCredit" 
+                        required placeholder="d.ff"
+                        >
+                    <option [ngValue]="credit1.objectifCredit" disabled selected>Selectionner Objectif Crédit</option>
+                    <option value="Voiture">Voiture</option>
+                    <option value="Furniture_Equipment">Furniture / Equipment</option>
+                    <option value="Education">Education</option>
+                    <option value="Business">Business</option>
+                    <option value="Vacances_autres">Vacances / Autres</option>
+                </select>
+                
+            </div>
+        </div>
+
+        <div class="row mb-6">
+            <label class="col-lg-4 col-form-label required fw-bold fs-6"
+            >Periode de Votre Crédit en Mois</label
+            >
+            <div class="col-lg-8 fv-row">
+            <input
+                type="number"
+                class="form-control form-control-lg form-control-solid"
+                placeholder="0.00"
+                name="selectedInterest"
+                value="Keenthemes"
+                [(ngModel)]="credit1.dureeDuCredit" 
+                [ngModelOptions]="{standalone: true}"
+            />
+            </div>
+        </div>
+
+        <div class="row mb-6">
+            <label class="col-lg-4 col-form-label required fw-bold fs-6"
+            >Description Credit</label
+            >
+            <div class="col-lg-8 fv-row">
+            <input
+                type="textarea"
+                class="form-control form-control-lg form-control-solid"
+                placeholder="Taper ici"
+                name="selectedInterest"
+                value="Keenthemes"
+                [(ngModel)]="credit1.description" 
+                [ngModelOptions]="{standalone: true}"
+            />
+            </div>
+        </div>
+      </div>
+      
+
+
+
+<div class="col-md-12">
+    <button type="submit" class="btn btn-primary" (click)="open(mymodal1)">Envoyer Demande</button>
+    <br><br>
+
+    <ng-template #mymodal1 let-modal1>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title" >Confirmez-Vous Votre Demande De Crédit ? </h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+                <span aria-hidden="true" (click)="cancel()">×</span>
+            </button>
+
+        </div>
+        <div class="center">
+  
+<br>    
+    <div class="btn-toolbar">
+        <button style="margin-right: 4px;" type="button" class="btn btn-success"  (click)="addLoan()" (click)="modal1.close('Save click')">Confirmer</button> 
+        <button type="button" class="btn btn-danger" (click)="modal1.close('Save click')" >Cancel</button>
+    </div>

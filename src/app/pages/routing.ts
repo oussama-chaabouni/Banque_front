@@ -54,6 +54,47 @@ const Routing: Routes = [
     path: '**',
     redirectTo: 'error/404',
   },
+
+  {
+    path: 'creditencours',
+    loadChildren: () =>
+      import('../pages/creditencours/creditencours.module').then((m) => m.CreditencoursModule),
+   },
+
+   {
+    path: 'creditrefuse',
+    loadChildren: () =>
+      import('../pages/creditrefuse/creditrefuse.module').then((m) => m.CreditrefuseModule),
+   },
+
+   {
+    path: 'creditaccepte',
+    loadChildren: () =>
+      import('../pages/creditaccepte/creditaccepte.module').then((m) => m.CreditaccepteModule),
+   },
+   
+
+   {
+    path: 'echeance',
+    loadChildren: () =>
+      import('../modules/echeance/echeance.module').then((m) => m.EcheanceModule),
+   },
+
+   {
+    path: 'amort',
+    loadChildren: () =>
+      import('../pages/amortissement/amortissement.module').then((m) => m.AmortissementModule),
+   },
+
+   {
+    path: 'demandecredit',
+    loadChildren: () =>
+      import('../pages/demandecredit/demandecredit.module').then((m) => m.DemandecreditModule),
+   },
+   
+   
+   
+
 ];
 
 export { Routing };

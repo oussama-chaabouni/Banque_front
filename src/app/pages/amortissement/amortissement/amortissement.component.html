@@ -1,0 +1,16 @@
+<h2>Amortization Table</h2>
+<label for="orders" style="margin-right: 15px">Select Reference:</label>
+<select id="orders" style="margin-right: 15px" [(ngModel)]="selectedOption"  name="first">
+    <ng-container *ngFor='let p of listCredits'>
+        <option *ngIf="p.statusCredit=='ACCEPTE'" style="margin-right: 15px" value ='{{p.idL}}'>
+            {{p.idCredit}}
+        </option>
+    </ng-container>
+</select>
+<button  style="margin-right: 15px" class="btn btn-outline-success" (click)="addslice(selectedOption,Slice2)">Confirm</button>
+<!-- <button  style="margin-right: 15px" class="btn btn-outline-success" (click)="exportToPDF()" >Download Excel</button> -->
+
+<br>
+<br>
+
+
