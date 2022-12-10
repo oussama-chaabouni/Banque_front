@@ -12,6 +12,23 @@ const Routing: Routes = [
     loadChildren: () =>
       import('../modules/test/test.module').then((m) => m.TestModule),
   },
+  {
+    path: 'conge',
+    loadChildren: () =>
+      import('../modules/conge/conge.module').then((m) => m.CongeModule),
+  },
+
+  {
+    path: 'assurance',
+    loadChildren: () =>
+      import('../modules/assurance/assurance.module').then((m) => m.AssuranceModule),
+  },
+
+  {
+    path: 'emplois',
+    loadChildren: () =>
+      import('../modules/emplois/emplois.module').then((m) => m.EmploisModule),
+  },
 
   {
     path: 'builder',
