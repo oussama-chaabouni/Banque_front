@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ObligationService} from "../../../services/obligation.service";
-import {ActionService} from "../../../services/action.service";
+import { Obligation } from '../../../models/obligation';
+import { CompteTitre } from '../../../models/compteTitre';
 
 @Component({
   selector: 'app-obligation',
@@ -15,12 +16,50 @@ export class ObligationComponent implements OnInit {
   freqPaiement: any;
   freqCoupon: any;
   selectedAmount:any;
+  branches: any = [];
+  listTitres: any;
+  listObligations: any;
+  Obligation!: Obligation;
+  CompteTitre!: CompteTitre;
   constructor(private obligationService: ObligationService) { }
 
   ngOnInit(): void {
+    this.obligationService.getAllObligations().subscribe((response: any) => {
+      this.obligationService.retrieveCompteTitre(1).subscribe((response2: any) => {
+        this.branches = response;
+        this.listObligations = response;
+      });
+    });
+
+    this.Obligation = {
+      idObligation: null,
+      libelle: null,
+      coupon: null,
+      maturite: null,
+      tauxActu: null,
+      valeurNominal: null,
+      tauxRendement:null,
+      status: null,
+      echanceOblig:null
+    }
+
+
   }
+  getAllObligations() {
+    this.obligationService.getAllObligations().subscribe((res: any) => {
 
+      this.listObligations = res;
+    })
+  };
 
+  buyObligation(idL: any,id:any) {
+    this.obligationService.buyObligation(idL,id).subscribe(() => this.getAllObligations());
+
+  }
+  retrieveCompteTitre(idL: any) {
+    this.obligationService.retrieveCompteTitre(idL).subscribe(res => this.listTitres = res);
+    this.obligationService.getAllObligations().subscribe(res => this.listObligations = res);
+  }
   sim(){
     this.obligationService.simulationReturn(this.prixOblig, this.maturite, this.coupon, this.interet, this.freqPaiement, this.freqCoupon  ).subscribe((data)=>{
       this.selectedAmount = data;
