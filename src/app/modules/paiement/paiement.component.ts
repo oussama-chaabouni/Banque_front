@@ -51,6 +51,9 @@ export class PaiementComponent implements OnInit {
   motif:any;
 
 
+  resmontant:any;
+
+
   constructor(private transactionService: TransactionService, private modalService: NgbModal, private cdr: ChangeDetectorRef
               ,private zone: NgZone
               ,private winRef: WindowRefService,
@@ -245,6 +248,23 @@ export class PaiementComponent implements OnInit {
   }
 
 
+  getcheque() {
+    console.log('montant: '+this.montant)
+
+    this.transactionService.getcheque(this.montant).subscribe(res=> {
+
+        console.log('resmontant2: '+res)
+        this.resmontant=res;
+
+
+        //      this.toast.warning({detail:"Error", summary:"You Have insufficient Funds!", duration:5000});
+
+
+    }, err => {
+    });
+  }
+
+
   saveSettings()
     {
       this.isLoading$.next(true);
@@ -258,6 +278,8 @@ export class PaiementComponent implements OnInit {
     {
       this.unsubscribe.forEach((sb) => sb.unsubscribe());
     }
+
+
 
 
 }

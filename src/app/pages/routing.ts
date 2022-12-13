@@ -112,6 +112,10 @@ const Routing: Routes = [
     loadChildren: () => import('../modules/findallmyformation/findallmyformation.module').then((m )=> m.FindallmyformationModule)
   },
   {
+    path: 'afficherempsparticipants',
+    loadChildren: () => import('../modules/afficherempsparticipants/afficherempsparticipants.module').then((m )=> m.AfficherempsparticipantsModule)
+  },
+  {
     path: 'paypal-button',
     loadChildren: () => import('../modules/paypal-button/paypal-button.module').then((m ) => m.PaypalButtonModule)
   },

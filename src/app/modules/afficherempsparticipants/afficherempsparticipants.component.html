@@ -1,0 +1,36 @@
+<!-- begin::Header -->
+<div class="card-header border-0 text-center">
+  <h2 class="card-title fw-bolder text-dark">Les Employes Pariticipants à la Formation </h2>
+
+
+  <!-- end::Header -->
+  <!-- begin::Body -->
+  <br> <br>
+  <tr *ngFor='let p of listEmployesParticipants | filter:term'>
+    <div class="card-body pt-2 text-center">
+      <!-- begin::Item -->
+      <div class="d-flex align-items-center mb-8">
+        <!-- begin::Description -->
+        <div class="flex-grow-1">
+          <h3 class="btn btn-primary text-wrap"   style="width: 30rem;"> {{p.formation.nom_Formation }}</h3>
+
+          <th>Etat De la Formation</th><span class="text-muted fw-bold d-block">{{p.etat}}</span>
+          <th>Nom Employé Participant:</th><span class="text-muted fw-bold d-block">{{p.employe.nom}}</span>
+
+          <br>
+
+
+        </div>
+        <!-- end::Description -->
+        <!-- begin::Checkbox -->
+        <span class="badge badge-light-success fs-8 fw-bolder">New</span>
+
+
+        <!-- end::Checkbox -->
+
+      </div>
+      <!-- end:Item -->
+    </div>
+  </tr>
+  <!-- end::Body -->
+</div>

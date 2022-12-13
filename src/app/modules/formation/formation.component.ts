@@ -110,6 +110,9 @@ export class FormationComponent implements OnInit {
 
   afficherEmployesParticipants(Id:any){
     //idformation
+
+    window.location.replace("/afficherempsparticipants");
+
     this.formationService.afficherEmployesParticipants(Id).subscribe(res=> {
       this.listEmployesParticipants = res
       console.log(this.listEmployesParticipants);
