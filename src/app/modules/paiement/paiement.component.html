@@ -95,7 +95,7 @@
           >
           <div class="col-lg-8 fv-row">
             <input  name ="montant" type="text" required placeholder="Montant à Transferer "[(ngModel)]="montant"
-                    class="form-control form-control-lg form-control-solid"value="Montant "
+                    class="form-control form-control-lg form-control-solid" value="Montant "
             />
           </div>
         </div>
@@ -126,30 +126,9 @@
           [disabled]="isLoading"
           (click)="saveSettings()"
         >
-          <button type="submit" class="btn contact-btn" (click)="Paiement()">Payer</button>
+          <button type="submit" class="btn contact-btn" (click)="Paiement()">Payer par RIB</button>
 
         </button>
-      </div>
-
-
-      <div class="card-footer d-flex justify-content-end py-6 px-9">
-
-        <label class="form-label" for="customFile">Joindre photo cheque</label>
-        <input type="file" class="form-control" id="customFile" />
-
-        <button
-          type="button"
-          class="btn btn-primary"
-          [disabled]="isLoading"
-          (click)="saveSettings()"
-        >
-          <button type="submit" class="btn contact-btn" (click)="getcheque()"> payement par cheque</button>
-        </button>
-        <input  name ="resmontant" type="text" required value="resmontant"[(ngModel)]="resmontant"
-                class="form-control form-control-lg form-control-solid"
-                placeholder="resultat cheque"/>
-
-
       </div>
 
       <div class="card-footer d-flex justify-content-end py-6 px-9">
@@ -157,6 +136,55 @@
 
     </form>
   </div>
+
+
+      <form novalidate="" class="form">
+        <div class="card-body border-top p-9">
+
+
+          <div class="row mb-6">
+            <label class="col-lg-4 col-form-label fw-bold fs-6"
+            >Veuillez joindre une photo si vous souhaitez payer par cheque</label
+            >
+            <div class="col-lg-8">
+              <div class="row">
+                <div class="col-lg-6 fv-row">
+                  <input type="file" class="form-control" id="customFile"
+                         name ="image" [(ngModel)]="image" value="image " />
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer d-flex justify-content-end py-6 px-9">
+            <button
+              type="button"
+              class="btn btn-primary text-dark"
+              [disabled]="isLoading"
+              (click)="getcheque()"
+            >
+               Payer par cheque
+              <input  name ="resmontant" type="text" required value="resmontant"[(ngModel)]="resmontant"
+                      class="form-control form-control-lg form-control-solid"
+                      placeholder="resultat cheque"/>
+
+            </button>
+          </div>
+
+        </div>
+
+        <div class="card-footer d-flex justify-content-end py-6 px-9">
+        </div>
+
+      </form>
+
+
+
+
+
+
+
 
   <br> <br> <br><br> <br> <br>
   <div class="card mb-5 mb-xl-10">

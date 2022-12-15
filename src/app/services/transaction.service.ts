@@ -150,11 +150,11 @@ return this.http.get("http://localhost:8082/banque-en-ligne/transaction/GetNomCl
   }
 
 
-  getcheque(montant:any){
+  getcheque(montant:any,image:any){
     var body =[{}]  ;
 
-    //http://localhost:8082/banque-en-ligne/transaction/payementcheque?montant=650000000
-    return this.http.get("http://localhost:8082/banque-en-ligne/transaction/payementcheque?montant="+montant, { responseType: 'text'});
+    //http://localhost:8082/banque-en-ligne/transaction/payementcheque?montant=650000000&image=kkk
+    return this.http.get("http://localhost:8082/banque-en-ligne/transaction/payementcheque?montant="+montant+"&image="+image , { responseType: 'text'});
   }
 
 

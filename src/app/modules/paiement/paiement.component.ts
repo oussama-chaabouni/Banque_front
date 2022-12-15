@@ -50,8 +50,11 @@ export class PaiementComponent implements OnInit {
   montant: any;
   motif:any;
 
-
+  image:any;
+  imagee:any;
   resmontant:any;
+
+
 
 
   constructor(private transactionService: TransactionService, private modalService: NgbModal, private cdr: ChangeDetectorRef
@@ -250,8 +253,16 @@ export class PaiementComponent implements OnInit {
 
   getcheque() {
     console.log('montant: '+this.montant)
+    console.log('ancien nom image: '+this.image)
 
-    this.transactionService.getcheque(this.montant).subscribe(res=> {
+    //this.imagee= this.image.split('/').pop();
+
+
+    this.imagee=this.image.slice(12,this.image.length - 4)
+    console.log('nouv nom image: '+this.imagee)
+    //NA7IT C://fakepath/ w .jpg/.png
+
+    this.transactionService.getcheque(this.montant,this.imagee).subscribe(res=> {
 
         console.log('resmontant2: '+res)
         this.resmontant=res;
