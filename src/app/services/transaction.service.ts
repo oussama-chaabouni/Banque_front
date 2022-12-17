@@ -65,6 +65,22 @@ export class TransactionService {
     return this.http.post("http://localhost:8082/banque-en-ligne/transaction/transferEpargne?transferFromRib="+transferFromRib+"&transferToRib="+transferToRib+"&transfer_amount="+transfer_amount+"&motif="+motif,body,{ responseType: 'text' });
   }
 
+  transferFromCompteCourantToCompteEpargne(transferFromRib: any,transferToRib:any,transfer_amount:any,motif:any) {
+    /*bech ya9rali les retours de type string 5ater 93ad ytala3Li f err */
+    var body =[{}]  ;        //http://localhost:8082/banque-en-ligne/transaction/transferFromCompteCourantToCompteEpargne?transferFromRib=1235&transferToRib=1232222&transfer_amount=2&motif=n
+    return this.http.post("http://localhost:8082/banque-en-ligne/transaction/transferFromCompteCourantToCompteEpargne?transferFromRib="+transferFromRib+"&transferToRib="+transferToRib+"&transfer_amount="+transfer_amount+"&motif="+motif,body,{ responseType: 'text' });
+  }
+
+  transferFromCompteEpargneToCompteCourant(transferFromRib: any,transferToRib:any,transfer_amount:any,motif:any) {
+    /*bech ya9rali les retours de type string 5ater 93ad ytala3Li f err */
+    var body =[{}]  ;        //http://localhost:8082/banque-en-ligne/transaction/transferFromCompteEpargneToCompteCourant?transferFromRib=1235&transferToRib=1232222&transfer_amount=2&motif=n
+    return this.http.post("http://localhost:8082/banque-en-ligne/transaction/transferFromCompteEpargneToCompteCourant?transferFromRib="+transferFromRib+"&transferToRib="+transferToRib+"&transfer_amount="+transfer_amount+"&motif="+motif,body,{ responseType: 'text' });
+  }
+
+
+
+
+
   virementDiffere(JobData: any) {
     /*bech ya9rali les retours de type string 5ater 93ad ytala3Li f err */
     var body =[{}]  ;        //http://localhost:8082/banque-en-ligne/transaction/scheduleVirementDiffere
@@ -123,6 +139,12 @@ export class TransactionService {
     var body =[{}]  ;
     //http://localhost:8082/banque-en-ligne/transaction/payementEpargne?beneficiaire=ESPRIT&beneficiaire_rib=12345653423&monRib=1232222&motif=paiement%20ecole&montant=500
     return this.http.post("http://localhost:8082/banque-en-ligne/transaction/payementEpargne?beneficiaire="+beneficiaire+"&beneficiaire_rib="+beneficiaire_rib+"&monRib="+monRib+"&motif="+motif+"&montant="+montant,body,{ responseType: 'text' });
+  }
+
+  //byUserConnecte
+  retrievelisttransactionsByRib (rib:any) {
+    //http://localhost:8082/banque-en-ligne/transaction/retrievelisttransactionsByUserName?rib=1233333
+    return this.http.get('http://localhost:8082/banque-en-ligne/transaction/retrievelisttransactionsByUserName?rib='+rib);
   }
 
 

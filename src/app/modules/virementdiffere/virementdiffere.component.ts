@@ -26,7 +26,8 @@ export class VirementdiffereComponent implements OnInit {
 
   JobData: any;
 
-  typevirement:any;
+  typecompteacrediter:any;
+  typecompteadebiter:any;
   nom =" ";
   transferTo: any;
 
@@ -47,7 +48,7 @@ export class VirementdiffereComponent implements OnInit {
     console.log("JobData " + this.JobData);
 
     console.log("xxxx  transferToRib " + this.transferTo);
-    if (this.typevirement == 0) {
+    if (this.typecompteacrediter == 0) {
       this.transactionService.virementDiffere(this.JobData).subscribe(res => {
 
         //   this.toast.success({detail:"Success", summary:"deposit successful", duration:5000});

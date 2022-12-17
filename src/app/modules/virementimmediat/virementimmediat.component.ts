@@ -15,7 +15,8 @@ export class VirementimmediatComponent implements OnInit {
 
   isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isLoading: boolean;
-  typevirement:any;
+  typecompteacrediter:any;
+  typecompteadebiter:any;
   private unsubscribe: Subscription[] = [];
 
   //, private toast:NgToastService
@@ -82,26 +83,6 @@ export class VirementimmediatComponent implements OnInit {
   }
 
 
-  addTransaction(t: any) {
-    this.transactionService.addTransaction(t).subscribe(() => {
-      this.getTransactions();
-      this.form = false;
-      // this.toast.success({detail:"Success Message", summary:"Transfer Successful", duration:5000})
-
-    }, err => {
-      //this.toast.error({detail:"Error Message", summary:"Transfer Failed", duration:5000})
-    })
-  }
-
-  editTransaction(transaction: Transaction) {
-    this.transactionService.editTransaction(transaction).subscribe();
-  }
-
-  deleteTransaction(idTransaction: any) {
-    this.transactionService.deleteTransaction(idTransaction).subscribe(() => this.getTransactions());
-  }
-
-
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -165,7 +146,7 @@ export class VirementimmediatComponent implements OnInit {
 
 
   virementImmediat() {
-    console.log("xxx type de vireent +"+this.typevirement);
+    console.log("xxx type de vireent +"+this.typecompteacrediter);
     if (this.transferFromRib == null) {
       //       this.toast.error({detail:"Success", summary:" Veuillez Ecrire Votre Rib", duration:5000});
 
@@ -184,8 +165,8 @@ export class VirementimmediatComponent implements OnInit {
             //           this.toast.error({detail:"Success", summary:"Veuillez Ecrire Le Motif", duration:5000});
           }
           console.log("xxxx  transferToRib "+this.transferToRib);
-          //0=compte courant
-          if(this.typevirement ==0){
+          //nab3ath men compte courant l compte courant
+          if(this.typecompteadebiter==3 && this.typecompteacrediter ==0 ){
             this.transactionService.virementImmediat(this.transferFromRib, this.transferToRib, this.montant, this.motif).subscribe((res: string) => {
 
               if (res.includes("cannot transfer to the same Account")) {
@@ -207,8 +188,55 @@ export class VirementimmediatComponent implements OnInit {
 
 
             });
-          }else{
+            //nab3ath men compte epargne l compte epargne
+          } if(this.typecompteadebiter==4 && this.typecompteacrediter ==1 ){
             this.transactionService.virementImmediatEpargne(this.transferFromRib, this.transferToRib, this.montant, this.motif).subscribe((res: string) => {
+
+              if (res.includes("cannot transfer to the same Account")) {
+
+                //     this.toast.warning({detail:"Warning", summary:"Cannot Transfer Into The same Account", duration:5000});
+              }
+              if (res.includes("transfer amount value =0 , please enter a value greater than 0")) {
+
+                //      this.toast.info({detail:"Info", summary:"Please enter a value greater than 0", duration:5000});
+              }
+              if (res.includes("impossible de transferer un montant superieur à celui dans votre compte")) {
+
+                //      this.toast.error({detail:"Error", summary:"You Have insufficient Funds!", duration:5000});
+              }
+              if (res.includes("15 000 dinars maximum par virement")) {
+
+                //      this.toast.error({detail:"Error", summary:"You Have insufficient Funds!", duration:5000});
+              }
+
+
+            });
+          }//compte courant l compte epargne
+          if(this.typecompteadebiter==3 && this.typecompteacrediter ==1 ){
+            this.transactionService.transferFromCompteCourantToCompteEpargne(this.transferFromRib, this.transferToRib, this.montant, this.motif).subscribe((res: string) => {
+
+              if (res.includes("cannot transfer to the same Account")) {
+
+                //     this.toast.warning({detail:"Warning", summary:"Cannot Transfer Into The same Account", duration:5000});
+              }
+              if (res.includes("transfer amount value =0 , please enter a value greater than 0")) {
+
+                //      this.toast.info({detail:"Info", summary:"Please enter a value greater than 0", duration:5000});
+              }
+              if (res.includes("impossible de transferer un montant superieur à celui dans votre compte")) {
+
+                //      this.toast.error({detail:"Error", summary:"You Have insufficient Funds!", duration:5000});
+              }
+              if (res.includes("15 000 dinars maximum par virement")) {
+
+                //      this.toast.error({detail:"Error", summary:"You Have insufficient Funds!", duration:5000});
+              }
+
+
+            });
+          }//compte epargne l compte courant
+          if(this.typecompteadebiter==4 && this.typecompteacrediter ==0 ){
+            this.transactionService.transferFromCompteEpargneToCompteCourant(this.transferFromRib, this.transferToRib, this.montant, this.motif).subscribe((res: string) => {
 
               if (res.includes("cannot transfer to the same Account")) {
 

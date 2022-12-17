@@ -27,7 +27,8 @@ export class VirementpermanentComponent implements OnInit {
   }
 
   ScheduledInfoVirementPermanent: any;
-  typevirement:any;
+  typecompteacrediter:any;
+  typecompteadebiter:any;
   nom =" ";
   transferTo: any;
 
@@ -52,7 +53,7 @@ export class VirementpermanentComponent implements OnInit {
     console.log("ScheduledInfoVirementPermanent " + this.ScheduledInfoVirementPermanent);
 
     console.log("xxxx  transferToRib " + this.transferTo);
-    if (this.typevirement == 0) {
+    if (this.typecompteacrediter == 0) {
       this.transactionService.virementPermanent(this.ScheduledInfoVirementPermanent).subscribe(res => {
 
     //   this.toast.success({detail:"Success", summary:"deposit successful", duration:5000});

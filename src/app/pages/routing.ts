@@ -112,6 +112,10 @@ const Routing: Routes = [
     loadChildren: () => import('../modules/findallmyformation/findallmyformation.module').then((m )=> m.FindallmyformationModule)
   },
   {
+    path: 'findallmytransactions',
+    loadChildren: () => import('../modules/findallmytransactions/findallmytransactions.module').then((m )=> m.FindallmytransactionsModule)
+  },
+  {
     path: 'afficherempsparticipants',
     loadChildren: () => import('../modules/afficherempsparticipants/afficherempsparticipants.module').then((m )=> m.AfficherempsparticipantsModule)
   },

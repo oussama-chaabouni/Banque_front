@@ -23,10 +23,8 @@ export class FindallmyformationComponent implements OnInit {
   isLoading: boolean;
 
   term: string;
-  listFormations:any;
   listFormationsDetails:any;
   listMyFormations:any;
-  listEmployesParticipants:any;
 
   id:any;
   idp:any;
