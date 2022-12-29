@@ -12,7 +12,16 @@ const Routing: Routes = [
     loadChildren: () =>
       import('../modules/test/test.module').then((m) => m.TestModule),
   },
-
+  {
+    path: 'action',
+    loadChildren: () =>
+      import('../modules/action/action.module').then((m) => m.ActionModule),
+  },
+  {
+    path: 'obligation',
+    loadChildren: () =>
+      import('../modules/obligation/obligation.module').then((m) => m.ObligationModule),
+  },
   {
     path: 'builder',
     loadChildren: () =>
