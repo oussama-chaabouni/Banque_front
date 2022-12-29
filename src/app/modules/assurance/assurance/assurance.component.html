@@ -1,0 +1,733 @@
+
+<!-- begin::Header -->
+<div class="card-header border-0 pt-5">
+    <h3 class="card-title align-items-start flex-column">
+      <span class="card-label fw-bolder fs-3 mb-1">Des assurances pour vous </span>
+      <span class="text-muted mt-1 fw-bold fs-7"> Meet our partners!</span>
+    </h3>
+    <div class="card-toolbar">
+      <ul class="nav">
+        <li class="nav-item">
+          <a
+            class="
+              nav-link
+              btn btn-sm btn-color-muted btn-active btn-active-light-primary
+              fw-bolder
+              px-4
+              me-1
+            "
+            data-bs-toggle="tab"
+            [ngClass]="activeClass('kt_table_widget_6_tab_1')"
+            (click)="setTab('kt_table_widget_6_tab_1')"
+          >
+           Toutes les assurances
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="
+              nav-link
+              btn btn-sm btn-color-muted btn-active btn-active-light-primary
+              fw-bolder
+              px-4
+              me-1
+            "
+            data-bs-toggle="tab"
+            [ngClass]="activeClass('kt_table_widget_6_tab_2')"
+            (click)="setTab('kt_table_widget_6_tab_2')"
+          >
+            Assurance selon mon crédit
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="
+              nav-link
+              btn btn-sm btn-color-muted btn-active btn-active-light-primary
+              fw-bolder
+              px-4
+            "
+            data-bs-toggle="tab"
+            [ngClass]="activeClass('kt_table_widget_6_tab_3')"
+            (click)="setTab('kt_table_widget_6_tab_3')"
+          >
+            Envoyer un formulaire à une assurance partenaire
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- end::Header -->
+  <!-- begin::Body -->
+  <div class="card-body py-3">
+    <div class="tab-content">
+      <!-- begin::Tap pane -->
+      <div
+        class="tab-pane fade"
+        [ngClass]="activeClass('kt_table_widget_6_tab_1')"
+        id="kt_table_widget_6_tab_1"
+      >
+        <!-- begin::Table container -->
+        <div class="table-responsive">
+          <!-- begin::Table -->
+          <table class="table align-middle gs-0 gy-3">
+            <!-- begin::Table head -->
+            <thead>
+              <tr>
+                <th class="p-0 w-50px"></th>
+                <th class="p-0 min-w-150px"></th>
+                <th class="p-0 min-w-140px"></th>
+                <th class="p-0 min-w-120px"></th>
+              </tr>
+            </thead>
+            <!-- end::Table head -->
+            <!-- begin::Table body -->
+            <tbody>
+              <tr>
+                <td>
+                  <div class="symbol symbol-50px me-2">
+                    <span class="symbol-label">
+                      <img
+                        src="./assets/media/svg/avatars/001-boy.svg"
+                        class="h-75 align-self-end"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    href="#"
+                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                  >
+                  Assurance Voiture
+                  </a>
+                  <span class="text-muted fw-bold d-block"
+                    > Dommages et collisions</span
+                  >
+                </td>
+                <td>
+                  <span class="text-muted fw-bold d-block fs-7">Estimations</span>
+                  <span class="text-dark fw-bolder d-block fs-5">200,500 DT</span>
+                </td>
+                <td class="text-end">
+                  <span class="text-primary fs-7 fw-bolder" onClick="window.open('https://www.comar.tn/particuliers/comar-auto');">Assurance Comar</span>
+                </td>
+                <td class="text-end">
+                  <a
+                    href="#"
+                    class="
+                      btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                    "
+                  >
+                    <!-- <span
+                      [inlineSVG]="
+                        './assets/media/icons/duotune/arrows/arr064.svg'
+                      "
+                      class="svg-icon svg-icon-2"
+                    ></span> -->
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="symbol symbol-50px me-2">
+                    <span class="symbol-label">
+                      <img
+                        src="./assets/media/svg/avatars/018-girl-9.svg"
+                        class="h-75 align-self-end"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    href="#"
+                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                  >
+                   Assurance vie
+                  </a>
+                  <span class="text-muted fw-bold d-block">Maladie</span>
+                </td>
+                <td>
+                  <span class="text-muted fw-bold d-block fs-7">Estimations</span>
+                  <span class="text-dark fw-bolder d-block fs-5">100,000 DT</span>
+                </td>
+                <td class="text-end">
+                    <span class="text-warning fs-7 fw-bolder" onClick="window.open('https://www.gatvie.com.tn/');">Assurance GAT vie</span>
+                  
+                </td>
+                <td class="text-end">
+                  <a
+                    href="#"
+                    class="
+                      btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                    "
+                  >
+                    <!-- <span
+                      [inlineSVG]="
+                        './assets/media/icons/duotune/arrows/arr064.svg'
+                      "
+                      class="svg-icon svg-icon-2"
+                    ></span> -->
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="symbol symbol-50px me-2">
+                    <span class="symbol-label">
+                      <img
+                        src="./assets/media/svg/avatars/047-girl-25.svg"
+                        class="h-75 align-self-end"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    href="#"
+                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                  >
+                    Assurance vie
+                  </a>
+                  <span class="text-muted fw-bold d-block"
+                    >Education</span
+                  >
+                </td>
+                <td>
+                  <span class="text-muted fw-bold d-block fs-7">Estimations</span>
+                  <span class="text-dark fw-bolder d-block fs-5">200,000 DT</span>
+                </td>
+                <td class="text-end">
+                    <span class="text-danger fs-7 fw-bolder" onClick="window.open('https://www.gatvie.com.tn/');">Assurance GAT vie</span>
+                  
+                </td>
+                <td class="text-end">
+                  <a
+                    href="#"
+                    class="
+                      btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                    "
+                  >
+                    <!-- <span
+                      [inlineSVG]="
+                        './assets/media/icons/duotune/arrows/arr064.svg'
+                      "
+                      class="svg-icon svg-icon-2"
+                    ></span> -->
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="symbol symbol-50px me-2">
+                    <span class="symbol-label">
+                      <img
+                        src="./assets/media/svg/avatars/014-girl-7.svg"
+                        class="h-75 align-self-end"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    href="#"
+                    class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                  >
+                    Assurance biens
+                  </a>
+                  <span class="text-muted fw-bold d-block">Assurance incendie</span>
+                </td>
+                <td>
+                  <span class="text-muted fw-bold d-block fs-7">Estimations</span>
+                  <span class="text-dark fw-bolder d-block fs-5">400,000 DT</span>
+                </td>
+                <td class="text-end">
+                    <span class="text-success fs-7 fw-bolder" onClick="window.open('https://www.star.com.tn/index.php/fr/assurance-incendie');">Assurance STAR</span>
+            
+                </td>
+                <td class="text-end">
+                  <a
+                    href="#"
+                    class="
+                      btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                    "
+                  >
+                    <!-- <span
+                      [inlineSVG]="
+                        './assets/media/icons/duotune/arrows/arr064.svg'
+                      "
+                      class="svg-icon svg-icon-2"
+                    ></span> -->
+                  </a>
+                </td>
+              </tr>
+              
+            </tbody>
+            <!-- end::Table body -->
+          </table>
+        </div>
+        <!-- end::Table -->
+      </div>
+<!-- Début Deuxième partie (Assurance selon mon crédit) -->
+
+      <div
+      class="tab-pane fade"
+      [ngClass]="activeClass('kt_table_widget_6_tab_2')"
+      id="kt_table_widget_6_tab_2"
+    >
+<!-- begin::Content -->
+<div class="tab-pane">
+  <div class="row mb-10">
+    <label class="col-lg-3 col-form-label text-lg-end">Mon crédit:</label>
+    <div class="col-lg-9 col-xl-4">
+      <div class="col-lg-6 fv-row">
+        <input
+          type="text"
+          class="form-control form-control-lg form-control-solid"
+          placeholder=""
+          name="idCrédit"
+          [(ngModel)]="id"
+            
+        />
+
+      </div>
+      <div class="form-text text-muted">Selectionner l'id de votre crédit.</div>
+      <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="isLoading"
+      (click)="suggest(id)"
+    >
+
+  
+      <ng-container *ngIf="!isLoading">La meilleure assurance</ng-container>
+     
+      <ng-container *ngIf="isLoading">
+        <span clas="indicator-progress" [style.display]="'block'">
+          Please wait...{{ " " }}
+          <span
+            class="spinner-border spinner-border-sm align-middle ms-2"
+          ></span>
+        </span>
+      </ng-container>
+    </button>
+    </div>
+  </div>
+</div>
+<!-- end::Content -->
+   
+      <!-- begin::Table container -->
+      <div class="table-responsive">
+        <!-- begin::Table -->
+        <table class="table align-middle gs-0 gy-3">
+          <!-- begin::Table head -->
+          <thead>
+            <tr>
+              <th class="p-0 w-50px"></th>
+              <th class="p-0 min-w-150px"></th>
+              <th class="p-0 min-w-140px"></th>
+              <th class="p-0 min-w-120px"></th>
+            </tr>
+          </thead>
+          <!-- end::Table head -->
+
+        
+          <!-- begin::Table body -->
+          <tbody [ngSwitch]="resSugg">
+            <tr *ngSwitchCase="'AUTO'">
+              <td>
+                <div class="symbol symbol-50px me-2" >
+                  <span class="symbol-label">
+                    <img
+                      src="./assets/media/svg/avatars/001-boy.svg"
+                      class="h-75 align-self-end"
+                      alt=""
+                    />
+                  </span>
+                </div>
+              </td>
+              <td>
+                <a
+                  href="#"
+                  class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                >
+                Assurance Voiture
+                </a>
+                <span class="text-muted fw-bold d-block"
+                  > Dommages et collisions</span
+                >
+              </td>
+              <td>
+                <span class="text-muted fw-bold d-block fs-7">Estimations</span>
+                <span class="text-dark fw-bolder d-block fs-5">200,500 DT</span>
+              </td>
+              <td class="text-end">
+                <span class="text-primary fs-7 fw-bolder" onClick="window.open('https://www.comar.tn/particuliers/comar-auto');">Assurance Comar</span>
+              </td>
+              <td class="text-end">
+                <a
+                  href="#"
+                  class="
+                    btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                  "
+                >
+                  <!-- <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/arrows/arr064.svg'
+                    "
+                    class="svg-icon svg-icon-2"
+                  ></span> -->
+                </a>
+              </td>
+            </tr>
+            <tr *ngSwitchCase="'VIE'">
+              <td>
+                <div class="symbol symbol-50px me-2" >
+                  <span class="symbol-label">
+                    <img
+                      src="./assets/media/svg/avatars/018-girl-9.svg"
+                      class="h-75 align-self-end"
+                      alt=""
+                    />
+                  </span>
+                </div>
+              </td>
+              <td>
+                <a
+                  href="#"
+                  class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                >
+                 Assurance vie
+                </a>
+                <span class="text-muted fw-bold d-block">Maladie</span>
+              </td>
+              <td>
+                <span class="text-muted fw-bold d-block fs-7">Estimations</span>
+                <span class="text-dark fw-bolder d-block fs-5">100,000 DT</span>
+              </td>
+              <td class="text-end">
+                  <span class="text-warning fs-7 fw-bolder" onClick="window.open('https://www.gatvie.com.tn/');">Assurance GAT vie</span>
+                
+              </td>
+              <td class="text-end">
+                <a
+                  href="#"
+                  class="
+                    btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                  "
+                >
+                  <!-- <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/arrows/arr064.svg'
+                    "
+                    class="svg-icon svg-icon-2"
+                  ></span> -->
+                </a>
+              </td>
+            </tr>
+            <tr *ngSwitchCase="'VIE'">
+              <td>
+                <div class="symbol symbol-50px me-2">
+                  <span class="symbol-label">
+                    <img
+                      src="./assets/media/svg/avatars/047-girl-25.svg"
+                      class="h-75 align-self-end"
+                      alt=""
+                    />
+                  </span>
+                </div>
+              </td>
+              <td>
+                <a
+                  href="#"
+                  class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                >
+                  Assurance vie
+                </a>
+                <span class="text-muted fw-bold d-block"
+                  >Education</span
+                >
+              </td>
+              <td>
+                <span class="text-muted fw-bold d-block fs-7">Estimations</span>
+                <span class="text-dark fw-bolder d-block fs-5">200,000 DT</span>
+              </td>
+              <td class="text-end">
+                  <span class="text-danger fs-7 fw-bolder" onClick="window.open('https://www.gatvie.com.tn/');">Assurance GAT vie</span>
+                
+              </td>
+              <td class="text-end">
+                <a
+                  href="#"
+                  class="
+                    btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                  "
+                >
+                  <!-- <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/arrows/arr064.svg'
+                    "
+                    class="svg-icon svg-icon-2"
+                  ></span> -->
+                </a>
+              </td>
+            </tr>
+            <tr *ngSwitchCase="'INCENDIES'">
+              <td>
+
+                <div class="symbol symbol-50px me-2">
+                  <span class="symbol-label">
+                    <img
+                      src="./assets/media/svg/avatars/014-girl-7.svg"
+                      class="h-75 align-self-end"
+                      alt=""
+                    />
+                  </span>
+                </div>
+              </td>
+              <td>
+                <a
+                  href="#"
+                  class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                >
+                  Assurance biens
+                </a>
+                <span class="text-muted fw-bold d-block">Assurance incendie</span>
+              </td>
+              <td>
+                <span class="text-muted fw-bold d-block fs-7">Estimations</span>
+                <span class="text-dark fw-bolder d-block fs-5">400,000 DT</span>
+              </td>
+              <td class="text-end">
+                  <span class="text-success fs-7 fw-bolder" onClick="window.open('https://www.star.com.tn/index.php/fr/assurance-incendie');">Assurance STAR</span>
+          
+              </td>
+              <td class="text-end">
+                <a
+                  href="#"
+                  class="
+                    btn btn-sm btn-icon btn-bg-light btn-active-color-primary
+                  "
+                >
+                  <!-- <span
+                    [inlineSVG]="
+                      './assets/media/icons/duotune/arrows/arr064.svg'
+                    "
+                    class="svg-icon svg-icon-2"
+                  ></span> -->
+                </a>
+              </td>
+            </tr>
+            
+          </tbody>
+          <!-- end::Table body -->
+        
+        </table>
+      </div>
+      <!-- end::Table -->
+    </div>
+
+    <!-- Fin Deuxième partie (Assurance selon mon crédit) -->
+
+    <!-- Début Troixième partie (Envoyer un formulaire à l'assurance) -->
+   
+   
+    <div
+      class="tab-pane fade"
+      [ngClass]="activeClass('kt_table_widget_6_tab_3')"
+      id="kt_table_widget_6_tab_3"
+    >
+    <div class="card mb-5 mb-xl-10">
+      <div
+        class="card-header border-0 cursor-pointer"
+        role="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#kt_account_profile_details"
+        aria-expanded="true"
+        aria-controls="kt_account_profile_details"
+      >
+        <div class="card-title m-0">
+          <h3 class="fw-bolder m-0">Je demande un devis pour mon assurance suggérée</h3>
+        </div>
+      </div>
+      <!-- <tr *ngFor="let a of listAssurances ">
+        <td>{{a.Description}} </td>
+        <td>{{a.Nom}}</td>
+        <td>{{a.typeAssurance}}</td>
+        <td>{{a.typeCompte}}</td> -->
+
+       
+      <div id="kt_account_profile_details" class="collapse show" >
+        <form novalidate="" class="form">
+          <div class="card-body border-top p-9">
+            
+            <div class="row mb-6">
+              <label class="col-lg-4 col-form-label required fw-bold fs-6"
+                >Full Name</label
+              >
+              <div class="col-lg-8">
+                <div class="row">
+                 
+                  <div class="col-lg-6 fv-row">
+                    <input
+                      type="text"
+                      class="form-control form-control-lg form-control-solid"
+                      placeholder="Full Name"
+                      name="Nom"
+                      [(ngModel)]="assurance.nom"
+                        
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-6">
+              <label class="col-lg-4 col-form-label required fw-bold fs-6"
+                >Description</label
+              >
+              <div class="col-lg-8 fv-row">
+                <input
+                  type="text"
+                  class="form-control form-control-lg form-control-solid"
+                  placeholder="Saisissez votre description/demande ici"
+                  name="Description"
+                  [(ngModel)]="assurance.description"
+         
+                />
+              </div>
+            </div>
+           
+            <div class="row mb-6">
+              <label class="col-lg-4 col-form-label fw-bold fs-6"
+                ><span class="required">Company Site</span></label
+              >
+              <div class="col-lg-8 fv-row">
+                <!-- <input
+                  type="text"
+                  class="form-control form-control-lg form-control-solid"
+                  placeholder="Company website"
+                  name="Company Site"
+                 
+                /> -->
+                <select
+                  class="form-select form-select-solid form-select-lg fw-bold"
+                  name="typeassurance" 
+                >
+                  <option value="">Selectionner le site d'un de nos partenaires</option>
+                  <option value="AUTO">Comar.tn</option>
+                  <option value="INCENDIES">GatVie.tn</option>
+                  <option value="VIE">Star.tn</option>
+                  
+             
+                </select>
+              </div>
+              
+            </div>
+            <div class="row mb-6">
+              <label class="col-lg-4 col-form-label fw-bold fs-6"
+                ><span class="required">Type Assurance</span></label
+              >
+              <div class="col-lg-8 fv-row">
+                <select
+                  class="form-select form-select-solid form-select-lg fw-bold"
+                  name="typeassurance"
+                  [(ngModel)]="assurance.typeAssurance"
+                  [ngModelOptions]="{standalone : true}"
+                >
+                  <option value="">Selectionner le type d'assurance qui vous a été suggéré...</option>
+                  <option value="AUTO">Automobile</option>
+                  <option value="INCENDIES">Incendies</option>
+                  <option value="VIE">Vie</option>
+                  
+             
+                </select>
+                <!-- <div class="fv-plugins-message-container">
+                  <div class="fv-help-block">Type Assurance is required</div>
+                </div> -->
+              </div>
+            </div>
+            <div class="row mb-6">
+              <label class="col-lg-4 col-form-label fw-bold fs-6"
+                ><span class="required">Type Compte</span></label
+              >
+              <div class="col-lg-8 fv-row">
+                <select
+                  class="form-select form-select-solid form-select-lg fw-bold"
+                  name="typeCompte"
+                  [(ngModel)]="assurance.typeCompte"
+                  [ngModelOptions]="{standalone : true}"
+                >
+                
+                  <option value="">Selectionner le type de compte que vous avez chez JMLESOUS</option>
+                  <option value="Epargne">Epargne</option>
+                  <option value="Courant">Courant</option>
+                </select>
+              </div>
+            </div>
+           
+              <div class="col-lg-8 fv-row">
+                <div class="d-flex align-items-center mt-3">
+                  <label class="form-check form-check-inline form-check-solid me-5"
+                    ><input
+                      class="form-check-input"
+                      name="communication[]"
+                      type="checkbox"
+                    /><span class="fw-bold ps-2 fs-6">Email</span></label
+                  ><label class="form-check form-check-inline form-check-solid"
+                    ><input
+                      class="form-check-input"
+                      name="communication[]"
+                      type="checkbox"
+                    /><span class="fw-bold ps-2 fs-6">Phone</span></label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row mb-0">
+              <label class="col-lg-4 col-form-label fw-bold fs-6"
+                >Allow Marketing</label
+              >
+              <div class="col-lg-8 d-flex align-items-center">
+                <div class="form-check form-check-solid form-switch fv-row">
+                  <input
+                    class="form-check-input w-45px h-30px"
+                    type="checkbox"
+                    id="allowmarketing"
+                  /><label class="form-check-label"></label>
+                </div>
+              </div>
+            </div>
+          
+          <div class="card-footer d-flex justify-content-end py-6 px-9">
+            <button
+              type="button"
+              class="btn btn-primary"
+              [disabled]="isLoading"
+              (click)="addAssurance(assurance)"
+            >
+
+          
+              <ng-container *ngIf="!isLoading">Save Changes</ng-container>
+             
+              <ng-container *ngIf="isLoading">
+                <span clas="indicator-progress" [style.display]="'block'">
+                  Please wait...{{ " " }}
+                  <span
+                    class="spinner-border spinner-border-sm align-middle ms-2"
+                  ></span>
+                </span>
+              </ng-container>
+            </button>
+            
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  
+    
