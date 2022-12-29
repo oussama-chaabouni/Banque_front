@@ -1,0 +1,100 @@
+<!-- begin::Header -->
+<! SEARCH -->
+
+<div class="input-group">
+  <div class="input-group-text">
+    <i class="feather icon-search"></i>
+  </div>
+  <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
+</div>
+
+<div class="card-header border-0 pt-5">
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-3 mb-1">Mes Transactions</span>
+  </h3>
+  <div
+    class="card-toolbar"
+    data-bs-toggle="tooltip"
+    data-bs-placement="top"
+    data-bs-trigger="hover"
+    title="Ajouter Transaction"
+  >
+
+  </div>
+</div>
+
+<!-- end::Header -->
+<!-- begin::Body -->
+
+<!-- begin::Body -->
+<div class="card-body py-3">
+  <!-- begin::Table container -->
+  <div class="table-responsive">
+    <!-- begin::Table -->
+    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+      <!-- begin::Table head -->
+      <thead>
+      <tr class="fw-bolder text-muted">
+        <th>Type De Transaction</th>
+        <th>Montant</th>
+        <th>Motif de Transaction</th>
+        <th>Statut De Transaction</th>
+        <th>Code Raison</th>
+        <th>Date Operation</th>
+      </tr>
+      </thead>
+      <!-- end::Table head -->
+
+      <!-- begin::Table body -->
+
+      <tbody>
+      <tr *ngFor='let p of listMyTransactions | filter:term'>
+
+        <div *ngIf="p.typeTransaction==Virement_Immediat">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
+        <div *ngIf="p.typeTransaction==Virement_Differe">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
+        <div *ngIf="p.typeTransaction==Virement_Permanent">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
+        <div *ngIf="p.typeTransaction==Depot">
+          <td><span class="badge badge-light-warning fs-7 fw-bold" >{{p.typeTransaction}}</span></td></div>
+        <div *ngIf="p.typeTransaction==Retrait">
+          <td><span class="badge badge-light-info fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
+        <div *ngIf="p.typeTransaction==Paiement">
+          <td><span class="badge badge-light-dark fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
+
+
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.montant}}</a></td>
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.motif}}</a></td>
+
+        <div *ngIf="p.statut==successdepot">
+          <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div  *ngIf="p.statut==faileddepot">
+          <td><span class="badge badge-light-danger fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div *ngIf="p.statut==successretrait">
+          <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div  *ngIf="p.statut==failedretrait">
+          <td><span class="badge badge-light-danger fs-7 fw-bold">{{p.statut}}</span></td> </div>
+        <div *ngIf="p.statut==successpaiement">
+          <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div *ngIf="p.statut==failedpaiement">
+          <td><span class="badge badge-light-danger fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div *ngIf="p.statut==successvir_imm">
+          <td><span class="badge badge-light-success fs-7 fw-bold">{{p.statut}}</span></td> </div>
+        <div  *ngIf="p.statut==failedvir_imm">
+          <td><span class="badge badge-light-danger fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div *ngIf="p.statut==successvir_dif">
+          <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div *ngIf="p.statut==successvir_per">
+          <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.codeRaison}}</a></td>
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.dateOperation}}</a></td>
+
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

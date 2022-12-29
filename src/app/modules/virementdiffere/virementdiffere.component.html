@@ -1,0 +1,184 @@
+<div class="card mb-5 mb-xl-10">
+  <div
+    class="card-header border-0 cursor-pointer"
+    role="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#kt_account_profile_details"
+    aria-expanded="true"
+    aria-controls="kt_account_profile_details"
+  >
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0">Virement Différé</h3>
+    </div>
+  </div>
+  <div id="kt_account_profile_details" class="collapse show">
+    <form novalidate="" class="form">
+      <div class="card-body border-top p-9">
+
+        <div class="row mb-6">
+
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Compte à Débiter</label>
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <select class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 " aria-label=".form-select-sm example" name="typecompteadebiter" [(ngModel)]="typecompteadebiter">
+                  <option value="3"selected>Compte courant</option>
+                  <option value="4">Compte epargne</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Votre Rib</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="monRib" type="number" required   placeholder="Votre Rib Ici" [(ngModel)]="JobData.transferFrom"
+                       type="text"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+
+                       value="Votre Rib Ici"
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-6">
+
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Compte à Créditer</label>
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <select class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 " aria-label=".form-select-sm example" name="typecompteacrediter" [(ngModel)]="typecompteacrediter">
+                  <option value="0"selected>Compte courant</option>
+                  <option value="1">Compte epargne</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Rib Destinataire</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="ribDestinataire" type="number" required   placeholder="Rib Destinataire Ici" [(ngModel)]="JobData.transferTo"
+                       type="text"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                       value="Rib Destinataire Ici"
+                       (keyup)="nameOfUserByRibb($event)"
+                       (keyup)="nameOfUserByRibbEpargne($event)"
+                />
+              </div>
+              <!--         <p > {{nom}} </p>  -->
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Nom Destinataire</label
+          >
+          <div class="col-lg-8 fv-row">
+            <input  name ="nomdest" type="text" required placeholder="Nom Destinataire "[(ngModel)]="nom"
+                    class="form-control form-control-lg form-control-solid"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Montant à Transferer</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="montant" type="number" required   placeholder="Montant à Transferer Ici" [(ngModel)]="JobData.montant"
+                       type="text"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                       value="Montant Ici"
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Motif Virement</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input type="text" required placeholder="Motif Du Virement Ici" [(ngModel)]="JobData.motif"
+                       class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 "
+                       name="motif"
+                       value="Motif Du Virement Ici"
+                />
+              </div>
+
+            </div>
+          </div>
+<br><br> <br>
+
+          <div class="row mb-6">
+            <label class="col-lg-4 col-form-label required fw-bold fs-6"
+            >Date D'Execution De Votre Virement</label
+            >
+            <div class="col-lg-8">
+              <div class="row">
+                <div class="col-lg-6 fv-row">
+                  <input  type="datetime-local" required placeholder="Date Du Virement Ici" [(ngModel)]="JobData.startTime"
+                          class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 "
+                          name="startTime"
+                          value="Date D'Execution De Votre Virement"
+                  />
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="isLoading"
+          (click)="saveSettings()"
+        >
+          <button type="submit" class="btn contact-btn" (click)="virementDiffere()">Transferer</button>
+
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

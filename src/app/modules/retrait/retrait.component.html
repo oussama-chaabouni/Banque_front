@@ -1,0 +1,161 @@
+<div class="card mb-5 mb-xl-10">
+  <div
+    class="card-header border-0 cursor-pointer"
+    role="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#kt_account_profile_details"
+    aria-expanded="true"
+    aria-controls="kt_account_profile_details"
+  >
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0">Retrait D'Argent</h3>
+    </div>
+  </div>
+  <div class="collapse show">
+    <form novalidate="" class="form">
+      <div class="card-body border-top p-9">
+
+
+        <div class="row mb-6">
+
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Compte à Débiter</label>
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <select class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 " aria-label=".form-select-sm example" name="typevirement" [(ngModel)]="typevirement">
+                  <option value="0"selected>Compte courant</option>
+                  <option value="1">Compte epargne</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Rib</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="monRib" required   placeholder="Votre Rib Ici" [(ngModel)]="monRib"
+                  class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                 value="Votre Rib Ici"
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Montant</label
+          >
+          <div class="col-lg-8 fv-row">
+            <input  name ="retrait_amount" required value="Montant à Retirer"[(ngModel)]="retrait_amount"
+              class="form-control form-control-lg form-control-solid"
+              placeholder="Montant à Retirer"
+            />
+          </div>
+        </div>
+
+      </div>
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="isLoading"
+          (click)="saveSettings()"
+        >
+          <button type="submit" class="btn contact-btn" (click)="retrait()"> Retrait</button>
+          <br/>
+          <button type="submit" class="btn contact-btn" (click)="retrait()"> AGIOS RETIRE De Votre Compte à l'occasion du decouvert:</button>
+          <input  name ="AGIOS" type="number" required value="AGIOS"[(ngModel)]="AGIOS"
+                  class="form-control form-control-lg form-control-solid"
+                  placeholder="AGIOS"/>
+
+        </button>
+      </div>
+    </form>
+  </div>
+
+</div>
+<br> <br> <br>
+
+<!--AGIOS -->
+<div class="card mb-5 mb-xl-10">
+  <div
+    class="card-header border-0 cursor-pointer"
+    role="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#kt_account_profile_details"
+    aria-expanded="true"
+    aria-controls="kt_account_profile_details"
+  >
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0">Vous etes à decouvert?</h3>
+    </div>
+  </div>
+  <div
+    class="card-header border-0 cursor-pointer"
+    role="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#kt_account_profile_details"
+    aria-expanded="true"
+    aria-controls="kt_account_profile_details"
+  >
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0">Simuler les frais perçus par notre banque à l'occasion du découvert</h3>
+    </div>
+  </div>
+
+  <div id="kt_account_profile_details" class="collapse show">
+    <form novalidate="" class="form">
+      <div class="card-body border-top p-9">
+        <!-- AGIOS = ((montantdudecouvert * duréedudecouvert * tauxAnnuelEffectifGlobal)/ nombredejoursdanslannée)-->
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6">Montant Du Decouvert: </label>
+          <div class="col-lg-8 fv-row">
+            <input  name ="montant" type="number" required value="Montant"[(ngModel)]="montantdudecouvert"
+                    class="form-control form-control-lg form-control-solid"
+                    placeholder="Montant Du Decouvert"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body border-top p-9">
+        <!-- AGIOS = ((montantdudecouvert * duréedudecouvert * tauxAnnuelEffectifGlobal)/ nombredejoursdanslannée)-->
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6">Durée Du Decouvert: </label>
+          <div class="col-lg-8 fv-row">
+            <input  name ="duree" type="number" required value="Duree"[(ngModel)]="dureedudecouvert"
+                    class="form-control form-control-lg form-control-solid"
+                    placeholder="Durée Du Decouvert"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="isLoading"
+          (click)="saveSettings()"
+        >
+          <button type="submit" class="btn contact-btn" (click)="SimulateurAgios()"  > Simuler</button>
+          <input  name ="totalagios" type="number" required value="totalagios"[(ngModel)]="totalagios"
+                  class="form-control form-control-lg form-control-solid"
+                  placeholder="TOTALE AGIOS"/>
+        </button>
+
+
+      </div>
+    </form>
+
+  </div>
+</div>

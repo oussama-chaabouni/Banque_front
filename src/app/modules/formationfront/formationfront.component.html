@@ -1,0 +1,48 @@
+<!-- begin::Header -->
+<div class="card-header border-0 text-center">
+  <h2 class="card-title fw-bolder text-dark">Formations Disponibles</h2>
+  <div class="card-footer d-flex justify-content-end py-6 px-9">
+
+      <button type="submit" class="badge badge-dark text-light" (click)="findallMyformation()">Afficher Mes Formations</button>
+
+  </div>
+
+<!-- end::Header -->
+<!-- begin::Body -->
+<br> <br>
+<tr *ngFor='let p of listFormations | filter:term'>
+<div class="card-body pt-2 text-center">
+  <!-- begin::Item -->
+  <div class="d-flex align-items-center mb-8">
+    <!-- begin::Description -->
+    <div class="flex-grow-1">
+      <h3 class="btn btn-primary text-wrap"   style="width: 30rem;"> {{p.nom_Formation }}</h3>
+
+      <th>Departement</th><span class="text-muted fw-bold d-block">{{p.departement}}</span>
+      <th>Description:</th><span class="text-muted fw-bold d-block">{{p.description}}</span>
+      <th>Commence le:</th> <span class="text-muted fw-bold d-block">{{p.date_debut}} </span>
+      <th>Etat de la formation:</th> <span class="text-muted fw-bold d-block">{{p.etatformation}} </span>
+
+      <th>Duree:</th> <span class="text-muted fw-bold d-block">{{p.duree}} </span>
+
+      <br>
+      <div class="text-center">         <!-- idformation,idemploye -->
+      <button class="badge badge-dark text-light"  (click)="ParticiperFormation(p.id)" (click)="findallMyformation()">
+        Participer
+      </button>
+        </div>
+
+    </div>
+    <!-- end::Description -->
+    <!-- begin::Checkbox -->
+    <span class="badge badge-light-success fs-8 fw-bolder">New</span>
+
+
+    <!-- end::Checkbox -->
+
+  </div>
+  <!-- end:Item -->
+</div>
+</tr>
+<!-- end::Body -->
+</div>

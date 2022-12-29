@@ -1,0 +1,107 @@
+<!-- begin::Header -->
+<! SEARCH -->
+
+<div class="input-group">
+  <div class="input-group-text">
+    <i class="feather icon-search"></i>
+  </div>
+  <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
+</div>
+
+<div class="card-header border-0 pt-5">
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-3 mb-1">Details des Formations</span>
+  </h3>
+  <div
+    class="card-toolbar"
+    data-bs-toggle="tooltip"
+    data-bs-placement="top"
+    data-bs-trigger="hover"
+    title="Ajouter Transaction"
+  >
+
+  </div>
+</div>
+
+<!-- end::Header -->
+<!-- begin::Body -->
+
+
+<!-- end::Header -->
+<!-- begin::Body -->
+<div class="card-body py-3">
+  <!-- begin::Table container -->
+  <div class="table-responsive">
+    <!-- begin::Table -->
+    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+      <!-- begin::Table head -->
+      <thead>
+      <tr class="fw-bolder text-muted">
+        <th>Etat De La Formation</th>
+        <th>Nom de La Formation</th>
+        <th>Nom des Employes Participants</th>
+      </tr>
+      </thead>
+      <!-- end::Table head -->
+
+      <!-- begin::Table body -->
+
+      <tbody>
+      <tr *ngFor='let p of listFormations | filter:term'>
+
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="d-flex justify-content-start flex-column">
+              <a  class="badge badge-light-success fs-7 fw-bold">{{p.etat }}</a>
+            </div>
+          </div>
+        </td>
+
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.formation.nom_Formation }}</a></td>
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.employe.nom}}</a></td>
+
+
+        <td><span type="button" class="
+                  btn btn-icon btn-bg-light btn-active-color-primary btn-sm
+                  me-1" [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'"
+                  class="svg-icon svg-icon-3"
+                  (click)="open(mymodal)" [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'">
+                edit
+              >
+              </span>
+
+          <ng-template #mymodal let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title">Modifier</h4>
+              <button type="button" class="close" aria-label="Close"
+                      (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true" (click)="cancel()">×</span>
+              </button>
+            </div>
+            <div>
+              <form>
+
+
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-info"
+                          (click)="modal.close('Save click')" (click)="cancel()">Annuler</button>
+                  <button class="btn btn-success" (click)="modal.close('Save click')">Valider</button>
+                </div>
+              </form>
+            </div>
+          </ng-template>
+                 <span type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+                       [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
+                      class="svg-icon svg-icon-3" >Supprimer</span>
+            <span type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+                  [inlineSVG]="'./assets/media/icons/duotune/arrows/arr075.svg'"
+                 class="svg-icon svg-icon-3" >AjouterFormation</span>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

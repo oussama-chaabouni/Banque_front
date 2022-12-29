@@ -1,0 +1,212 @@
+<!-- begin::Header -->
+<! SEARCH -->
+
+<div class="input-group">
+  <div class="input-group-text">
+    <i class="feather icon-search"></i>
+  </div>
+  <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
+</div>
+
+<div class="card-header border-0 pt-5">
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-3 mb-1">Liste des Formations</span>
+  </h3>
+  <div
+    class="card-toolbar"
+    data-bs-toggle="tooltip"
+    data-bs-placement="top"
+    data-bs-trigger="hover"
+    title="Ajouter Transaction"
+  >
+
+    <a  class="btn btn-sm btn-light-primary" (click)="open(mymodal1)" >
+      <span
+        [inlineSVG]="'./assets/media/icons/duotune/arrows/arr075.svg'"
+        class="svg-icon svg-icon-3"
+      ></span>
+      Ajouter Formation
+    </a>
+  </div>
+</div>
+
+<!-- end::Header -->
+<!-- begin::Body -->
+
+<!-- HEDHI KI NJI NAJOUTI -->
+<ng-template #mymodal1 let-modal1>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title" >Add new Transaction</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+      <span aria-hidden="true" (click)="cancel()">×</span>
+    </button>
+
+  </div>
+  <div class="container">
+    <form #f="ngForm" (ngSubmit)="addFormation(formation)">
+      <div class="row" class="col-md-6">
+        <input name ="NomFormation" type="text" required  ngModel #r="ngModel" placeholder="Nom Formation" [(ngModel)]="Nom_Formation">
+      </div>
+      <div class="alert alert-danger" *ngIf="r.invalid && r.touched">Nom Formation Est Un Champ Requis </div>
+
+      <div class="row" class="col-md-6">
+        <input name ="Departement" type="text" placeholder="Departement" required  ngModel #mon="ngModel" [(ngModel)]="Departement">
+      </div>
+      <div class="alert alert-danger" *ngIf="mon.invalid && mon.touched">Departement Est Un Champ Requis </div>
+
+
+      <div class="row" class="col-md-6">
+        <input name ="Description" type="text" placeholder="Description" required  ngModel #mot="ngModel" [(ngModel)]="Description "
+               [ngModelOptions]="{standalone : true}">
+      </div>
+      <div class="alert alert-danger" *ngIf="mot.invalid && mot.touched">Description Est Un Champ Requis </div>
+
+      <div class="row" class="col-md-6">
+        <input name="Date_debut" type="datetime-local" placeholder="Date Debut" required  ngModel #st="ngModel" [(ngModel)]="Date_debut "
+               [ngModelOptions]="{standalone : true}">
+      </div>
+      <div class="alert alert-danger" *ngIf="st.invalid && st.touched">Date Debut Est Un Champ Requis </div>
+
+      <div class="row" class="col-md-6">
+        <select
+          [(ngModel)]="formation.etatformation" [ngModelOptions]="{standalone : true}">
+          <option type="text" *ngFor="let formation of etatformation" [value]="formation.etatformation" >
+            {{formation.etatformation}}
+        </select>
+      </div>
+
+      <div class="row" class="col-md-6">
+        <input name="Duree" type="number" placeholder="Duree" required  ngModel #cr="ngModel" [(ngModel)]="Duree">
+        <div class="alert alert-danger" *ngIf="cr.invalid && cr.touched">Duree Est Un Champ Requis </div>
+
+      </div>
+
+      <br>
+      <button type="submit" class="btn btn-success" [disabled]="f.invalid" (click)="modal1.close('Save click')" >Ajouter</button>
+      <button type="button" class="btn btn-info" (click)="modal1.close('Save click')" >Annuler</button>
+    </form>
+  </div>
+</ng-template>
+
+<!-- end::Header -->
+<!-- begin::Body -->
+<div class="card-body py-3">
+  <!-- begin::Table container -->
+  <div class="table-responsive">
+    <!-- begin::Table -->
+    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+      <!-- begin::Table head -->
+      <thead>
+      <tr class="fw-bolder text-muted">
+        <th>Nom De La Formation</th>
+        <th>Departement</th>
+        <th>Description</th>
+        <th>Date Debut</th>
+        <th>Etat De La formation</th>
+        <th>Duree</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <!-- end::Table head -->
+
+      <!-- begin::Table body -->
+
+      <tbody>
+      <tr *ngFor='let p of listFormations | filter:term'>
+
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="d-flex justify-content-start flex-column">
+              <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.nom_Formation }}</a>
+            </div>
+          </div>
+        </td>
+
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.departement}}</a></td>
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.description}}</a></td>
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.date_debut}}</a></td>
+
+        <div *ngIf="p.etatformation==Commence_Bientot">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.etatformation}}</span></td></div>
+        <div *ngIf="p.etatformation==En_cours">
+          <td><span class="badge badge-light-info fs-7 fw-bold">{{p.etatformation}}</span></td></div>
+        <div *ngIf="p.etatformation==Termine">
+          <td><span class="badge badge-light-warning fs-7 fw-bold">{{p.etatformation}}</span></td></div>
+
+
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.duree}}</a></td>
+
+
+        <td><span type="button" class="
+                  btn btn-icon btn-bg-light btn-active-color-primary btn-sm
+                  me-1" [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'"
+                  class="svg-icon svg-icon-3"
+                  (click)="open(mymodal)" [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'">
+                edit
+              >
+              </span>
+
+          <ng-template #mymodal let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title">Modifier</h4>
+              <button type="button" class="close" aria-label="Close"
+                      (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true" (click)="cancel()">×</span>
+              </button>
+            </div>
+            <div>
+              <form>
+                <div class="modal-body">
+
+                  <div class="row" class="col-md-5">
+                    <label>Nom De La Formation</label>
+                    <input type="text" [(ngModel)]="p.nom_Formation" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Departement</label>
+                    <input type="text" [(ngModel)]="p.departement" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Description</label>
+                    <input type="text" [(ngModel)]="p.description" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Date Debut</label>
+                    <input type="datetime-local" [(ngModel)]="p.date_debut" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Etat Formation</label>
+                    <input type="text" [(ngModel)]="p.etatformation" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Duree</label>
+                    <input type="number" [(ngModel)]="p.duree" [ngModelOptions]="{standalone : true}" />
+                  </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-info"
+                          (click)="modal.close('Save click')" (click)="cancel()">Annuler</button>
+                  <button class="btn btn-success"(click)="editformation(p)" (click)="modal.close('Save click')">Valider</button>
+                </div>
+              </form>
+            </div>
+          </ng-template>
+          <span type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+                [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
+                class="svg-icon svg-icon-3" (click)="deleteFormation(p.id)">Supprimer</span>
+          <span type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+
+                class="svg-icon svg-icon-3" (click)="afficherEmployesParticipants(p.id)">Afficher Employes Participants</span>
+
+          <!--  [inlineSVG]="'./assets/media/icons/duotune/arrows/arr075.svg'" -->
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

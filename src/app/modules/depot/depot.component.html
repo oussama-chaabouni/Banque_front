@@ -1,0 +1,88 @@
+<div class="card mb-5 mb-xl-10">
+  <div
+    class="card-header border-0 cursor-pointer"
+    role="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#kt_account_profile_details"
+    aria-expanded="true"
+    aria-controls="kt_account_profile_details"
+  >
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0">Dépot D'Argent</h3>
+    </div>
+  </div>
+  <div id="kt_account_profile_details" class="collapse show">
+    <form novalidate="" class="form">
+      <div class="card-body border-top p-9">
+
+
+        <div class="row mb-6">
+
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Compte à Créditer</label>
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <select class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 " aria-label=".form-select-sm example" name="typevirement" [(ngModel)]="typevirement">
+                  <option value="0"selected>Compte courant</option>
+                  <option value="1">Compte epargne</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Rib</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="monRib" type="number" required [(ngModel)]="monRib"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                       placeholder="Votre Rib Ici"
+                       value="Votre Rib Ici"
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Montant</label
+          >
+          <div class="col-lg-8 fv-row">
+            <input  name ="deposit_amount" type="number" required [(ngModel)]="deposit_amount"
+                    class="form-control form-control-lg form-control-solid"
+                    placeholder="Montant à Déposer"
+                    value="Montant à Déposer"
+            />
+          </div>
+        </div>
+
+      </div>
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="isLoading"
+          (click)="saveSettings()"
+        >
+          <button type="submit" class="btn contact-btn" (click)="depot()"> dépot</button>
+          <br/>
+          <button type="submit" class="btn contact-btn" (click)="depot()"> AGIOS retiré De Votre Compte à l'occasion du decouvert:</button>
+          <input  name ="AGIOS" type="number" required value="AGIOS"[(ngModel)]="AGIOS"
+                  class="form-control form-control-lg form-control-solid"
+                  placeholder="AGIOS"/>
+
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
