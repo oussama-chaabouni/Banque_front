@@ -1,0 +1,71 @@
+<h2>Simulation Credit</h2>
+
+
+<form novalidate="" class="form">
+    <div class="card-body border-top p-9">
+        <div class="row mb-6">
+            <label class="col-lg-4 col-form-label required fw-bold fs-6"
+            >Montant Total</label
+            >
+            <div class="col-lg-8 fv-row">
+            <input
+                type="number"
+                class="form-control form-control-lg form-control-solid"
+                placeholder="0.00"
+                name="selectedAmount1" 
+                [(ngModel)]="selectedAmount1"
+                value="Keenthemes"
+            />
+            </div>
+        </div>
+
+        <div class="row mb-6">
+            <label class="col-lg-4 col-form-label required fw-bold fs-6"
+            >Période de l'Emprunt</label
+            >
+            <div class="col-lg-8 fv-row">
+            <input
+                type="number"
+                class="form-control form-control-lg form-control-solid"
+                placeholder="0.00"
+                name="selectedPeriod"
+                value="Keenthemes"
+                [(ngModel)]="selectedPeriod"
+            />
+            </div>
+        </div>
+
+        <div class="row mb-6">
+            <label class="col-lg-4 col-form-label required fw-bold fs-6"
+            >Taux d'Intérêt</label
+            >
+            <div class="col-lg-8 fv-row">
+            <input
+                type="number"
+                class="form-control form-control-lg form-control-solid"
+                placeholder="0.00"
+                name="selectedInterest"
+                value="Keenthemes"
+                [(ngModel)]="selectedInterest"
+            />
+            </div>
+        </div>
+
+        <br>
+    <br>
+    <button type="submit" class="btn btn-primary" (click)="sim()">Simuler Crédit</button>
+    <br>
+    <br>
+    <input type="textarea"
+    class="form-control form-control-md form-control-solid"
+    placeholder="Result"
+    name="selectedAmount"
+    value="Keenthemes"
+    [(ngModel)]="selectedAmount">
+
+
+        
+
+      </div>
+
+</form>
