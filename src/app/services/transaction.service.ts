@@ -121,18 +121,18 @@ export class TransactionService {
 
   depot(monRib: any,deposit_amount:any) {
     var body =[{}]  ;
-    //http://localhost:8082/banque-en-ligne/transaction/depot?deposit_amount=10&monRib=1233333
-    return this.http.post("http:///localhost:8082/banque-en-ligne/transaction/depot?deposit_amount="+deposit_amount+"&monRib="+monRib,body.toString(),{ responseType: 'text' });
+    //http://localhost:8082/banque-en-ligne/transaction/depot?deposit_amount=10&monRib=1232222
+    return this.http.post("http://localhost:8082/banque-en-ligne/transaction/depot?deposit_amount="+deposit_amount+"&monRib="+monRib,body.toString(),{ responseType: 'text' });
   }
   depotEpargne(monRib: any,deposit_amount:any) {
     var body =[{}]  ;
     //http://localhost:8082/banque-en-ligne/transaction/depotEpargne?deposit_amount=10&monRib=1233333
-    return this.http.post("http:///localhost:8082/banque-en-ligne/transaction/depotEpargne?deposit_amount="+deposit_amount+"&monRib="+monRib,body.toString(),{ responseType: 'text' });
+    return this.http.post("http://localhost:8082/banque-en-ligne/transaction/depotEpargne?deposit_amount="+deposit_amount+"&monRib="+monRib,body.toString(),{ responseType: 'text' });
   }
 
   paiement(beneficiaire: any,beneficiaire_rib:any,monRib:any,motif:any,montant:any) {
     var body =[{}]  ;
-    //http://localhost:8082/banque-en-ligne/transaction/payement?beneficiaire=ESPRIT&beneficiaire_rib=12345653423&monRib=1232222&motif=paiement%20ecole&montant=500
+    //http://localhost:8082/banque-en-ligne/transaction/payement?beneficiaire=steg&beneficiaire_rib=12542542&monRib=1232222&motif=facture&montant=100
     return this.http.post("http://localhost:8082/banque-en-ligne/transaction/payement?beneficiaire="+beneficiaire+"&beneficiaire_rib="+beneficiaire_rib+"&monRib="+monRib+"&motif="+motif+"&montant="+montant,body,{ responseType: 'text' });
   }
   paiementEpargne(beneficiaire: any,beneficiaire_rib:any,monRib:any,motif:any,montant:any) {

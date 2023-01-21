@@ -6,7 +6,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { ChartComponent } from "ng-apexcharts";
 //import * as CanvasJS from 'src/assets/canvasjs.min';
-import * as $ from 'jquery';
 import {
   ApexNonAxisChartSeries,
   ApexResponsive,
