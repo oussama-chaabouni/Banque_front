@@ -1,0 +1,357 @@
+<div class="body">
+  <div class="logo_bar">
+    <a href="https://infinovae.com/">
+<!--      <div class="logo" style="background-image: url('../../../assets/img/logo1.png');">-->
+<!--      </div>-->
+    </a>
+
+  </div>
+
+
+  <mat-card *ngIf="type=='client'">
+    <mat-card-title>Remplir les informations ci-dessous</mat-card-title>
+    <br>
+    <mat-card-content>
+  <div class="w-3/5 h-full signin_right" >
+      <form [formGroup]="form" class="form_panel" fxLayout="column" enctype="multipart/form-data">
+        <div  class="sign_right_panel_content" fxFlex="auto" fxLayout="column">
+
+          <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Votre civilité*</mat-label>
+          <div>
+          <mat-form-field fxFlex="grow" appearance="outline">
+            <mat-label >Civilité</mat-label>
+            <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="client.sexe">
+              <mat-option  value="femme">Madame</mat-option>
+              <mat-option  value="homme">Monsieur</mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+
+          <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Nom</mat-label>
+          <div>
+            <mat-form-field fxFlex="grow" appearance="outline">
+              <input class="input_panel" formControlName="nom" matInput placeholder="Nom"   [(ngModel)]="client.nom"  name="nom" required>
+              <mat-error *ngIf="form.get('nom')!.hasError('required')">Champ obligatoire</mat-error>
+            </mat-form-field>
+          </div>
+
+          <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Prenom</mat-label>
+          <div>
+            <mat-form-field fxFlex="grow" appearance="outline">
+              <input class="input_panel" formControlName="prenom" matInput placeholder="Prenom"   [(ngModel)]="client.prenom"  name="prenom" required>
+              <mat-error *ngIf="form.get('prenom')!.hasError('required')">Champ obligatoire</mat-error>
+            </mat-form-field>
+          </div>
+
+
+          <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Salaire</mat-label>
+          <div>
+            <mat-form-field fxFlex="grow" appearance="outline">
+              <input class="input_panel" formControlName="salaire" matInput placeholder="Salaire"   [(ngModel)]="client.salaire"  name="salaire" required>
+              <mat-error *ngIf="form.get('salaire')!.hasError('required')">Champ obligatoire</mat-error>
+            </mat-form-field>
+          </div>
+
+          <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Logement</mat-label>
+          <div>
+            <mat-form-field fxFlex="grow" appearance="outline">
+              <mat-label>Logement</mat-label>
+              <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="client.logement">
+                <mat-option  value="PROPRIETAIRE">Propriétaire</mat-option>
+                <mat-option  value="LOCATION">Location</mat-option>
+                <mat-option  value="GRATUIT">Gratuit</mat-option>
+
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Date de naissance</mat-label>
+          <div>
+            <mat-form-field fxFlex="grow" appearance="outline">
+              <mat-label>Date de naissance</mat-label>
+              <input [ngModelOptions]="{standalone: true}" [(ngModel)]="client.dateNaissance" matInput [matDatepicker]="picker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Adresse</mat-label>
+          <div>
+            <mat-form-field fxFlex="grow" appearance="outline">
+              <input class="input_panel" formControlName="adresse" matInput placeholder="Adresse"   [(ngModel)]="client.adresse"  name="salaire" required>
+              <mat-error *ngIf="form.get('adresse')!.hasError('required')">Champ obligatoire</mat-error>
+            </mat-form-field>
+          </div>
+
+
+          <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Email</mat-label>
+          <div>
+          <mat-form-field fxFlex="grow" appearance="outline">
+            <input class="input_panel" formControlName="email" matInput placeholder="Email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"  [(ngModel)]="client.email"  name="email" (keyup)="CheckEmail()" required>
+            <mat-error *ngIf="form.get('email')!.hasError('required')">Champ obligatoire</mat-error>
+            <p class="EmailExist" [ngStyle]="{'visibility':dispoEmail ? 'visible' : 'hidden','color':dispoEmail1 ? 'green' : 'red' }">{{DisponibleEmail}}</p>
+          </mat-form-field>
+          </div>
+
+          <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Mot de passe</mat-label>
+          <div>
+          <mat-form-field fxFlex="grow" appearance="outline">
+            <input class="input_panel" [type]="inputType" placeholder="Mot de passe" formControlName="password" [(ngModel)]="client.password"  name="password" matInput required>
+            <button class="eye" (click)="toggleVisibility()" mat-icon-button matSuffix matTooltip="Toggle Visibility" type="button">
+<!--              <mat-icon *ngIf="visible" [icIcon]="icVisibility"></mat-icon>-->
+<!--              <mat-icon *ngIf="!visible" [icIcon]="icVisibilityOff"></mat-icon>-->
+            </button>
+            <!-- <mat-hint>Click the eye to toggle visibility</mat-hint> -->
+            <mat-error *ngIf="form.get('password')!.hasError('required')">We need a password to log you in</mat-error>
+          </mat-form-field>
+          </div>
+
+          <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Confirmer votre mot de passe</mat-label>
+          <div>
+          <mat-form-field fxFlex="grow" appearance="outline">
+            <input class="input_panel" [type]="inputType"  placeholder="Confirmer votre mot de passe" formControlName="password" [(ngModel)]="pass" (keyup)="checkPass()"  matInput required>
+            <button class="eye" (click)="toggleVisibility()" mat-icon-button matSuffix matTooltip="Toggle Visibility" type="button">
+<!--              <mat-icon *ngIf="visible" [icIcon]="icVisibility"></mat-icon>-->
+<!--              <mat-icon *ngIf="!visible" [icIcon]="icVisibilityOff"></mat-icon>-->
+            </button>
+            <!-- <mat-hint>Click the eye to toggle visibility</mat-hint> -->
+            <mat-error *ngIf="form.get('password')!.hasError('required')">We need a password to log you in</mat-error>
+            <p class="EmailExist" [ngStyle]="{'visibility':visiblePass ? 'visible' : 'hidden','color':PassMatch ? 'red' : 'red' }"> {{PassMatch}}</p>
+
+          </mat-form-field>
+
+
+          </div>
+<!--          <div fxFlex="grow" appearance="outline">-->
+<!--            <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>-->
+<!--            <input hidden class="form-control"(change)="onFileChange($event)" #fileInput [(ngModel)]="client.image" type="file" id="file" [(ngModel)]="image" formControlName="image" name="image" required >-->
+<!--          </div>-->
+        </div>
+
+<!--        <div class="policy">-->
+<!--          <div>By clicking SIGN UP, I agree that:</div>-->
+<!--          <div style="display: block; ">-->
+<!--            <span>- I have read and accepted the </span>-->
+<!--            <a href="#" style="color: #436BC4;">&nbsp;Terms of Use.</a>-->
+<!--          </div>-->
+<!--          <div style="display: block; ">-->
+<!--            <span>- The </span>-->
+<!--            <a href="#" style="color: #436BC4;">&nbsp;Infinovae&nbsp;</a>-->
+<!--            <span>keep me informed with personalized emails about products and services.</span>-->
+<!--            &lt;!&ndash; <a [routerLink]="['/forgot-password']" class="caption2">Forgot Password?</a> &ndash;&gt;-->
+<!--          </div>-->
+<!--        </div>-->
+
+        <button (click)="signup2()" color="primary" mat-raised-button type="button" class="signup_btn" [disabled]=" !dispoEmail1 || !matchPass" [disabled]=" !dispoEmail1 || matchPass">
+          Inscription
+        </button>
+        <br>
+        <br>
+        <div class="w-2/5 signin_left" >
+          <div class="signin_left_sub">
+            <div class="sign_left_panel_title"><span>Déjà inscrit ?</span></div>
+            <div class="sign_left_panel_subtitle"><span>Connectez-vous à votre compte</span></div>
+            <!--      <button (click)="switchViewer('/signin')" color="primary" mat-raised-button type="button" class="login_btn">-->
+            <!--        CONNEXION-->
+            <!--      </button>-->
+            <br>
+            <button (click)="redirectConnection()" color="primary" mat-raised-button type="button" class="login_btn">
+              CONNECTION
+            </button>
+          </div>
+        </div>
+
+<!--        <p class="text-secondary text-center">-->
+<!--          Already have an account? &nbsp;-->
+<!--          <a (click)="switchViewer('/signin')">LOG IN</a>-->
+<!--        </p>-->
+    </form>
+
+    </div>
+    </mat-card-content>
+  </mat-card>
+
+
+
+
+
+
+  <mat-card *ngIf="type!=='client'">
+    <mat-card-title>Remplir les informations ci-dessous</mat-card-title>
+    <br>
+    <mat-card-content>
+      <div class="w-3/5 h-full signin_right" >
+        <form [formGroup]="form2" class="form_panel" fxLayout="column" enctype="multipart/form-data">
+          <div  class="sign_right_panel_content" fxFlex="auto" fxLayout="column">
+
+
+            <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Nom</mat-label>
+            <div>
+              <mat-form-field fxFlex="grow" appearance="outline">
+                <input class="input_panel" formControlName="nom" matInput placeholder="Nom"   [(ngModel)]="agent.nom"  name="nom" required>
+                <mat-error *ngIf="form2.get('nom')!.hasError('required')">Champ obligatoire</mat-error>
+              </mat-form-field>
+            </div>
+
+            <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Prenom</mat-label>
+            <div>
+              <mat-form-field fxFlex="grow" appearance="outline">
+                <input class="input_panel" formControlName="prenom" matInput placeholder="Prenom"   [(ngModel)]="agent.prenom"  name="prenom" required>
+                <mat-error *ngIf="form2.get('prenom')!.hasError('required')">Champ obligatoire</mat-error>
+              </mat-form-field>
+            </div>
+
+
+
+            <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Role</mat-label>
+            <div>
+              <mat-form-field fxFlex="grow" appearance="outline">
+                <mat-label>Role</mat-label>
+                <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)]="agent.role">
+                  <mat-option  value="CONSEILLER">CONSEILLER</mat-option>
+                  <mat-option  value="MARKETING">MARKETING</mat-option>
+                  <mat-option  value="RH">RH</mat-option>
+                  <mat-option  value="FINANCIER">FINANCIER</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Date de naissance</mat-label>
+            <div>
+              <mat-form-field fxFlex="grow" appearance="outline">
+                <mat-label>Date de naissance</mat-label>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="agent.dateNaissance" matInput [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Adresse</mat-label>
+            <div>
+              <mat-form-field fxFlex="grow" appearance="outline">
+                <input class="input_panel" formControlName="adresse" matInput placeholder="Adresse"   [(ngModel)]="agent.adresse"  name="salaire" required>
+                <mat-error *ngIf="form2.get('adresse')!.hasError('required')">Champ obligatoire</mat-error>
+              </mat-form-field>
+            </div>
+
+            <mat-label class="sign_right_panel_content_label" style="font-weight: bold">cin</mat-label>
+            <div>
+              <mat-form-field fxFlex="grow" appearance="outline">
+                <input class="input_panel" formControlName="cin" matInput placeholder="cin"   [(ngModel)]="agent.cin"  name="cin" required>
+                <mat-error *ngIf="form2.get('cin')!.hasError('required')">Champ obligatoire</mat-error>
+              </mat-form-field>
+            </div>
+
+            <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Departement</mat-label>
+            <div>
+              <mat-form-field fxFlex="grow" appearance="outline">
+                <input class="input_panel" formControlName="departement" matInput placeholder="departement"   [(ngModel)]="agent.departement"  name="departement" required>
+                <mat-error *ngIf="form2.get('departement')!.hasError('required')">Champ obligatoire</mat-error>
+              </mat-form-field>
+            </div>
+
+            <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Email</mat-label>
+            <div>
+              <mat-form-field fxFlex="grow" appearance="outline">
+                <input class="input_panel" formControlName="email" matInput placeholder="Email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"  [(ngModel)]="agent.email"  name="email" (keyup)="CheckEmail()" required>
+                <mat-error *ngIf="form2.get('email')!.hasError('required')">Champ obligatoire</mat-error>
+                <p class="EmailExist" [ngStyle]="{'visibility':dispoEmail ? 'visible' : 'hidden','color':dispoEmail1 ? 'green' : 'red' }">{{DisponibleEmail}}</p>
+              </mat-form-field>
+            </div>
+
+            <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Mot de passe</mat-label>
+            <div>
+              <mat-form-field fxFlex="grow" appearance="outline">
+                <input class="input_panel" [type]="inputType" placeholder="Mot de passe" formControlName="password" [(ngModel)]="agent.password"  name="password" matInput required>
+                <button class="eye" (click)="toggleVisibility()" mat-icon-button matSuffix matTooltip="Toggle Visibility" type="button">
+                  <!--              <mat-icon *ngIf="visible" [icIcon]="icVisibility"></mat-icon>-->
+                  <!--              <mat-icon *ngIf="!visible" [icIcon]="icVisibilityOff"></mat-icon>-->
+                </button>
+                <!-- <mat-hint>Click the eye to toggle visibility</mat-hint> -->
+                <mat-error *ngIf="form.get('password')!.hasError('required')">We need a password to log you in</mat-error>
+              </mat-form-field>
+            </div>
+
+            <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Confirmer votre mot de passe</mat-label>
+            <div>
+              <mat-form-field fxFlex="grow" appearance="outline">
+                <input class="input_panel" [type]="inputType"  placeholder="Confirmer votre mot de passe" formControlName="password" [(ngModel)]="pass2" (keyup)="checkPass()"  matInput required>
+                <button class="eye" (click)="toggleVisibility()" mat-icon-button matSuffix matTooltip="Toggle Visibility" type="button">
+                  <!--              <mat-icon *ngIf="visible" [icIcon]="icVisibility"></mat-icon>-->
+                  <!--              <mat-icon *ngIf="!visible" [icIcon]="icVisibilityOff"></mat-icon>-->
+                </button>
+                <!-- <mat-hint>Click the eye to toggle visibility</mat-hint> -->
+                <mat-error *ngIf="form.get('password')!.hasError('required')">We need a password to log you in</mat-error>
+                <p class="EmailExist" [ngStyle]="{'visibility':visiblePass ? 'visible' : 'hidden','color':PassMatch ? 'red' : 'red' }"> {{PassMatch}}</p>
+
+              </mat-form-field>
+
+
+            </div>
+            <!--          <div fxFlex="grow" appearance="outline">-->
+            <!--            <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>-->
+            <!--            <input hidden class="form-control"(change)="onFileChange($event)" #fileInput [(ngModel)]="client.image" type="file" id="file" [(ngModel)]="image" formControlName="image" name="image" required >-->
+            <!--          </div>-->
+          </div>
+
+          <!--        <div class="policy">-->
+          <!--          <div>By clicking SIGN UP, I agree that:</div>-->
+          <!--          <div style="display: block; ">-->
+          <!--            <span>- I have read and accepted the </span>-->
+          <!--            <a href="#" style="color: #436BC4;">&nbsp;Terms of Use.</a>-->
+          <!--          </div>-->
+          <!--          <div style="display: block; ">-->
+          <!--            <span>- The </span>-->
+          <!--            <a href="#" style="color: #436BC4;">&nbsp;Infinovae&nbsp;</a>-->
+          <!--            <span>keep me informed with personalized emails about products and services.</span>-->
+          <!--            &lt;!&ndash; <a [routerLink]="['/forgot-password']" class="caption2">Forgot Password?</a> &ndash;&gt;-->
+          <!--          </div>-->
+          <!--        </div>-->
+
+          <button (click)="signup3()" color="primary" mat-raised-button type="button" class="signup_btn" [disabled]=" !dispoEmail1 || !matchPass" [disabled]=" !dispoEmail1 || matchPass">
+            Inscription
+          </button>
+          <br>
+          <br>
+          <div class="w-2/5 signin_left" >
+            <div class="signin_left_sub">
+              <div class="sign_left_panel_title"><span>Déjà inscrit ?</span></div>
+              <div class="sign_left_panel_subtitle"><span>Connectez-vous à votre compte</span></div>
+              <!--      <button (click)="switchViewer('/signin')" color="primary" mat-raised-button type="button" class="login_btn">-->
+              <!--        CONNEXION-->
+              <!--      </button>-->
+              <br>
+              <button (click)="redirectConnection()" color="primary" mat-raised-button type="button" class="login_btn">
+                CONNECTION
+              </button>
+            </div>
+          </div>
+
+          <!--        <p class="text-secondary text-center">-->
+          <!--          Already have an account? &nbsp;-->
+          <!--          <a (click)="switchViewer('/signin')">LOG IN</a>-->
+          <!--        </p>-->
+        </form>
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-header-menu',
   templateUrl: './header-menu.component.html',
@@ -13,6 +13,10 @@ export class HeaderMenuComponent implements OnInit {
 
   calculateMenuItemCssClass(url: string): string {
     return checkIsActive(this.router.url, url) ? 'active' : '';
+  }
+
+  redirectToRegister() {
+    this.router.navigate(['/inscription']);
   }
 }
 

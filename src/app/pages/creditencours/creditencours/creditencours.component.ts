@@ -11,8 +11,9 @@ export class CreditencoursComponent implements OnInit {
 
   branches: any = [];
   listCredits :any;
-  Credit! :Credit 
-
+  Credit! :Credit
+  id=sessionStorage.getItem("id")
+  type=sessionStorage.getItem("type")
 
   constructor(private creditService : CreditService) { }
 
@@ -20,7 +21,7 @@ export class CreditencoursComponent implements OnInit {
 
     this.creditService.getAllCredits().subscribe((response: any) => {
       this.branches = response;
-        
+
       });
     this.getAllCredits();
     this.Credit={
@@ -36,14 +37,14 @@ export class CreditencoursComponent implements OnInit {
       archive:null,
       score:null
     }
-  
+
   }
 
   getAllCredits() {
     this.creditService.getAllCredits().subscribe(res => this.listCredits = res);
     console.log(this.listCredits)
   }
- 
+
   acceptLoan(idL: any, loan: Credit) {
     this.creditService.acceptLoan(idL, loan ).subscribe(() => this.getAllCredits());
 

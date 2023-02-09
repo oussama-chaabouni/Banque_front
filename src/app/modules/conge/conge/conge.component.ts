@@ -12,7 +12,8 @@ type Tabs =
   styleUrls: ['./conge.component.scss']
 })
 export class CongeComponent implements OnInit {
-
+  id=sessionStorage.getItem("id")
+  type=sessionStorage.getItem("type")
 listConges:any;
 form: boolean =false;
 conge!:conge;
@@ -36,7 +37,7 @@ idEmploye : string;
   getConges() {
     this.congeService.getConges().subscribe(res => this.listConges = res)
   }
- 
+
   addconge(idEmploye: string, conge : conge){
     this.congeService.addconge(idEmploye,conge).subscribe(() => { this.getConges; this.form=false;})
   }
@@ -65,7 +66,7 @@ idEmploye : string;
       }
     }
     closeForm(){
-  
+
     }
     cancel(){
       this.form = false;
@@ -80,7 +81,7 @@ idEmploye : string;
     return tab === this.activeTab ? 'show active' : '';
   }
 
-   
+
     }
 
 

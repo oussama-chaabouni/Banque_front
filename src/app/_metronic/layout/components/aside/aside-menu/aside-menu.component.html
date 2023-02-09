@@ -8,7 +8,7 @@
 
 <!-- portefeuille-->
 
-
+<div *ngIf="type=='client'">
 <div
   class="menu-item menu-accordion"
   data-kt-menu-trigger="click"
@@ -210,10 +210,13 @@
     </div>
   </div>
 </div>
+</div>
 
 
+<!-- *************************************** RH ************************************ -->
 
-<!-- RH -->
+
+<div *ngIf="type=='RH'">
 <div
   class="menu-item menu-accordion"
   data-kt-menu-trigger="click"
@@ -276,7 +279,7 @@
 
 
 
-</div>
+
 
 
 
@@ -327,7 +330,7 @@
   </div>
 </div>
 
-
+</div>
 
 <!-- Dashboard -->
 
@@ -341,11 +344,11 @@
 
 
 <!-- Widgets -->
-
+</div >
 
 <!-- *******************espace finance*********************-->
 
-
+<div *ngIf="type=='FINANCIER'">
 <div
   class="menu-item menu-accordion"
   data-kt-menu-trigger="click"
@@ -460,7 +463,7 @@
 </div>
 
 
-
+</div>
 
 <!-- *******************espace finance  end *********************-->
 

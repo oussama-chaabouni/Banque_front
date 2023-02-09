@@ -11,6 +11,7 @@ export class AsideMenuComponent implements OnInit {
   appPreviewChangelogUrl: string = environment.appPreviewChangelogUrl;
 
   constructor() {}
+  type=sessionStorage.getItem("type")
 
   ngOnInit(): void {}
 }

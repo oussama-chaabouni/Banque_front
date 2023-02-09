@@ -21,11 +21,12 @@ export class ObligationComponent implements OnInit {
   listObligations: any;
   Obligation!: Obligation;
   CompteTitre!: CompteTitre;
+  id=sessionStorage.getItem("id")
   constructor(private obligationService: ObligationService) { }
 
   ngOnInit(): void {
     this.obligationService.getAllObligations().subscribe((response: any) => {
-      this.obligationService.retrieveCompteTitre(1).subscribe((response2: any) => {
+      this.obligationService.retrieveCompteTitre(this.id).subscribe((response2: any) => {
         this.branches = response;
         this.listObligations = response;
       });

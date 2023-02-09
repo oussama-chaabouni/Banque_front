@@ -10,6 +10,8 @@ import { NavigationCancel, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LayoutService } from '../../core/layout.service';
 import { MenuComponent } from '../../../kt/components';
+import {MatButtonModule} from '@angular/material/button';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

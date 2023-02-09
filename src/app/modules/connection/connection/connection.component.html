@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-card-title>Remplir les informations ci-dessous</mat-card-title>
+  <br>
+  <mat-card-content>
+    <div class="w-3/5 h-full signin_right" >
+      <form [formGroup]="form" class="form_panel" fxLayout="column" enctype="multipart/form-data">
+        <div  class="sign_right_panel_content" fxFlex="auto" fxLayout="column">
+
+
+
+          <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Email</mat-label>
+          <div>
+            <mat-form-field fxFlex="grow" appearance="outline">
+              <input class="input_panel" formControlName="email" matInput placeholder="Email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"  [(ngModel)]="email"  name="email"  required>
+              <mat-error *ngIf="form.get('email')!.hasError('required')">Champ obligatoire</mat-error>
+            </mat-form-field>
+          </div>
+
+          <mat-label class="sign_right_panel_content_label" style="font-weight: bold">Mot de passe</mat-label>
+          <div>
+            <mat-form-field fxFlex="grow" appearance="outline">
+              <input class="input_panel" [type]="inputType" placeholder="Mot de passe" formControlName="password" [(ngModel)]="password"  name="password" matInput required>
+              <mat-error *ngIf="form.get('password')!.hasError('required')">Champ obligatoire</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <button *ngIf="type=='client'"(click)="login()" color="primary" mat-raised-button type="button" class="signup_btn" >
+          Connection
+        </button>
+        <button *ngIf="type!=='client'" (click)="login2()" color="primary" mat-raised-button type="button" class="signup_btn" >
+          Connection
+        </button>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

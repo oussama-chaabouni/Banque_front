@@ -18,7 +18,8 @@ type Tabs =
   styleUrls: ['./findallmytransactions.component.scss']
 })
 export class FindallmytransactionsComponent implements OnInit {
-
+  idconnecte=sessionStorage.getItem("id")
+  type=sessionStorage.getItem("type")
   term: string;
   listTransactions:any;
   listMyTransactions:any;

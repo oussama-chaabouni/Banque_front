@@ -18,7 +18,8 @@ type Tabs =
   styleUrls: ['./formationfront.component.scss']
 })
 export class FormationfrontComponent implements OnInit {
-
+  idconnecte=sessionStorage.getItem("id")
+  type=sessionStorage.getItem("type")
   isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isLoading: boolean;
 
@@ -127,7 +128,7 @@ export class FormationfrontComponent implements OnInit {
 
   //PARAMETRE, KHATER 7ACHTI B ID FORMATION KI NJI NA3MEL PARTICIPER (KIL DELETE KI NJI NFASAKH NEST7A9 ID FORMATION)MANA3MALCH THIS.ID
   ParticiperFormation(Id:any){
-    this.formationService.ParticiperFormation(Id,2).subscribe((res: string) => {
+    this.formationService.ParticiperFormation(Id,this.idconnecte).subscribe((res: string) => {
       //ki na3mel participer yaffichili table formationdetails
       this.findallMyformation();
       console.log(this.listMyFormations);
@@ -139,7 +140,7 @@ export class FormationfrontComponent implements OnInit {
 
     window.location.replace("/findallmyformation");
 
-    this.formationService.findallMyformation(2).subscribe(res=> {
+    this.formationService.findallMyformation(this.idconnecte).subscribe(res=> {
       this.listMyFormations = res
 
     })

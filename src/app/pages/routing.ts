@@ -6,7 +6,16 @@ const Routing: Routes = [
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
-
+  {
+    path: 'inscription',
+    loadChildren: () =>
+      import('../modules/inscription/inscription.module').then((m) => m.InscriptionModule),
+  },
+  {
+    path: 'connection',
+    loadChildren: () =>
+      import('../modules/connection/connection.module').then((m) => m.ConnectionModule),
+  },
   {
     path: 'test',
     loadChildren: () =>
@@ -181,7 +190,7 @@ const Routing: Routes = [
     loadChildren: () =>
       import('../pages/creditaccepte/creditaccepte.module').then((m) => m.CreditaccepteModule),
    },
-   
+
 
    {
     path: 'echeance',
@@ -200,9 +209,9 @@ const Routing: Routes = [
     loadChildren: () =>
       import('../pages/demandecredit/demandecredit.module').then((m) => m.DemandecreditModule),
    },
-   
-   
-   
+
+
+
 
 ];
 

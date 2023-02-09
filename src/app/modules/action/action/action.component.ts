@@ -75,6 +75,7 @@ export class ActionComponent implements OnInit {
   Theorique: any;
   Historique: any;
   choix: "Theorique";
+  id=sessionStorage.getItem("id")
   constructor(private actionService: ActionService,public dialog: MatDialog) {
     this.config = {
       itemsPerPage: 5,
@@ -205,7 +206,7 @@ export class ActionComponent implements OnInit {
 
   ngOnInit(): void {
     this.actionService.getAllActions().subscribe((response: any) => {
-      this.actionService.retrieveCompteTitre(1).subscribe((response2: any) => {
+      this.actionService.retrieveCompteTitre(this.id).subscribe((response2: any) => {
         this.branches = response;
         this.chartOptions.series =  response.map( (item: any) => item.valeurActuelle);
         this.chartOptions.labels=
@@ -237,7 +238,7 @@ export class ActionComponent implements OnInit {
       capital: null,
       valeurActuelle:null,
     }
-    this.retrieveCompteTitre(1);
+    this.retrieveCompteTitre(this.id);
     this.CompteTitre = {
       solde:null
     }
@@ -296,7 +297,7 @@ export class ActionComponent implements OnInit {
   }
   sellAction(idL: any) {
     this.actionService.sellAction(idL).subscribe(() =>{
-      this.retrieveCompteTitre(1)
+      this.retrieveCompteTitre(this.id)
       this.updateChart();
       this.updateBarChart(1,this.Time,this.confiance,this.selectedOption2);
     });
@@ -316,7 +317,7 @@ export class ActionComponent implements OnInit {
   }
   updateChart(){
     this.actionService.getAllActions().subscribe((response: any) => {
-      this.actionService.retrieveCompteTitre(1).subscribe((response2: any) => {
+      this.actionService.retrieveCompteTitre(this.id).subscribe((response2: any) => {
         this.branches = response;
         this.chartOptions.series =  response.map( (item: any) => item.valeurActuelle);
         this.chartOptions.labels=
