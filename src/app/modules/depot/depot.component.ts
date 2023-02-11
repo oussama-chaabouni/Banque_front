@@ -57,17 +57,17 @@ export class DepotComponent implements OnInit {
     console.log("deposit_amount " + this.deposit_amount);
     console.log("account amount " + this.monRib);
 
-
+    if (this.typevirement == 0) {
       this.transactionService.depot(this.monRib,this.deposit_amount).subscribe(res => {
 
-      if(res.includes("deposit amount value =0")){
+        if(res.includes("deposit amount value =0")){
 
-     //   this.toast.info({detail:"Info", summary:"please enter a value greater than 0", duration:5000});
-      }
-      if(res.includes("depot avec succés")){
+          //   this.toast.info({detail:"Info", summary:"please enter a value greater than 0", duration:5000});
+        }
+        if(res.includes("depot avec succés")){
 
-     //   this.toast.success({detail:"Success", summary:"deposit successful", duration:5000});
-      }
+          //   this.toast.success({detail:"Success", summary:"deposit successful", duration:5000});
+        }
         if(res.includes("/")){
           console.log("AGIOS yes"+res.substring(0,res.length-1));
           this.AGIOS=res.substring(0,res.length-1);
@@ -76,8 +76,12 @@ export class DepotComponent implements OnInit {
           //      this.toast.warning({detail:"Error", summary:"You Have insufficient Funds!", duration:5000});
         }
 
-    }, error => {
-    });
+      }, error => {
+      });
+    }  else {
+      this.transactionService.depotEpargne(this.monRib,this.deposit_amount).subscribe(res => {
+      });
+    }
   }
 
 

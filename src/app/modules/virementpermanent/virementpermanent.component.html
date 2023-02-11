@@ -125,78 +125,78 @@
           </div>
         </div>
 
-          <div class="row mb-6">
-            <label class="col-lg-4 col-form-label required fw-bold fs-6"
-            >Periode Du Virement</label
-            >
-            <div class="col-lg-8">
-              <div class="row">
-                <div class="col-lg-6 fv-row">
-                  <select class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 " aria-label=".form-select-sm example" required  [(ngModel)]="ScheduledInfoVirementPermanent.periode" name="ScheduledInfoVirementPermanent.periode" id="cars">
-                    <option value="10">mensuel</option>  <!--10 seconds au lieu de chaque mois -->
-                    <option value="20">Trimestriel</option> <!--20 seconds au lieu de chaque trimestre -->
-                    <option value="30">Semestriel</option> <!--30 seconds au lieu de chaque semestre -->
-                  </select>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Periode Du Virement</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <select class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 " aria-label=".form-select-sm example" required  [(ngModel)]="ScheduledInfoVirementPermanent.periode" name="ScheduledInfoVirementPermanent.periode" id="cars">
+                  <option value="5">mensuel</option>  <!--5 seconds au lieu de chaque mois -->
+                  <option value="8">Trimestriel</option> <!--8 seconds au lieu de chaque trimestre -->
+                  <option value="13">Semestriel</option> <!--13 seconds au lieu de chaque semestre -->
+                </select>
 
-                </div>
+              </div>
 
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Duree Du Virement</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input type="number" required placeholder="ex: 2 fois" [(ngModel)]="ScheduledInfoVirementPermanent.duree"
+                       class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 "
+                       name="duree"
+                       value="Duree Du Virement"
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Motif Virement</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input type="text" required placeholder="Motif Du Virement Ici" [(ngModel)]="ScheduledInfoVirementPermanent.motif"
+                       class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 "
+                       name="motif"
+                       value="Motif Du Virement Ici"
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Date D'Execution De Votre Virement</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input  type="datetime-local" required placeholder="Date Du Virement Ici" [(ngModel)]="ScheduledInfoVirementPermanent.startTime"
+                        class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 "
+                        name="startTime"
+                        value="Date D'Execution De Votre Virement"
+                />
               </div>
             </div>
           </div>
-
-          <div class="row mb-6">
-            <label class="col-lg-4 col-form-label required fw-bold fs-6"
-            >Duree Du Virement</label
-            >
-            <div class="col-lg-8">
-              <div class="row">
-                <div class="col-lg-6 fv-row">
-                  <input type="number" required placeholder="ex: 2 fois" [(ngModel)]="ScheduledInfoVirementPermanent.duree"
-                         class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 "
-                         name="duree"
-                         value="Duree Du Virement"
-                  />
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="row mb-6">
-            <label class="col-lg-4 col-form-label required fw-bold fs-6"
-            >Motif Virement</label
-            >
-            <div class="col-lg-8">
-              <div class="row">
-                <div class="col-lg-6 fv-row">
-                  <input type="text" required placeholder="Motif Du Virement Ici" [(ngModel)]="ScheduledInfoVirementPermanent.motif"
-                         class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 "
-                         name="motif"
-                         value="Motif Du Virement Ici"
-                  />
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-
-          <div class="row mb-6">
-            <label class="col-lg-4 col-form-label required fw-bold fs-6"
-            >Date D'Execution De Votre Virement</label
-            >
-            <div class="col-lg-8">
-              <div class="row">
-                <div class="col-lg-6 fv-row">
-                  <input  type="datetime-local" required placeholder="Date Du Virement Ici" [(ngModel)]="ScheduledInfoVirementPermanent.startTime"
-                          class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 "
-                          name="startTime"
-                          value="Date D'Execution De Votre Virement"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
 
 
 

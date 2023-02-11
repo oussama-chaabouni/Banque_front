@@ -121,18 +121,18 @@ export class TransactionService {
 
   depot(monRib: any,deposit_amount:any) {
     var body =[{}]  ;
-    //http://localhost:8082/banque-en-ligne/transaction/depot?deposit_amount=10&monRib=1232222
-    return this.http.post("http://localhost:8082/banque-en-ligne/transaction/depot?deposit_amount="+deposit_amount+"&monRib="+monRib,body.toString(),{ responseType: 'text' });
+    //http://localhost:8082/banque-en-ligne/transaction/depot?deposit_amount=10&monRib=1233333
+    return this.http.post("http:///localhost:8082/banque-en-ligne/transaction/depot?deposit_amount="+deposit_amount+"&monRib="+monRib,body.toString(),{ responseType: 'text' });
   }
   depotEpargne(monRib: any,deposit_amount:any) {
     var body =[{}]  ;
     //http://localhost:8082/banque-en-ligne/transaction/depotEpargne?deposit_amount=10&monRib=1233333
-    return this.http.post("http://localhost:8082/banque-en-ligne/transaction/depotEpargne?deposit_amount="+deposit_amount+"&monRib="+monRib,body.toString(),{ responseType: 'text' });
+    return this.http.post("http:///localhost:8082/banque-en-ligne/transaction/depotEpargne?deposit_amount="+deposit_amount+"&monRib="+monRib,body.toString(),{ responseType: 'text' });
   }
 
   paiement(beneficiaire: any,beneficiaire_rib:any,monRib:any,motif:any,montant:any) {
     var body =[{}]  ;
-    //http://localhost:8082/banque-en-ligne/transaction/payement?beneficiaire=steg&beneficiaire_rib=12542542&monRib=1232222&motif=facture&montant=100
+    //http://localhost:8082/banque-en-ligne/transaction/payement?beneficiaire=ESPRIT&beneficiaire_rib=12345653423&monRib=1232222&motif=paiement%20ecole&montant=500
     return this.http.post("http://localhost:8082/banque-en-ligne/transaction/payement?beneficiaire="+beneficiaire+"&beneficiaire_rib="+beneficiaire_rib+"&monRib="+monRib+"&motif="+motif+"&montant="+montant,body,{ responseType: 'text' });
   }
   paiementEpargne(beneficiaire: any,beneficiaire_rib:any,monRib:any,motif:any,montant:any) {
@@ -143,15 +143,15 @@ export class TransactionService {
 
   //byUserConnecte
   retrievelisttransactionsByRib (rib:any) {
-    //http://localhost:8082/banque-en-ligne/transaction/retrievelisttransactionsByUserName?rib=1233333
-    return this.http.get('http://localhost:8082/banque-en-ligne/transaction/retrievelisttransactionsByUserName?rib='+rib);
+    //http://localhost:8082/banque-en-ligne/transaction/retrievelisttransactionsByRib?rib=1232222
+    return this.http.get('http://localhost:8082/banque-en-ligne/transaction/retrievelisttransactionsByRib?rib='+rib);
   }
 
 
   nameOfUserByRib(rib:any) {
 //http://localhost:8082/banque-en-ligne/transaction/GetNomClientParRib/1232222
     console.log("yyyyy "+rib);
-return this.http.get("http://localhost:8082/banque-en-ligne/transaction/GetNomClientParRib/"+rib, { responseType: 'text'});
+    return this.http.get("http://localhost:8082/banque-en-ligne/transaction/GetNomClientParRib/"+rib, { responseType: 'text'});
   }
 
   nameOfUserByRibEpargne(rib:any) {
@@ -163,8 +163,8 @@ return this.http.get("http://localhost:8082/banque-en-ligne/transaction/GetNomCl
 
   SimulateurAgios(montantdudecouvert:any,dureedudecouvert:any)	{
     var body =[{}]  ;
-                          //http://localhost:8082/banque-en-ligne/transaction/simulateurAgios?montantdudecouvert=897&dureedudecouvert=23
-  return this.http.get("http://localhost:8082/banque-en-ligne/transaction/simulateurAgios?montantdudecouvert="+montantdudecouvert+"&dureedudecouvert="+dureedudecouvert);
+    //http://localhost:8082/banque-en-ligne/transaction/simulateurAgios?montantdudecouvert=897&dureedudecouvert=23
+    return this.http.get("http://localhost:8082/banque-en-ligne/transaction/simulateurAgios?montantdudecouvert="+montantdudecouvert+"&dureedudecouvert="+dureedudecouvert);
   }
 
   getTotalAgios(){

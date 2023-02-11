@@ -58,8 +58,8 @@ export class PaiementComponent implements OnInit {
 
 
   constructor(private transactionService: TransactionService, private modalService: NgbModal, private cdr: ChangeDetectorRef
-              ,private zone: NgZone
-              ,private winRef: WindowRefService,
+    ,private zone: NgZone
+    ,private winRef: WindowRefService,
               private orderService:OrderServiceService) {  //, private toast: NgToastService
 
   }
@@ -143,11 +143,11 @@ export class PaiementComponent implements OnInit {
         purchase_units: [{
           amount: {
             currency_code: 'EUR',
-            value: '0.01',
+            value: this.montant,
             breakdown: {
               item_total: {
                 currency_code: 'EUR',
-                value: '0.01'
+                value: this.montant
               }
             }
           },
@@ -157,7 +157,7 @@ export class PaiementComponent implements OnInit {
             category: 'DIGITAL_GOODS',
             unit_amount: {
               currency_code: 'EUR',
-              value: '0.01',
+              value: this.montant,
             },
           }]
         }]
@@ -235,15 +235,15 @@ export class PaiementComponent implements OnInit {
     this.transactionService.paiement(this.beneficiaire, this.beneficiaire_rib, this.monRib, this.motif, this.montant).subscribe(res => {
       if(res.includes("Montant à payer = 0")){
 
- //       this.toast.info({detail:"Info", summary:"Veuillez Choisir Un Montant superieur à 0", duration:5000});
+        //       this.toast.info({detail:"Info", summary:"Veuillez Choisir Un Montant superieur à 0", duration:5000});
       }
       if(res.includes("montant à payer ne peut pas etre superieur à votre solde")){
 
- //       this.toast.warning({detail:"Warning", summary:"Solde Insuffisant", duration:5000});
+        //       this.toast.warning({detail:"Warning", summary:"Solde Insuffisant", duration:5000});
       }
       if(res.includes("Payement Effectué Avec Succés")){
 
- //       this.toast.success({detail:"Success", summary:"Payement Effectué Avec Succés", duration:5000});
+        //       this.toast.success({detail:"Success", summary:"Payement Effectué Avec Succés", duration:5000});
       }
 
     }, err => {
@@ -264,11 +264,11 @@ export class PaiementComponent implements OnInit {
 
     this.transactionService.getcheque(this.montant,this.imagee).subscribe(res=> {
 
-        console.log('resmontant2: '+res)
-        this.resmontant=res;
+      console.log('resmontant2: '+res)
+      this.resmontant=res;
 
 
-        //      this.toast.warning({detail:"Error", summary:"You Have insufficient Funds!", duration:5000});
+      //      this.toast.warning({detail:"Error", summary:"You Have insufficient Funds!", duration:5000});
 
 
     }, err => {
@@ -277,21 +277,20 @@ export class PaiementComponent implements OnInit {
 
 
   saveSettings()
-    {
-      this.isLoading$.next(true);
-      setTimeout(() => {
-        this.isLoading$.next(false);
-        this.cdr.detectChanges();
-      }, 1500);
-    }
+  {
+    this.isLoading$.next(true);
+    setTimeout(() => {
+      this.isLoading$.next(false);
+      this.cdr.detectChanges();
+    }, 1500);
+  }
 
-    ngOnDestroy()
-    {
-      this.unsubscribe.forEach((sb) => sb.unsubscribe());
-    }
+  ngOnDestroy()
+  {
+    this.unsubscribe.forEach((sb) => sb.unsubscribe());
+  }
 
 
 
 
 }
-

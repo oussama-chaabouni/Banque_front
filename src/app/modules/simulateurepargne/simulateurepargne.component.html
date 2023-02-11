@@ -1,0 +1,75 @@
+<div class="card mb-5 mb-xl-10">
+  <div class="card-body pt-3 pb-0">
+
+    <div class="d-flex align-items-center mb-2">
+      <a
+        class="
+                  text-gray-800 text-hover-primary
+                  fs-2
+                  fw-bolder
+                  me-1
+                  cursor-pointer
+                "
+      >
+        Les solutions d’épargne de JMLessous s’adaptent à vos objectifs et à vos besoins : plan épargne logement, épargne études, épargne voiture, épargne pour un projet personnel...
+
+      </a>
+
+
+    </div>
+    <a
+      class="
+                  text-gray-800 text-hover-primary
+                  fs-2
+                  fw-bolder
+                  me-1
+                  cursor-pointer
+                "
+    >
+      Calculez le montant de votre épargne finale à l’aide du simulateur épargne JMLessous.
+    </a>
+
+    <div class="d-flex overflow-auto h-55px">
+
+      <ul
+        class="
+          nav nav-stretch nav-line-tabs nav-line-tabs-2x
+          border-transparent
+          fs-5
+          fw-bolder
+          flex-nowrap
+        "
+      >
+        <li class="nav-item">
+          <a
+            class="nav-link text-active-primary me-6"
+            routerLink="/simulateurepargne/epargnemensuel"
+            routerLinkActive="active"
+          >
+            Epargne Mensuel
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-active-primary me-6"
+            routerLink="/simulateurepargne/epargnetrimestriel"
+            routerLinkActive="active"
+          >
+            Epargne Trimestriel
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-active-primary me-6"
+            routerLink="/simulateurepargne/epargnesemestriel"
+            routerLinkActive="active"
+          >
+            Epargne Semestriel
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

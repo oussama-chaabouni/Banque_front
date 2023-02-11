@@ -11,7 +11,7 @@ export class CreditrefuseComponent implements OnInit {
 
   branches: any = [];
   listCredits :any;
-  Credit! :Credit 
+  Credit! :Credit
 
   constructor(private creditService : CreditService) { }
 
@@ -19,7 +19,7 @@ export class CreditrefuseComponent implements OnInit {
 
     this.creditService.getAllCredits().subscribe((response: any) => {
       this.branches = response;
-        
+
       });
     this.getAllCredits();
     this.Credit={
@@ -33,15 +33,16 @@ export class CreditrefuseComponent implements OnInit {
       statusCredit: null,
       objectifCredit: null,
       archive:null,
-      score:null
+      score:null,
+      creditRef:null,
     }
-  
+
   }
 
   getAllCredits() {
     this.creditService.getAllCredits().subscribe(res => this.listCredits = res);
     console.log(this.listCredits)
-  
+
   }
 
   }

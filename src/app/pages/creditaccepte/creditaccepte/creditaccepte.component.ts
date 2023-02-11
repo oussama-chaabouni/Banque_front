@@ -11,17 +11,20 @@ export class CreditaccepteComponent implements OnInit {
 
   branches: any = [];
   listCredits :any;
-  Credit! :Credit 
-
-
+  Credit! :Credit
+  idc=sessionStorage.getItem("id")
+  type=sessionStorage.getItem("type")
+  base64Data: any;
+  retrieveResonse: any;
   constructor(private creditService : CreditService) { }
 
   ngOnInit(): void {
 
     this.creditService.getAllCredits().subscribe((response: any) => {
       this.branches = response;
-        
+
       });
+
     this.getAllCredits();
     this.Credit={
       idCredit: null,
@@ -34,15 +37,16 @@ export class CreditaccepteComponent implements OnInit {
       statusCredit: null,
       objectifCredit: null,
       archive:null,
-      score:null
+      score:null,
+      creditRef:null,
     }
-  
+
   }
 
   getAllCredits() {
     this.creditService.getAllCredits().subscribe(res => this.listCredits = res);
     console.log(this.listCredits)
-  
+
   }
 
 }

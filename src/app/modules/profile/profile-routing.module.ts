@@ -13,15 +13,15 @@ const routes: Routes = [
     component: ProfileComponent,
     children: [
       {
-        path: 'overview',
+        path: 'epargnemensuel',
         component: OverviewComponent,
       },
       {
-        path: 'projects',
+        path: 'epargnetrimestriel',
         component: ProjectsComponent,
       },
       {
-        path: 'campaigns',
+        path: 'epargnesemestriel',
         component: CampaignsComponent,
       },
       {
@@ -32,8 +32,8 @@ const routes: Routes = [
         path: 'connections',
         component: ConnectionsComponent,
       },
-      { path: '', redirectTo: 'overview', pathMatch: 'full' },
-      { path: '**', redirectTo: 'overview', pathMatch: 'full' },
+      { path: '', redirectTo: 'epargnemensuel', pathMatch: 'full' },
+      { path: '**', redirectTo: 'epargnemensuel', pathMatch: 'full' },
     ],
   },
 ];

@@ -162,9 +162,7 @@ export class ConnectionComponent implements OnInit {
 
         }
       }
-      else{
 
-      }
     })};
 
 }

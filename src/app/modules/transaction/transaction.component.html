@@ -1,192 +1,192 @@
 <!-- begin::Header -->
-    <! SEARCH -->
+<! SEARCH -->
 
-    <div class="input-group">
-      <div class="input-group-text">
-        <i class="feather icon-search"></i>
-      </div>
-      <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
-    </div>
+<div class="input-group">
+  <div class="input-group-text">
+    <i class="feather icon-search"></i>
+  </div>
+  <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
+</div>
 
-    <div class="card-header border-0 pt-5">
-      <h3 class="card-title align-items-start flex-column">
-        <span class="card-label fw-bolder fs-3 mb-1">Liste des Transactions</span>
-      </h3>
-      <div
-        class="card-toolbar"
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        data-bs-trigger="hover"
-        title="Ajouter Transaction"
-      >
+<div class="card-header border-0 pt-5">
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-3 mb-1">Liste des Transactions</span>
+  </h3>
+  <div
+    class="card-toolbar"
+    data-bs-toggle="tooltip"
+    data-bs-placement="top"
+    data-bs-trigger="hover"
+    title="Ajouter Transaction"
+  >
 
-        <a  class="btn btn-sm btn-light-primary" (click)="open(mymodal1)" >
+    <a  class="btn btn-sm btn-light-primary" (click)="open(mymodal1)" >
       <span
         [inlineSVG]="'./assets/media/icons/duotune/arrows/arr075.svg'"
         class="svg-icon svg-icon-3"
       ></span>
-          Ajouter Transaction
-        </a>
-      </div>
-    </div>
+      Ajouter Transaction
+    </a>
+  </div>
+</div>
 
-    <!-- end::Header -->
-    <!-- begin::Body -->
+<!-- end::Header -->
+<!-- begin::Body -->
 
 <!-- HEDHI KI NJI NAJOUTI -->
-      <ng-template #mymodal1 let-modal1>
-        <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title" >Add new Transaction</h4>
-          <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
-            <span aria-hidden="true" (click)="cancel()">×</span>
-          </button>
+<ng-template #mymodal1 let-modal1>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title" >Add new Transaction</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+      <span aria-hidden="true" (click)="cancel()">×</span>
+    </button>
 
-        </div>
-        <div class="container">
-          <form #f="ngForm" (ngSubmit)="addTransaction(transaction)">
-            <div class="row" class="col-md-6">
-              <input name ="rib" type="number" required  ngModel #r="ngModel" placeholder="Rib Teneur De Compte" [(ngModel)]="transaction.rib">
+  </div>
+  <div class="container">
+    <form #f="ngForm" (ngSubmit)="addTransaction(transaction)">
+      <div class="row" class="col-md-6">
+        <input name ="rib" type="number" required  ngModel #r="ngModel" placeholder="Rib Teneur De Compte" [(ngModel)]="transaction.rib">
+      </div>
+      <div class="alert alert-danger" *ngIf="r.invalid && r.touched">Rib Est Un Champ Requis </div>
+
+      <div class="row" class="col-md-6">
+        <input name ="ribben" type="text" required  ngModel #r="ngModel" placeholder="Rib Beneficiaire" [(ngModel)]="transaction.beneficiairerib">
+      </div>
+      <div class="alert alert-danger" *ngIf="r.invalid && r.touched">Rib Beneficiaire Est Un Champ Requis </div>
+
+
+      <div class="row" class="col-md-6">
+        <select
+          [(ngModel)]="transaction.typeTransaction" [ngModelOptions]="{standalone : true}">
+          <option type="text" *ngFor="let transaction of transaction_type" [value]="transaction.transaction_type" >
+            {{transaction.transaction_type}}
+        </select>
+      </div>
+      <div class="row" class="col-md-6">
+        <input name ="montant" type="number" placeholder="Montant à Payer" required  ngModel #mon="ngModel" [(ngModel)]="transaction.montant">
+      </div>
+      <div class="alert alert-danger" *ngIf="mon.invalid && mon.touched">Montant Est Un Champ Requis </div>
+
+
+      <div class="row" class="col-md-6">
+        <input name ="motif" type="text" placeholder="Motif" required  ngModel #mot="ngModel" [(ngModel)]="transaction.motif"
+               [ngModelOptions]="{standalone : true}">
+      </div>
+      <div class="alert alert-danger" *ngIf="mot.invalid && mot.touched">Motif Est Un Champ Requis </div>
+
+      <div class="row" class="col-md-6">
+        <input name="statut" type="text" placeholder="Statut de Transaction" required  ngModel #st="ngModel" [(ngModel)]="transaction.statut"
+               [ngModelOptions]="{standalone : true}">
+      </div>
+      <div class="alert alert-danger" *ngIf="st.invalid && st.touched">Statut Est Un Champ Requis </div>
+
+
+      <div class="row" class="col-md-6">
+        <input name="code_raison" type="text" placeholder="Code Raison" required  ngModel #cr="ngModel" [(ngModel)]="transaction.codeRaison">
+        <div class="alert alert-danger" *ngIf="cr.invalid && cr.touched">Code Raison Est Un Champ Requis </div>
+
+      </div>
+      <div class="row" class="col-md-6">
+        <input name ="date_operation" required  ngModel #ca="ngModel" type="datetime-local" placeholder="Date D'Operation"[(ngModel)]="transaction.dateOperation">
+      </div>
+      <div class="alert alert-danger" *ngIf="ca.invalid && ca.touched">Date D'Operation Est Un Champ Requis </div>
+
+
+
+
+      <br>
+      <button type="submit" class="btn btn-success" [disabled]="f.invalid" (click)="modal1.close('Save click')" >Add</button>
+      <button type="button" class="btn btn-info" (click)="modal1.close('Save click')" >Cancel</button>
+    </form>
+  </div>
+</ng-template>
+
+<!-- end::Header -->
+<!-- begin::Body -->
+<div class="card-body py-3">
+  <!-- begin::Table container -->
+  <div class="table-responsive">
+    <!-- begin::Table -->
+    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+      <!-- begin::Table head -->
+      <thead>
+      <tr class="fw-bolder text-muted">
+        <th>Rib Teneur De Compte</th>
+        <th>Rib Beneficiaire</th>
+        <th>Type De Transaction</th>
+        <th>Montant</th>
+        <th>Motif</th>
+        <th>Statut De Transaction</th>
+        <th>Code Raison</th>
+        <th>Date Operation</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <!-- end::Table head -->
+
+      <!-- begin::Table body -->
+
+      <tbody>
+      <tr *ngFor='let p of listTransactions | filter:term'>
+
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="d-flex justify-content-start flex-column">
+              <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.rib}}</a>
             </div>
-            <div class="alert alert-danger" *ngIf="r.invalid && r.touched">Rib Est Un Champ Requis </div>
-
-            <div class="row" class="col-md-6">
-              <input name ="ribben" type="number" required  ngModel #r="ngModel" placeholder="Rib Beneficiaire" [(ngModel)]="transaction.beneficiairerib">
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="d-flex justify-content-start flex-column">
+              <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.beneficiairerib}}</a>
             </div>
-            <div class="alert alert-danger" *ngIf="r.invalid && r.touched">Rib Beneficiaire Est Un Champ Requis </div>
+          </div>
+        </td>
+
+        <div *ngIf="p.typeTransaction==Virement_Immediat">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
+        <div *ngIf="p.typeTransaction==Virement_Differe">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
+        <div *ngIf="p.typeTransaction==Virement_Permanent">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
+        <div *ngIf="p.typeTransaction==Depot">
+          <td><span class="badge badge-light-warning fs-7 fw-bold" >{{p.typeTransaction}}</span></td></div>
+        <div *ngIf="p.typeTransaction==Retrait">
+          <td><span class="badge badge-light-info fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
+        <div *ngIf="p.typeTransaction==Paiement">
+          <td><span class="badge badge-light-dark fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
 
 
-            <div class="row" class="col-md-6">
-              <select
-                [(ngModel)]="transaction.typeTransaction" [ngModelOptions]="{standalone : true}">
-                <option type="text" *ngFor="let transaction of transaction_type" [value]="transaction.transaction_type" >
-                  {{transaction.transaction_type}}
-              </select>
-            </div>
-            <div class="row" class="col-md-6">
-              <input name ="montant" type="number" placeholder="Montant à Payer" required  ngModel #mon="ngModel" [(ngModel)]="transaction.montant">
-            </div>
-            <div class="alert alert-danger" *ngIf="mon.invalid && mon.touched">Montant Est Un Champ Requis </div>
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.montant}}</a></td>
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.motif}}</a></td>
+
+        <div *ngIf="p.statut==successdepot">
+          <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div  *ngIf="p.statut==faileddepot">
+          <td><span class="badge badge-light-danger fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div *ngIf="p.statut==successretrait">
+          <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div  *ngIf="p.statut==failedretrait">
+          <td><span class="badge badge-light-danger fs-7 fw-bold">{{p.statut}}</span></td> </div>
+        <div *ngIf="p.statut==successpaiement">
+          <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div *ngIf="p.statut==failedpaiement">
+          <td><span class="badge badge-light-danger fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div *ngIf="p.statut==successvir_imm">
+          <td><span class="badge badge-light-success fs-7 fw-bold">{{p.statut}}</span></td> </div>
+        <div  *ngIf="p.statut==failedvir_imm">
+          <td><span class="badge badge-light-danger fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div *ngIf="p.statut==successvir_dif">
+          <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+        <div *ngIf="p.statut==successvir_per">
+          <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
+
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.codeRaison}}</a></td>
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.dateOperation}}</a></td>
 
 
-            <div class="row" class="col-md-6">
-              <input name ="motif" type="text" placeholder="Motif" required  ngModel #mot="ngModel" [(ngModel)]="transaction.motif"
-                     [ngModelOptions]="{standalone : true}">
-            </div>
-            <div class="alert alert-danger" *ngIf="mot.invalid && mot.touched">Motif Est Un Champ Requis </div>
-
-            <div class="row" class="col-md-6">
-              <input name="statut" type="text" placeholder="Statut de Transaction" required  ngModel #st="ngModel" [(ngModel)]="transaction.statut"
-                     [ngModelOptions]="{standalone : true}">
-            </div>
-            <div class="alert alert-danger" *ngIf="st.invalid && st.touched">Statut Est Un Champ Requis </div>
-
-
-            <div class="row" class="col-md-6">
-              <input name="code_raison" type="text" placeholder="Code Raison" required  ngModel #cr="ngModel" [(ngModel)]="transaction.codeRaison">
-              <div class="alert alert-danger" *ngIf="cr.invalid && cr.touched">Code Raison Est Un Champ Requis </div>
-
-            </div>
-            <div class="row" class="col-md-6">
-              <input name ="date_operation" required  ngModel #ca="ngModel" type="datetime-local" placeholder="Date D'Operation"[(ngModel)]="transaction.dateOperation">
-            </div>
-            <div class="alert alert-danger" *ngIf="ca.invalid && ca.touched">Date D'Operation Est Un Champ Requis </div>
-
-
-
-
-            <br>
-            <button type="submit" class="btn btn-success" [disabled]="f.invalid" (click)="modal1.close('Save click')" >Add</button>
-            <button type="button" class="btn btn-info" (click)="modal1.close('Save click')" >Cancel</button>
-          </form>
-        </div>
-      </ng-template>
-
-            <!-- end::Header -->
-            <!-- begin::Body -->
-            <div class="card-body py-3">
-              <!-- begin::Table container -->
-              <div class="table-responsive">
-                <!-- begin::Table -->
-                <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
-                  <!-- begin::Table head -->
-                  <thead>
-                  <tr class="fw-bolder text-muted">
-            <th>Rib Teneur De Compte</th>
-                    <th>Rib Beneficiaire</th>
-            <th>Type De Transaction</th>
-            <th>Montant</th>
-            <th>Motif</th>
-            <th>Statut De Transaction</th>
-            <th>Code Raison</th>
-            <th>Date Operation</th>
-            <th>Actions</th>
-                  </tr>
-                  </thead>
-                  <!-- end::Table head -->
-
-                  <!-- begin::Table body -->
-
-                  <tbody>
-            <tr *ngFor='let p of listTransactions | filter:term'>
-
-              <td>
-                <div class="d-flex align-items-center">
-                <div class="d-flex justify-content-start flex-column">
-                  <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.rib}}</a>
-                </div>
-                </div>
-              </td>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="d-flex justify-content-start flex-column">
-                    <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.beneficiairerib}}</a>
-                  </div>
-                </div>
-              </td>
-
-              <div *ngIf="p.typeTransaction==Virement_Immediat">
-                <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
-              <div *ngIf="p.typeTransaction==Virement_Differe">
-                <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
-              <div *ngIf="p.typeTransaction==Virement_Permanent">
-                <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
-              <div *ngIf="p.typeTransaction==Depot">
-                <td><span class="badge badge-light-warning fs-7 fw-bold" >{{p.typeTransaction}}</span></td></div>
-              <div *ngIf="p.typeTransaction==Retrait">
-                <td><span class="badge badge-light-info fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
-              <div *ngIf="p.typeTransaction==Paiement">
-                <td><span class="badge badge-light-dark fs-7 fw-bold">{{p.typeTransaction}}</span></td></div>
-
-
-              <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.montant}}</a></td>
-              <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.motif}}</a></td>
-
-              <div *ngIf="p.statut==successdepot">
-                <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
-              <div  *ngIf="p.statut==faileddepot">
-                <td><span class="badge badge-light-danger fs-7 fw-bold"> {{p.statut}}</span></td> </div>
-              <div *ngIf="p.statut==successretrait">
-                <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
-              <div  *ngIf="p.statut==failedretrait">
-                <td><span class="badge badge-light-danger fs-7 fw-bold">{{p.statut}}</span></td> </div>
-              <div *ngIf="p.statut==successpaiement">
-                <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
-              <div *ngIf="p.statut==failedpaiement">
-                <td><span class="badge badge-light-danger fs-7 fw-bold"> {{p.statut}}</span></td> </div>
-              <div *ngIf="p.statut==successvir_imm">
-                <td><span class="badge badge-light-success fs-7 fw-bold">{{p.statut}}</span></td> </div>
-              <div  *ngIf="p.statut==failedvir_imm">
-                <td><span class="badge badge-light-danger fs-7 fw-bold"> {{p.statut}}</span></td> </div>
-              <div *ngIf="p.statut==successvir_dif">
-                <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
-              <div *ngIf="p.statut==successvir_per">
-              <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.statut}}</span></td> </div>
-
-              <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.codeRaison}}</a></td>
-              <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.dateOperation}}</a></td>
-
-
-              <td><span type="button" class="
+        <td><span type="button" class="
                   btn btn-icon btn-bg-light btn-active-color-primary btn-sm
                   me-1" [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'"
                   class="svg-icon svg-icon-3"
@@ -195,73 +195,72 @@
               >
               </span>
 
-                <ng-template #mymodal let-modal>
-                  <div class="modal-header">
-                    <h4 class="modal-title" id="modal-basic-title">Edit</h4>
-                    <button type="button" class="close" aria-label="Close"
-                            (click)="modal.dismiss('Cross click')">
-                      <span aria-hidden="true" (click)="cancel()">×</span>
+          <ng-template #mymodal let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+              <button type="button" class="close" aria-label="Close"
+                      (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true" (click)="cancel()">×</span>
 
-                    </button>
+              </button>
 
+            </div>
+            <div>
+              <form>
+                <div class="modal-body">
+
+                  <div class="row" class="col-md-5">
+                    <label>Rib</label>
+                    <input type="number" [(ngModel)]="p.rib" [ngModelOptions]="{standalone : true}" />
                   </div>
-                  <div>
-                    <form>
-                      <div class="modal-body">
-
-                        <div class="row" class="col-md-5">
-                          <label>Rib</label>
-                          <input type="number" [(ngModel)]="p.rib" [ngModelOptions]="{standalone : true}" />
-                        </div>
-                        <div class="row" class="col-md-5">
-                          <label>Rib Beneficiaire</label>
-                          <input type="number" [(ngModel)]="p.beneficiairerib" [ngModelOptions]="{standalone : true}" />
-                        </div>
-                        <div class="row" class="col-md-5">
-                          <label>Type De Transaction</label>
-                          <input type="text" [(ngModel)]="p.typeTransaction" [ngModelOptions]="{standalone : true}" />
-                        </div>
-                        <div class="row" class="col-md-5">
-                          <label>Montant</label>
-                          <input type="text" [(ngModel)]="p.montant" [ngModelOptions]="{standalone : true}" />
-                        </div>
-                        <div class="row" class="col-md-5">
-                          <label>Motif</label>
-                          <input type="text" [(ngModel)]="p.motif" [ngModelOptions]="{standalone : true}" />
-                        </div>
-                        <div class="row" class="col-md-5">
-                          <label>Statut De Transaction</label>
-                          <input type="text" [(ngModel)]="p.statut" [ngModelOptions]="{standalone : true}" />
-                        </div>
-                        <div class="row" class="col-md-5">
-                          <label>Code Raison</label>
-                          <input type="text" [(ngModel)]="p.codeRaison" [ngModelOptions]="{standalone : true}" />
-                        </div>
-                        <div class="row" class="col-md-5">
-                          <label>Date D'Operation</label>
-                          <input type="datetime-local" [(ngModel)]="p.dateOperation" [ngModelOptions]="{standalone : true}" />
-                        </div>
-
-
-                      </div>
-
-                      <div class="modal-footer">
-
-                        <button type="button" class="btn btn-info"
-                                (click)="modal.close('Save click')" (click)="cancel()">Cancel</button>
-                        <button class="btn btn-success"(click)="editTransaction(p)" (click)="modal.close('Save click')">Validate</button>
-                      </div>
-                    </form>
+                  <div class="row" class="col-md-5">
+                    <label>Rib Beneficiaire</label>
+                    <input type="text" [(ngModel)]="p.beneficiairerib" [ngModelOptions]="{standalone : true}" />
                   </div>
-                </ng-template>
-                <span type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
-                        [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
-                        class="svg-icon svg-icon-3" (click)="deleteTransaction(p.idTransaction)">delete</span>
+                  <div class="row" class="col-md-5">
+                    <label>Type De Transaction</label>
+                    <input type="text" [(ngModel)]="p.typeTransaction" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Montant</label>
+                    <input type="text" [(ngModel)]="p.montant" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Motif</label>
+                    <input type="text" [(ngModel)]="p.motif" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Statut De Transaction</label>
+                    <input type="text" [(ngModel)]="p.statut" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Code Raison</label>
+                    <input type="text" [(ngModel)]="p.codeRaison" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Date D'Operation</label>
+                    <input type="datetime-local" [(ngModel)]="p.dateOperation" [ngModelOptions]="{standalone : true}" />
+                  </div>
 
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
 
+                </div>
+
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-info"
+                          (click)="modal.close('Save click')" (click)="cancel()">Cancel</button>
+                  <button class="btn btn-success"(click)="editTransaction(p)" (click)="modal.close('Save click')">Validate</button>
+                </div>
+              </form>
+            </div>
+          </ng-template>
+          <span type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+                [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
+                class="svg-icon svg-icon-3" (click)="deleteTransaction(p.idTransaction)">delete</span>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

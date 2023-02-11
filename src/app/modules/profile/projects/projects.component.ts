@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IconUserModel } from '../../../_metronic/partials';
 
 @Component({
-  selector: 'app-projects',
+  selector: 'app-epargnetrimestriel',
   templateUrl: './projects.component.html',
 })
 export class ProjectsComponent implements OnInit {

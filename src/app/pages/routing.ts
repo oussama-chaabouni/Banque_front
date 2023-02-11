@@ -164,6 +164,31 @@ const Routing: Routes = [
     loadChildren: () => import('../modules/salaire/salaire.module').then((m )=> m.SalaireModule)
   },
   {
+    path: 'comptecourant',
+    loadChildren: () => import('../modules/comptecourant/comptecourant.module').then((m )=> m.ComptecourantModule)
+  },
+  {
+    path: 'compteepargne',
+    loadChildren: () => import('../modules/compteepargne/compteepargne.module').then((m )=> m.CompteepargneModule)
+  },
+  {
+    path: 'comptesfront',
+    loadChildren: () => import('../modules/comptesfront/comptesfront.module').then((m )=> m.ComptesfrontModule)
+  },
+  ////COMPTE EPARGNE
+  {
+    path: 'simulateurepargne',
+    loadChildren: () => import('../modules/simulateurepargne/simulateurepargne.module').then((m )=> m.SimulateurepargneModule)
+  },
+  {
+    path: 'formulairesouscriptionfront',
+    loadChildren: () => import('../modules/formulairesouscriptionfront/formulairesouscriptionfront.module').then((m )=> m.FormulairesouscriptionfrontModule)
+  },
+  {
+    path: 'formulairesouscriptionback',
+    loadChildren: () => import('../modules/formulairesouscriptionback/formulairesouscriptionback.module').then((m )=> m.FormulairesouscriptionbackModule)
+  },
+  {
     path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full',
@@ -210,6 +235,11 @@ const Routing: Routes = [
       import('../pages/demandecredit/demandecredit.module').then((m) => m.DemandecreditModule),
    },
 
+  {
+    path: 'consultercredit',
+    loadChildren: () =>
+      import('../pages/consultercredit/consultercredit.module').then((m) => m.ConsultercreditModule),
+  },
 
 
 

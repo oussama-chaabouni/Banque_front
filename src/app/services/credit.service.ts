@@ -22,7 +22,7 @@ export class CreditService {
     return this.httpClient.get(`${this.API_URL}/retrieve-all-credits`);
   }
 
-  
+
 
   acceptLoan(idLoan: any, Loan: any) {
     return this.httpClient.put(` ${this.API_URL}/acceptLoanRequest/${idLoan}`, Loan);
@@ -31,6 +31,10 @@ export class CreditService {
   denyLoan(idLoan: any, Loan: any) {
     return this.httpClient.put(` ${this.API_URL}/denyLoanRequest/${idLoan}`, Loan);
   }
-
-
+  getAllImages(id: any){
+    return this.httpClient.get(`http://localhost:8082/banque-en-ligne/auth/getImage?id=1`);
+  }
+  getAllCreditsbyClient(idClient:any)  {
+    return this.httpClient.get(`${this.API_URL}/retrieve-all-credits-by-client/${idClient}`);
+  }
 }

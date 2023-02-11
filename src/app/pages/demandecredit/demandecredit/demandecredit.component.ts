@@ -17,15 +17,15 @@ export class DemandecreditComponent implements OnInit {
   listCredits :any;
   selectedAmount: any;
   branches: any = [];
-  credit! :Credit 
+  credit! :Credit
   x = sessionStorage.getItem('type') ;
   p= 1;
   credit1:Credit= new Credit();
   form : boolean = false;
   config: any;
-  
 
-  constructor(private creditService : CreditService ,private modalService:NgbModal) { 
+
+  constructor(private creditService : CreditService ,private modalService:NgbModal) {
     this.config = {
       itemsPerPage: 5,
       currentPage: 1,
@@ -39,9 +39,9 @@ export class DemandecreditComponent implements OnInit {
 
     this.creditService.getAllCredits().subscribe((response: any) => {
       this.branches = response;
-        
+
       });
-    
+
     this.credit={
       idCredit: null,
       montantTotal: null,
@@ -53,21 +53,22 @@ export class DemandecreditComponent implements OnInit {
       statusCredit: null,
       objectifCredit: null,
       archive:null,
-      score:null
+      score:null,
+      creditRef:null,
       }
   }
 
   getAllCredits() {
     this.creditService.getAllCredits().subscribe(res => this.listCredits = res);
     console.log(this.listCredits)
-  
+
   }
   //sessionStorage.getItem("id")
   addLoan() {
     this.creditService.addLoan(this.credit1, sessionStorage.getItem("id")).subscribe(() => {
       this.getAllCredits();
     });
-  
+
 
   }
   open(content: any): void {
@@ -87,13 +88,13 @@ export class DemandecreditComponent implements OnInit {
       }
     }
     closeForm(){
-  
+
     }
     cancel(){
       this.form = false;
     }
-  
-  
+
+
 
 
 

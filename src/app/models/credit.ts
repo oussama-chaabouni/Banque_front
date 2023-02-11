@@ -10,5 +10,5 @@ export class Credit{
     objectifCredit: any;
     archive:any;
     score:any;
-
+  creditRef:any;
   }

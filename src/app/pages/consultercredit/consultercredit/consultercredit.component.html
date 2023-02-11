@@ -1,0 +1,67 @@
+<p></p>
+
+<div   class="card-body pt-0">
+
+  <!--begin::Table-->
+  <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
+    <!--begin::Table head-->
+    <thead>
+    <!--begin::Table row-->
+    <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+      <!-- {{listCredits.length}} -->
+      <th class="min-w-125px">Reference</th>
+      <th class="min-w-125px">Durée</th>
+      <th class="min-w-125px">Montant Credit</th>
+      <th class="min-w-125px">Taux d'interet</th>
+      <th class="min-w-125px">Statut Credit</th>
+      <th class="min-w-125px">Objectif Credit</th>
+      <th class="min-w-125px">Réponse Probable</th>
+
+    </tr>
+    <!--end::Table row-->
+    </thead>
+    <!--end::Table head-->
+    <!--begin::Table body-->
+    <tbody class="fw-bold text-gray-600">
+    <tr *ngFor='let c of listCreditsClient'>
+      <ng-container>
+        <td>{{c.creditRef}}</td>
+        <td>{{c.dureeDuCredit}}</td>
+        <td>{{c.montantTotal}}</td>
+        <td>{{c.interet}}</td>
+        <div>
+          <div *ngIf="c.statusCredit == 'EN_COURS' ">
+            <td style="color:#931090c2">{{c.statusCredit}}</td>
+          </div>
+          <div *ngIf="c.statusCredit  == 'REFUSE'">
+            <td style="color:#c90e08">{{c.statusCredit}}</td>
+          </div>
+          <div *ngIf="c.statusCredit  == 'ACCEPTE'">
+            <td style="color:#0ead13">{{c.statusCredit}}</td>
+          </div>
+        </div>
+
+        <td>{{c.objectifCredit}}</td>
+
+        <div>
+          <div *ngIf="c.score < 300">
+            <td style="color:#FF0000">||</td>
+          </div>
+          <div *ngIf="c.score >= 300 && c.score < 350">
+            <td style="color:#ffb700">||</td>
+          </div>
+          <div *ngIf="c.score > 350">
+            <td style="color:#0ead2e">||</td>
+          </div>
+        </div>
+      </ng-container>
+    </tr>
+
+
+
+    </tbody>
+    <!--end::Table body-->
+  </table>
+  <!--end::Table-->
+</div>
+<!--end::Card body-->

@@ -1,0 +1,97 @@
+<div class="card mb-5 mb-xl-10">
+  <div
+    class="card-header border-0 cursor-pointer"
+    role="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#kt_account_profile_details"
+    aria-expanded="true"
+    aria-controls="kt_account_profile_details"
+  >
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0">SIMULER SON ÉPARGNE</h3>
+    </div>
+  </div>
+  <div id="kt_account_profile_details" class="collapse show">
+    <form novalidate="" class="form">
+      <div class="card-body border-top p-9">
+
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Capital Initial</label
+          >
+          <div class="col-lg-8 fv-row">
+            <input
+              [(ngModel)]="capitalinitial"
+              type="number"
+              class="form-control form-control-lg form-control-solid"
+              name="capitalinitial"
+            />
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"
+          ><span class="required">Versement Mensuel</span></label
+          >
+          <div class="col-lg-8 fv-row">
+            <input
+              [(ngModel)]="versementmensuel"
+              type="number"
+              class="form-control form-control-lg form-control-solid"
+              name="versementmensuel"
+            />
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"
+          ><span class="required">Rendement Annuel en %</span></label
+          >
+          <div class="col-lg-8 fv-row">
+            <input
+              [(ngModel)]="rendementannuel"
+              type="number"
+              class="form-control form-control-lg form-control-solid"
+              name="rendementannuel"
+            />
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"
+          ><span class="required">Durée De L'Epargne En Annees</span></label
+          >
+          <div class="col-lg-8 fv-row">
+            <input
+              [(ngModel)]="dureeepargne"
+              type="number"
+              class="form-control form-control-lg form-control-solid"
+              name="dureeepargne"
+            />
+          </div>
+        </div>
+
+      </div>
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="isLoading"
+          (click)="SimulateurEpargneMensuel()"
+        >
+          <ng-container *ngIf="!isLoading">Calculer Capital Total</ng-container>
+          <ng-container *ngIf="isLoading">
+            <span clas="indicator-progress" [style.display]="'block'">
+              Please wait...{{ " " }}
+              <span
+                class="spinner-border spinner-border-sm align-middle ms-2"
+              ></span>
+            </span>
+          </ng-container>
+
+          <input  name ="capitaltotal" type="number" required value="capitaltotal"[(ngModel)]="capitaltotal"
+                  class="form-control form-control-lg form-control-solid"
+                  placeholder="Capital Total"/>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

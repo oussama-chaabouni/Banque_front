@@ -1,0 +1,190 @@
+<!-- begin::Header -->
+    <! SEARCH -->
+
+    <div class="input-group">
+      <div class="input-group-text">
+        <i class="feather icon-search"></i>
+      </div>
+      <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
+    </div>
+
+    <div class="card-header border-0 pt-5">
+      <h3 class="card-title align-items-start flex-column">
+        <span class="card-label fw-bolder fs-3 mb-1">Liste des Compte Courants</span>
+      </h3>
+      <div
+        class="card-toolbar"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        data-bs-trigger="hover"
+        title="Ajouter Comptecourant"
+      >
+
+        <a  class="btn btn-sm btn-light-primary" (click)="open(mymodal1)" >
+      <span
+        [inlineSVG]="'./assets/media/icons/duotune/arrows/arr075.svg'"
+        class="svg-icon svg-icon-3"
+      ></span>
+          Ajouter Comptecourant
+        </a>
+      </div>
+    </div>
+
+    <!-- end::Header -->
+    <!-- begin::Body -->
+
+<!-- HEDHI KI NJI NAJOUTI -->
+      <ng-template #mymodal1 let-modal1>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title" >Add new Comptecourant</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+            <span aria-hidden="true" (click)="cancel()">×</span>
+          </button>
+
+        </div>
+        <div class="container">
+          <form #f="ngForm" (ngSubmit)="addComptecourant(comptecourant)">
+            <div class="row" class="col-md-6">
+              <input name ="rib" type="number" required  ngModel #r="ngModel" placeholder="Rib Teneur De Compte" [(ngModel)]="comptecourant.rib">
+            </div>
+            <div class="alert alert-danger" *ngIf="r.invalid && r.touched">Rib Est Un Champ Requis </div>
+
+            <div class="row" class="col-md-6">
+              <input name ="IBANC" type="text" required  ngModel #r="ngModel" placeholder="Rib Beneficiaire" [(ngModel)]="comptecourant.IBANC">
+            </div>
+            <div class="alert alert-danger" *ngIf="r.invalid && r.touched">IBANC Est Un Champ Requis </div>
+
+            <div class="row" class="col-md-6">
+              <input name ="Solde" type="number" placeholder="Solde" required  ngModel #mon="ngModel" [(ngModel)]="comptecourant.Solde">
+            </div>
+            <div class="alert alert-danger" *ngIf="mon.invalid && mon.touched">Solde Est Un Champ Requis </div>
+
+
+            <div class="row" class="col-md-6">
+              <input name ="Plafond" type="text" placeholder="Plafond" required  ngModel #mot="ngModel" [(ngModel)]="comptecourant.Plafond"
+                     [ngModelOptions]="{standalone : true}">
+            </div>
+            <div class="alert alert-danger" *ngIf="mot.invalid && mot.touched">Plafond Est Un Champ Requis </div>
+
+            <div class="row" class="col-md-6">
+              <input name="Nom" type="text" placeholder="Nom de Propriétaire" required  ngModel #st="ngModel" [(ngModel)]="comptecourant.Nom"
+                     [ngModelOptions]="{standalone : true}">
+            </div>
+            <div class="alert alert-danger" *ngIf="st.invalid && st.touched">Nom Est Un Champ Requis </div>
+
+
+
+            <br>
+            <button type="submit" class="btn btn-success" [disabled]="f.invalid" (click)="modal1.close('Save click')" >Add</button>
+            <button type="button" class="btn btn-info" (click)="modal1.close('Save click')" >Cancel</button>
+          </form>
+        </div>
+      </ng-template>
+
+            <!-- end::Header -->
+            <!-- begin::Body -->
+            <div class="card-body py-3">
+              <!-- begin::Table container -->
+              <div class="table-responsive">
+                <!-- begin::Table -->
+                <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                  <!-- begin::Table head -->
+                  <thead>
+                  <tr class="fw-bolder text-muted">
+            <th>Rib Teneur De Compte</th>
+                    <th>IBAN</th>
+            <th>Solde</th>
+            <th>Nom Propriétaire</th>
+            <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <!-- end::Table head -->
+
+                  <!-- begin::Table body -->
+
+                  <tbody>
+            <tr *ngFor='let p of listComptecourants | filter:term'>
+
+              <td>
+                <div class="d-flex align-items-center">
+                <div class="d-flex justify-content-start flex-column">
+                  <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.rib}}</a>
+                </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="d-flex justify-content-start flex-column">
+                    <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.ibanc}}</a>
+                  </div>
+                </div>
+              </td>
+              <td><span class="badge badge-light-success fs-7 fw-bold"> {{p.solde}}</span></td>
+              <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.nom}}</a></td>
+
+
+              <td><span type="button" class="
+                  btn btn-icon btn-bg-light btn-active-color-primary btn-sm
+                  me-1" [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'"
+                  class="svg-icon svg-icon-3"
+                  (click)="open(mymodal)" [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'">
+                edit
+              >
+              </span>
+
+                <ng-template #mymodal let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+                    <button type="button" class="close" aria-label="Close"
+                            (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true" (click)="cancel()">×</span>
+
+                    </button>
+
+                  </div>
+                  <div>
+                    <form>
+                      <div class="modal-body">
+
+                        <div class="row" class="col-md-5">
+                          <label>Rib</label>
+                          <input type="number" [(ngModel)]="p.rib" [ngModelOptions]="{standalone : true}" />
+                        </div>
+                        <div class="row" class="col-md-5">
+                          <label>Iban </label>
+                          <input type="text" [(ngModel)]="p.IBANC" [ngModelOptions]="{standalone : true}" />
+                        </div>
+                        <div class="row" class="col-md-5">
+                          <label>Solde </label>
+                          <input type="number" [(ngModel)]="p.Solde" [ngModelOptions]="{standalone : true}" />
+                        </div>
+                        <div class="row" class="col-md-5">
+                          <label>Plafond</label>
+                          <input type="number" [(ngModel)]="p.Plafond" [ngModelOptions]="{standalone : true}" />
+                        </div>
+                        <div class="row" class="col-md-5">
+                          <label>Nom Propriétaire</label>
+                          <input type="text" [(ngModel)]="p.Nom" [ngModelOptions]="{standalone : true}" />
+                        </div>
+                      </div>
+
+                      <div class="modal-footer">
+
+                        <button type="button" class="btn btn-info"
+                                (click)="modal.close('Save click')" (click)="cancel()">Cancel</button>
+                        <button class="btn btn-success"(click)="editComptecourant(p)" (click)="modal.close('Save click')">Validate</button>
+                      </div>
+                    </form>
+                  </div>
+                </ng-template>
+                <span type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+                        [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
+                        class="svg-icon svg-icon-3" (click)="deleteComptecourant(p.idComptecourant)">delete</span>
+
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+

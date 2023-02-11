@@ -35,7 +35,8 @@ export class CreditencoursComponent implements OnInit {
       statusCredit: null,
       objectifCredit: null,
       archive:null,
-      score:null
+      score:null,
+      creditRef:null,
     }
 
   }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-overview',
+  selector: 'app-epargnemensuel',
   templateUrl: './overview.component.html',
 })
 export class OverviewComponent {

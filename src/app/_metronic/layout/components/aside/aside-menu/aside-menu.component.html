@@ -37,16 +37,16 @@
       >
     </div>
 
-    <div class="menu-item">
-      <a
-        class="menu-link without-sub"
-        routerLinkActive="active"
-        routerLink="/obligation"
-      ><span class="menu-bullet"
-      ><span class="bullet bullet-dot"></span></span
-      ><span class="menu-title">Obligations</span></a
-      >
-    </div>
+      <div class="menu-item">
+        <a
+          class="menu-link without-sub"
+          routerLinkActive="active"
+          routerLink="/obligation"
+        ><span class="menu-bullet"
+        ><span class="bullet bullet-dot"></span></span
+        ><span class="menu-title">Obligations</span></a
+        >
+      </div>
 
   </div>
 
@@ -77,16 +77,7 @@
   <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
 
 
-    <div class="menu-item">
-      <a
-        class="menu-link without-sub"
-        routerLinkActive="active"
-        routerLink="/echeance"
-      ><span class="menu-bullet"
-      ><span class="bullet bullet-dot"></span></span
-      ><span class="menu-title">Echeance</span></a
-      >
-    </div>
+
 
     <div class="menu-item">
       <a
@@ -99,12 +90,106 @@
       >
     </div>
 
+    <div class="menu-item">
+      <a
+        class="menu-link without-sub"
+        routerLinkActive="active"
+        routerLink="/consultercredit"
+      ><span class="menu-bullet"
+      ><span class="bullet bullet-dot"></span></span
+      ><span class="menu-title">Consulter mes Credit(s)</span></a
+      >
+    </div>
+    <!--  Add new sidebar item  -->
+
+
   </div>
 
 
 
 
 </div>
+
+  <!-- Comptes Et Livrets D'épargne -->
+  <div
+    class="menu-item menu-accordion"
+    data-kt-menu-trigger="click"
+    routerLinkActive="here show"
+  >
+  <span class="menu-link"
+  ><span class="menu-icon"
+  ><span
+    class="svg-icon svg-icon-2"
+    [inlineSVG]="'./assets/media/icons/duotune/finance/fin008.svg'"
+  ></span></span
+  ><span class="menu-title" data-link="/crafted/account">Comptes Et Livrets D'épargne</span
+  ><span class="menu-arrow"></span
+  ></span>
+    <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+      <div class="menu-item">
+        <a
+          class="menu-link without-sub"
+          routerLinkActive="active"
+          routerLink="/comptesfront"
+        ><span class="menu-bullet"><span class="bullet bullet-dot"></span></span
+        ><span class="menu-title">Comptes Et Livrets D'épargne</span></a
+        >
+      </div>
+    </div>
+  </div>
+  <!-- SIMULATEURS -->
+  <div
+    class="menu-item menu-accordion"
+    data-kt-menu-trigger="click"
+    routerLinkActive="here show"
+  >
+  <span class="menu-link"
+  ><span class="menu-icon"
+  ><span
+    class="svg-icon svg-icon-2"
+    [inlineSVG]="'./assets/media/svg/avatars/001-boy.svg'"
+  ></span></span
+  ><span class="menu-title" data-link="/crafted/account">Simulateurs</span
+  ><span class="menu-arrow"></span
+  ></span>
+    <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+      <div class="menu-item">
+        <a
+          class="menu-link without-sub"
+          routerLinkActive="active"
+          routerLink="/echeance"
+        ><span class="menu-bullet"
+        ><span class="bullet bullet-dot"></span></span
+        ><span class="menu-title">Simulateur Credit</span></a
+        >
+      </div>
+    </div>
+
+    <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+      <div class="menu-item">
+        <a
+          class="menu-link without-sub"
+          routerLinkActive="active"
+          routerLink="/simulateurepargne"
+        ><span class="menu-bullet"><span class="bullet bullet-dot"></span></span
+        ><span class="menu-title">Simulateur Epargne</span></a
+        >
+      </div>
+    </div>
+    <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+      <div class="menu-item">
+        <a
+          class="menu-link without-sub"
+          routerLinkActive="active"
+          routerLink="/simulateurepargne2"
+        ><span class="menu-bullet"><span class="bullet bullet-dot"></span></span
+        ><span class="menu-title">Simulateur Agios</span></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
@@ -210,7 +295,7 @@
     </div>
   </div>
 </div>
-</div>
+
 
 
 <!-- *************************************** RH ************************************ -->
@@ -349,6 +434,58 @@
 <!-- *******************espace finance*********************-->
 
 <div *ngIf="type=='FINANCIER'">
+
+  <!-- LES COMPTES -->
+  <div
+    class="menu-item menu-accordion"
+    data-kt-menu-trigger="click"
+    routerLinkActive="here show"
+  >
+  <span class="menu-link"
+  ><span class="menu-icon"
+  ><span
+    class="svg-icon svg-icon-2"
+    [inlineSVG]="'./assets/media/icons/duotune/finance/fin008.svg'"
+  ></span></span
+  ><span class="menu-title" data-link="/crafted/account">Les Comptes</span
+  ><span class="menu-arrow"></span
+  ></span>
+    <div class="menu-sub menu-sub-accordion" routerLinkActive="menu-active-bg">
+      <div class="menu-item">
+        <a
+          class="menu-link without-sub"
+          routerLinkActive="active"
+          routerLink="/comptecourant"
+        ><span class="menu-bullet"><span class="bullet bullet-dot"></span></span
+        ><span class="menu-title">Gestion des Comptes Courants</span></a
+        >
+      </div>
+      <div class="menu-item">
+        <a
+          class="menu-link without-sub"
+          routerLinkActive="active"
+          routerLink="/compteepargne"
+        ><span class="menu-bullet"><span class="bullet bullet-dot"></span></span
+        ><span class="menu-title">Gestions des Comptes Epargnes</span></a
+        >
+      </div>
+      <div class="menu-item">
+        <a
+          class="menu-link without-sub"
+          routerLinkActive="active"
+          routerLink="/formulairesouscriptionback"
+        ><span class="menu-bullet"><span class="bullet bullet-dot"></span></span
+        ><span class="menu-title">Gestions des Demandes De Souscription</span></a
+        >
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
 <div
   class="menu-item menu-accordion"
   data-kt-menu-trigger="click"
@@ -398,16 +535,7 @@
       >
     </div>
 
-    <div class="menu-item">
-      <a
-        class="menu-link without-sub"
-        routerLinkActive="active"
-        routerLink="/amort"
-      ><span class="menu-bullet"
-      ><span class="bullet bullet-dot"></span></span
-      ><span class="menu-title">Amortissement</span></a
-      >
-    </div>
+
   </div>
 
 
@@ -463,7 +591,6 @@
 </div>
 
 
-</div>
 
 <!-- *******************espace finance  end *********************-->
 
@@ -522,6 +649,8 @@
       >
     </div>
   </div>
+</div>
+
 </div>
 
 <!-- Separator -->

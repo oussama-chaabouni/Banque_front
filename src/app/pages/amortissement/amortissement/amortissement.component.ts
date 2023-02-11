@@ -36,7 +36,7 @@ export class AmortissementComponent implements OnInit {
   Slice2!: Slice2;
   ngOnInit(): void {this.creditService.getAllCredits().subscribe((response: any) => {
     this.branches = response;
-      
+
     });
   this.getAllCredits();
   this.Credit={
@@ -50,7 +50,8 @@ export class AmortissementComponent implements OnInit {
     statusCredit: null,
     objectifCredit: null,
     archive:null,
-    score:null
+    score:null,
+    creditRef:null,
   }
 }
 
@@ -58,7 +59,7 @@ export class AmortissementComponent implements OnInit {
   getAllCredits() {
     this.creditService.getAllCredits().subscribe(res => this.listCredits = res);
     console.log(this.listCredits)
-  
+
   }
   getAllDetailLoans() {
     this.echeanceService.getAllDetailLoans().subscribe(res => this.listSlices = res);

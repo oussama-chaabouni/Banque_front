@@ -59,7 +59,7 @@
           <div class="col-lg-8">
             <div class="row">
               <div class="col-lg-6 fv-row">
-                <input name ="beneficiaire" type="text" required placeholder="Rib Destinataire Ici" [(ngModel)]="beneficiaire"
+                <input name ="beneficiaire" type="text" required placeholder="Nom Destinataire Ici" [(ngModel)]="beneficiaire"
                        class="
                     form-control form-control-lg form-control-solid
                     mb-3 mb-lg-0
@@ -138,46 +138,46 @@
   </div>
 
 
-      <form novalidate="" class="form">
-        <div class="card-body border-top p-9">
+  <form novalidate="" class="form">
+    <div class="card-body border-top p-9">
 
 
-          <div class="row mb-6">
-            <label class="col-lg-4 col-form-label fw-bold fs-6"
-            >Veuillez joindre une photo si vous souhaitez payer par cheque</label
-            >
-            <div class="col-lg-8">
-              <div class="row">
-                <div class="col-lg-6 fv-row">
-                  <input type="file" class="form-control" id="customFile"
-                         name ="image" [(ngModel)]="image" value="image " />
-                </div>
-
-              </div>
+      <div class="row mb-6">
+        <label class="col-lg-4 col-form-label fw-bold fs-6"
+        >Veuillez joindre une photo si vous souhaitez payer par cheque</label
+        >
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-lg-6 fv-row">
+              <input type="file" class="form-control" id="customFile"
+                     name ="image" [(ngModel)]="image" value="image " />
             </div>
+
           </div>
-
-          <div class="card-footer d-flex justify-content-end py-6 px-9">
-            <button
-              type="button"
-              class="btn btn-primary text-dark"
-              [disabled]="isLoading"
-              (click)="getcheque()"
-            >
-               Payer par cheque
-              <input  name ="resmontant" type="text" required value="resmontant"[(ngModel)]="resmontant"
-                      class="form-control form-control-lg form-control-solid"
-                      placeholder="resultat cheque"/>
-
-            </button>
-          </div>
-
         </div>
+      </div>
 
-        <div class="card-footer d-flex justify-content-end py-6 px-9">
-        </div>
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+        <button
+          type="button"
+          class="btn btn-primary text-dark"
+          [disabled]="isLoading"
+          (click)="getcheque()"
+        >
+          Payer par cheque
+          <input  name ="resmontant" type="text" required value="resmontant"[(ngModel)]="resmontant"
+                  class="form-control form-control-lg form-control-solid"
+                  placeholder="resultat cheque"/>
 
-      </form>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="card-footer d-flex justify-content-end py-6 px-9">
+    </div>
+
+  </form>
 
 
 
