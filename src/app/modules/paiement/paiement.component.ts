@@ -143,11 +143,11 @@ export class PaiementComponent implements OnInit {
         purchase_units: [{
           amount: {
             currency_code: 'EUR',
-            value: '0.01',
+            value: this.montant,
             breakdown: {
               item_total: {
                 currency_code: 'EUR',
-                value: '0.01'
+                value: this.montant
               }
             }
           },
@@ -157,7 +157,7 @@ export class PaiementComponent implements OnInit {
             category: 'DIGITAL_GOODS',
             unit_amount: {
               currency_code: 'EUR',
-              value: '0.01',
+              value: this.montant,
             },
           }]
         }]

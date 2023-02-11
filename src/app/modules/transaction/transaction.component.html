@@ -50,7 +50,7 @@
             <div class="alert alert-danger" *ngIf="r.invalid && r.touched">Rib Est Un Champ Requis </div>
 
             <div class="row" class="col-md-6">
-              <input name ="ribben" type="number" required  ngModel #r="ngModel" placeholder="Rib Beneficiaire" [(ngModel)]="transaction.beneficiairerib">
+              <input name ="ribben" type="text" required  ngModel #r="ngModel" placeholder="Rib Beneficiaire" [(ngModel)]="transaction.beneficiairerib">
             </div>
             <div class="alert alert-danger" *ngIf="r.invalid && r.touched">Rib Beneficiaire Est Un Champ Requis </div>
 
@@ -215,7 +215,7 @@
                         </div>
                         <div class="row" class="col-md-5">
                           <label>Rib Beneficiaire</label>
-                          <input type="number" [(ngModel)]="p.beneficiairerib" [ngModelOptions]="{standalone : true}" />
+                          <input type="text" [(ngModel)]="p.beneficiairerib" [ngModelOptions]="{standalone : true}" />
                         </div>
                         <div class="row" class="col-md-5">
                           <label>Type De Transaction</label>

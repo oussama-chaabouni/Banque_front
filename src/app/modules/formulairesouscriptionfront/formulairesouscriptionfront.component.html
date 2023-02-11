@@ -1,0 +1,392 @@
+<div class="card mb-5 mb-xl-10">
+  <div
+    class="card-header border-0 cursor-pointer"
+    role="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#kt_account_profile_details"
+    aria-expanded="true"
+    aria-controls="kt_account_profile_details"
+  >
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0">Informations sur le titulaire du compte</h3>
+    </div>
+  </div>
+  <div id="kt_account_profile_details" class="collapse show">
+    <form novalidate="" class="form">
+      <div class="card-body border-top p-9">
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Titre de civilité</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <select class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 " aria-label=".form-select-sm example" required  [(ngModel)]="titredecivilite" name="titredecivilite">
+                  <option value="Mlle">Mlle</option>
+                  <option value="Mme">Mme</option>
+                  <option value="M">M.</option>
+                </select>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Nom</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="Nom" type="text" required  placeholder="Nom"
+                       [(ngModel)]="nom"
+                       type="text"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Prénom</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="Prénom" type="text" required placeholder="Prénom"
+                       [(ngModel)]="prenom"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Date de naissance</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="Date de naissance" type="datetime" required placeholder="1999/10/10"
+                       [(ngModel)]="datenaissance"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Numéro de téléphone</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="numéro de téléphone" type="number" required placeholder="Numéro de téléphone"
+                       [(ngModel)]="numero"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Adresse e-mail</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="adresse e-mail" type="text" required placeholder="adresse e-mail"
+                       [(ngModel)]="email"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+<!--PARENTS-->
+        <div class="card-footer d-flex justify-content-end py-6 px-9">
+        </div>
+        <div
+          class="card-header border-0 cursor-pointer"
+          role="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#kt_account_profile_details"
+          aria-expanded="true"
+          aria-controls="kt_account_profile_details"
+        >
+          <div class="card-title m-0">
+            <h3 class="fw-bolder m-0">Informations sur le représentant légal ou tuteur( à compléter si le titulaire est mineur)</h3>
+            <br>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-end py-6 px-9">
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Titre de civilité</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <select class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 " aria-label=".form-select-sm example" required  [(ngModel)]="titredecivilitetuteur" name="titredecivilitetuteur">
+                  <option value="Mlle">Mlle</option>
+                  <option value="Mme">Mme</option>
+                  <option value="M">M.</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"
+          >Nom</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="Nomtuteur" type="text" required  placeholder="Nom" value="---"
+                       [(ngModel)]="nomtuteur"
+                       [value]="''"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"
+          >Prénom</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="Prénomtuteur" type="text" required placeholder="Prénom" value="---"
+                       [(ngModel)]="prenomtuteur"
+                       [value]="''"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"
+          >Date de naissance</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="Datedenaissancetuteur" type="datetime" placeholder="1999/10/10" value="---"
+                       [(ngModel)]="datenaissancetuteur"
+                       [value]="''"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"
+          >Numéro de téléphone</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="numérodetéléphonetuteur" type="number" placeholder="Numéro de téléphone TUTEUR" value="---"
+                       [(ngModel)]="numerotuteur"
+                       [value]="''"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label  fw-bold fs-6"
+          >Adresse e-mail</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="adresse e-mailtuteur" type="text" required placeholder="adresse e-mail" value="---"
+                       [(ngModel)]="emailtuteur"
+                       [value]="''"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!--FIN PARENTS-->
+        <div class="card-footer d-flex justify-content-end py-6 px-9">
+        </div>
+        <div
+          class="card-header border-0 cursor-pointer"
+          role="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#kt_account_profile_details"
+          aria-expanded="true"
+          aria-controls="kt_account_profile_details"
+        >
+          <div class="card-title m-0">
+            <h3 class="fw-bolder m-0">Informations sur le titulaire( ou représentant légal ou tuteur si le titulaire est mineur )</h3>
+            <br>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-end py-6 px-9">
+        </div>
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Pièce d'identité ou passeport</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input type="file" class="form-control"
+                       (change)="onChange($event)"
+                       [(ngModel)]="pieceditentite"
+                       name ="image"  value="image " />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Justificatif de domicile</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input type="file" class="form-control" id="customFile"
+                       (change)="onChangejustificatifdedomicile($event)"
+                       [(ngModel)]="justificatifdedomicile"
+                       name ="image2"  value="image2 " />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Dépot Initial</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <input name ="Dépot Initial" type="number" required placeholder="Montant souhaité pour l'ouverture" [(ngModel)]="montant"
+                       [(ngModel)]="depotinitial"
+                       class="
+                    form-control form-control-lg form-control-solid
+                    mb-3 mb-lg-0
+                  "
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"
+          >Methode de Paiement</label
+          >
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 fv-row">
+                <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label fw-bold fs-6" for="flexCheckDefault">
+            J'ai lu et j'accepte les conditions générales et la politique de confidentialité
+          </label>
+        </div>
+
+      </div>
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="isLoading"
+          (click)="saveSettings()"
+        >
+          <button type="submit" class="btn contact-btn" (click)="Souscrire()"> VALIDER</button>
+
+        </button>
+      </div>
+
+      <!-- KHAT FOOTER -->
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+      </div>
+
+    </form>
+  </div>
+
+
+
+
+</div>

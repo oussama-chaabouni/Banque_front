@@ -57,7 +57,7 @@ export class DepotComponent implements OnInit {
     console.log("deposit_amount " + this.deposit_amount);
     console.log("account amount " + this.monRib);
 
-
+    if (this.typevirement == 0) {
       this.transactionService.depot(this.monRib,this.deposit_amount).subscribe(res => {
 
       if(res.includes("deposit amount value =0")){
@@ -78,6 +78,10 @@ export class DepotComponent implements OnInit {
 
     }, error => {
     });
+  }  else {
+  this.transactionService.depotEpargne(this.monRib,this.deposit_amount).subscribe(res => {
+});
+}
   }
 
 

@@ -143,8 +143,8 @@ export class TransactionService {
 
   //byUserConnecte
   retrievelisttransactionsByRib (rib:any) {
-    //http://localhost:8082/banque-en-ligne/transaction/retrievelisttransactionsByUserName?rib=1233333
-    return this.http.get('http://localhost:8082/banque-en-ligne/transaction/retrievelisttransactionsByUserName?rib='+rib);
+    //http://localhost:8082/banque-en-ligne/transaction/retrievelisttransactionsByRib?rib=1232222
+    return this.http.get('http://localhost:8082/banque-en-ligne/transaction/retrievelisttransactionsByRib?rib='+rib);
   }
 
 

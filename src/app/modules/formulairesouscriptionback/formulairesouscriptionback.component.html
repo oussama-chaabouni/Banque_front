@@ -1,0 +1,376 @@
+<!-- begin::Header -->
+<! SEARCH -->
+
+<div class="input-group">
+  <div class="input-group-text">
+    <i class="feather icon-search"></i>
+  </div>
+  <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
+</div>
+
+<div class="card-header border-0 pt-5">
+  <h3 class="card-title align-items-start flex-column">
+    <span class="card-label fw-bolder fs-3 mb-1">Liste des Formulairesouscriptions</span>
+  </h3>
+  <div
+    class="card-toolbar"
+    data-bs-toggle="tooltip"
+    data-bs-placement="top"
+    data-bs-trigger="hover"
+    title="Ajouter Formulairesouscription"
+  >
+
+    <a  class="btn btn-sm btn-light-primary" (click)="open(mymodal1)" >
+      <span
+        [inlineSVG]="'./assets/media/icons/duotune/arrows/arr075.svg'"
+        class="svg-icon svg-icon-3"
+      ></span>
+      Ajouter Formulaire souscription
+    </a>
+  </div>
+</div>
+
+<!-- end::Header -->
+<!-- begin::Body -->
+
+<!-- HEDHI KI NJI NAJOUTI -->
+<ng-template #mymodal1 let-modal1>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title" >Add new Formulairesouscription</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+      <span aria-hidden="true" (click)="cancel()">×</span>
+    </button>
+
+  </div>
+  <div class="container">
+    <form #f="ngForm" (ngSubmit)="addFormulairesouscription(formulairesouscription)">
+
+
+      <div class="row" class="col-md-6">
+        <select
+          [(ngModel)]="formulairesouscription.titredecivilite" [ngModelOptions]="{standalone : true}">
+          <option type="text" *ngFor="let formulairesouscription of titredecivilite" [value]="formulairesouscription.titredecivilite" >
+            {{formulairesouscription.titredecivilite}}
+        </select>
+      </div>
+
+      <div class="row" class="col-md-6">
+        <input name ="nom" type="text" required  ngModel #r="ngModel" placeholder="nom" [(ngModel)]="formulairesouscription.nom">
+      </div>
+      <div class="alert alert-danger" *ngIf="r.invalid && r.touched">nom Est Un Champ Requis </div>
+
+      <div class="row" class="col-md-6">
+        <input name ="prenom" type="text" required  ngModel #r="ngModel" placeholder="prenom " [(ngModel)]="formulairesouscription.prenom">
+      </div>
+      <div class="alert alert-danger" *ngIf="r.invalid && r.touched">prenom Est Un Champ Requis </div>
+
+
+
+      <div class="row" class="col-md-6">
+        <input name ="datenaissance" type="datetime-local" placeholder="datenaissance" required  ngModel #mon="ngModel" [(ngModel)]="formulairesouscription.datenaissance">
+      </div>
+      <div class="alert alert-danger" *ngIf="mon.invalid && mon.touched">datenaissance Est Un Champ Requis </div>
+
+
+      <div class="row" class="col-md-6">
+        <input name ="numero" type="number" placeholder="numero" required  ngModel #mot="ngModel" [(ngModel)]="formulairesouscription.numero"
+               [ngModelOptions]="{standalone : true}">
+      </div>
+      <div class="alert alert-danger" *ngIf="mot.invalid && mot.touched">Motif Est Un Champ Requis </div>
+
+      <div class="row" class="col-md-6">
+        <input name="email" type="text" placeholder="email" required  ngModel #st="ngModel" [(ngModel)]="formulairesouscription.email"
+               [ngModelOptions]="{standalone : true}">
+      </div>
+      <div class="alert alert-danger" *ngIf="st.invalid && st.touched">email Est Un Champ Requis </div>
+
+
+
+      <div class="row" class="col-md-6">
+        <select
+          [(ngModel)]="formulairesouscription.titredecivilitetuteur" [ngModelOptions]="{standalone : true}">
+          <option type="text" *ngFor="let formulairesouscription of titredecivilitetuteur" [value]="formulairesouscription.titredecivilitetuteur" >
+            {{formulairesouscription.titredecivilitetuteur}}
+        </select>
+      </div>
+
+      <div class="row" class="col-md-6">
+        <input name ="nomtuteur" type="text"   ngModel #r="ngModel" placeholder="nom" [(ngModel)]="formulairesouscription.nomtuteur">
+      </div>
+      <div class="alert alert-danger" *ngIf="r.invalid && r.touched">nomtuteur Est Un Champ Requis </div>
+
+      <div class="row" class="col-md-6">
+        <input name ="prenomtuteur" type="text"   ngModel #r="ngModel" placeholder="prenom " [(ngModel)]="formulairesouscription.prenomtuteur">
+      </div>
+      <div class="alert alert-danger" *ngIf="r.invalid && r.touched">prenomtuteur Est Un Champ Requis </div>
+
+
+
+      <div class="row" class="col-md-6">
+        <input name ="datenaissancetuteur" type="datetime-local" placeholder="datenaissancetuteur"   ngModel #mon="ngModel" [(ngModel)]="formulairesouscription.datenaissancetuteur">
+      </div>
+      <div class="alert alert-danger" *ngIf="mon.invalid && mon.touched">datenaissancetuteur Est Un Champ Requis </div>
+
+
+      <div class="row" class="col-md-6">
+        <input name ="numerotuteur" type="number" placeholder="numerotuteur"   ngModel #mot="ngModel" [(ngModel)]="formulairesouscription.numerotuteur"
+               [ngModelOptions]="{standalone : true}">
+      </div>
+      <div class="alert alert-danger" *ngIf="mot.invalid && mot.touched">numerotuteur Est Un Champ Requis </div>
+
+      <div class="row" class="col-md-6">
+        <input name="emailtuteur" type="text" placeholder="emailtuteur" required  ngModel #st="ngModel" [(ngModel)]="formulairesouscription.emailtuteur"
+               [ngModelOptions]="{standalone : true}">
+      </div>
+      <div class="alert alert-danger" *ngIf="st.invalid && st.touched">emailtuteur Est Un Champ Requis </div>
+
+      <div class="row" class="col-md-6">
+        <input name="pieceditentite" type="text" placeholder="pieceditentite" required  ngModel #cr="ngModel" [(ngModel)]="formulairesouscription.pieceditentite">
+        <div class="alert alert-danger" *ngIf="cr.invalid && cr.touched">pieceditentite Est Un Champ Requis </div>
+
+      </div>
+      <div class="row" class="col-md-6">
+        <input name ="justificatifdedomicile" required  ngModel #ca="ngModel" type="text" placeholder="Date D'Operation"[(ngModel)]="formulairesouscription.justificatifdedomicile">
+      </div>
+      <div class="alert alert-danger" *ngIf="ca.invalid && ca.touched">justificatifdedomicile  Est Un Champ Requis </div>
+
+      <div class="row" class="col-md-6">
+        <input name ="depotinitial" required  ngModel #ca="ngModel" type="text" placeholder="depotinitial"[(ngModel)]="formulairesouscription.depotinitial">
+      </div>
+      <div class="alert alert-danger" *ngIf="ca.invalid && ca.touched">depotinitial  Est Un Champ Requis </div>
+
+
+
+      <br>
+      <button type="submit" class="btn btn-success" [disabled]="f.invalid" (click)="modal1.close('Save click')" >Add</button>
+      <button type="button" class="btn btn-info" (click)="modal1.close('Save click')" >Cancel</button>
+    </form>
+  </div>
+</ng-template>
+
+<!-- end::Header -->
+<!-- begin::Body -->
+<div class="card-body py-3">
+  <!-- begin::Table container -->
+  <div class="table-responsive">
+    <!-- begin::Table -->
+    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+      <!-- begin::Table head -->
+      <thead>
+      <tr class="fw-bolder text-muted">
+
+        <th>Titre De civilite</th>
+        <th>nom</th>
+        <th>prenom</th>
+        <th>date de naissance</th>
+        <th>numero</th>
+        <th>email</th>
+
+        <th>titre de civilite tuteur</th>
+        <th>nom tuteur</th>
+        <th>prenom tuteur</th>
+        <th>datenaissance tuteur</th>
+        <th>numero tuteur</th>
+        <th>email tuteur</th>
+
+        <th>piece ditentite</th>
+        <th>justificatif dedomicile</th>
+        <th>depot initial</th>
+
+
+
+      </tr>
+      </thead>
+      <!-- end::Table head -->
+
+      <!-- begin::Table body -->
+
+      <tbody>
+      <tr *ngFor='let p of listFormulairesouscriptionbacks | filter:term'>
+
+        <div *ngIf="p.titredecivilite==Mme">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.titredecivilite}}</span></td></div>
+        <div *ngIf="p.titredecivilite==Mlle">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.titredecivilite}}</span></td></div>
+        <div *ngIf="p.titredecivilite==M">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.titredecivilite}}</span></td></div>
+
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="d-flex justify-content-start flex-column">
+              <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.nom}}</a>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="d-flex justify-content-start flex-column">
+              <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.prenom}}</a>
+            </div>
+          </div>
+        </td>
+
+
+
+
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.datenaissance}}</a></td>
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.numero}}</a></td>
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.email}}</a></td>
+
+        <div *ngIf="p.titredecivilitetuteur==Mme">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.titredecivilitetuteur}}</span></td></div>
+        <div *ngIf="p.titredecivilitetuteur==Mlle">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.titredecivilitetuteur}}</span></td></div>
+        <div *ngIf="p.titredecivilitetuteur==M">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.titredecivilitetuteur}}</span></td></div>
+        <div *ngIf="p.titredecivilitetuteur==nonspecifie">
+          <td><span class="badge badge-light-primary fs-7 fw-bold">{{p.titredecivilitetuteur}}</span></td></div>
+
+
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="d-flex justify-content-start flex-column">
+              <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.nomtuteur}}</a>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="d-flex justify-content-start flex-column">
+              <a  class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{p.prenomtuteur}}</a>
+            </div>
+          </div>
+        </td>
+
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.datenaissancetuteur}}</a></td>
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.numerotuteur}}</a></td>
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.emailtuteur}}</a></td>
+
+        <td>
+          <div class="hub-card_img">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Carte_d%27identit%C3%A9_tunisienne_recto2.jpg" width=70% height=70% alt>
+          </div>
+        </td>
+        <td>
+          <div class="hub-card_img">
+            <img src="https://www.maitriser-mon-energie.fr/wp-content/uploads/sites/8/2020/01/attestation-de-domicile-page-001_censored-724x1024.jpg" width=70% height=70% alt>
+          </div>
+        </td>
+
+        <!--        <td><a href="{{ p.pieceditentite }}"> </a></td>
+
+                <td (change)="onChangejustificatifdedomicile($event)"> <img src="{{ p.justificatifdedomicile }}" />
+                <td><a href="{{ p.justificatifdedomicile }}"> </a></td>
+                <img class="image-holder" [style.background-image]="getSantizeUrl(p.justificatifdedomicile)" />
+
+                <img class="image-holder" [style.background-image]="getSantizeUrl(p.pieceditentite)" />
+                <td><div (change)="onChange($event)" [style.background-image]="getBackground(p.pieceditentite)"> </div> </td>
+
+                -->
+        <td><a class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{p.depotinitial}}</a></td>
+
+
+
+        <td><span type="button" class="
+                  btn btn-icon btn-bg-light btn-active-color-primary btn-sm
+                  me-1" [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'"
+                  class="svg-icon svg-icon-3"
+                  (click)="open(mymodal)" [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'">
+                edit
+              >
+              </span>
+
+          <ng-template #mymodal let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title">Edit</h4>
+              <button type="button" class="close" aria-label="Close"
+                      (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true" (click)="cancel()">×</span>
+
+              </button>
+
+            </div>
+            <div>
+              <form>
+                <div class="modal-body">
+
+                  <div class="row" class="col-md-5">
+                    <label>Titre de civilite</label>
+                    <input type="number" [(ngModel)]="p.titredecivilite" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Nom</label>
+                    <input type="text" [(ngModel)]="p.nom" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Prenom</label>
+                    <input type="text" [(ngModel)]="p.prenom" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Date naissance</label>
+                    <input type="text" [(ngModel)]="p.datenaissance" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Numero</label>
+                    <input type="text" [(ngModel)]="p.numero" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Titre de civilite</label>
+                    <input type="number" [(ngModel)]="p.titredecivilite" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Nom tuteur</label>
+                    <input type="text" [(ngModel)]="p.nomtuteur" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Prenom tuteur</label>
+                    <input type="text" [(ngModel)]="p.prenomtuteur" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Date naissance tuteur</label>
+                    <input type="text" [(ngModel)]="p.datenaissancetuteur" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Numero tuteur</label>
+                    <input type="text" [(ngModel)]="p.numerotuteur" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Email tuteur</label>
+                    <input type="text" [(ngModel)]="p.emailtuteur" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Piece d'itentite</label>
+                    <input type="text" [(ngModel)]="p.pieceditentite" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Justificatif de domicile</label>
+                    <input type="datetime-local" [(ngModel)]="p.justificatifdedomicile" [ngModelOptions]="{standalone : true}" />
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Depot initial</label>
+                    <input type="datetime-local" [(ngModel)]="p.depotinitial" [ngModelOptions]="{standalone : true}" />
+                  </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-info"
+                          (click)="modal.close('Save click')" (click)="cancel()">Cancel</button>
+                  <button class="btn btn-success"(click)="editFormulairesouscription(p)" (click)="modal.close('Save click')">Validate</button>
+                </div>
+              </form>
+            </div>
+          </ng-template>
+          <span type="button" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+                [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
+                class="svg-icon svg-icon-3" (click)="deleteFormulairesouscription(p.idFormulairesouscription)">delete</span>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

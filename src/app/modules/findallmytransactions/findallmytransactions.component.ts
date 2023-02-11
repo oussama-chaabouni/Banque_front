@@ -87,7 +87,7 @@ export class FindallmytransactionsComponent implements OnInit {
   }
 
   findallmyTransactions () {
-    this.transactionService.retrievelisttransactionsByRib("1232222").subscribe(res=>this.listMyTransactions=res)
+    this.transactionService.retrievelisttransactionsByRib("1233333").subscribe(res=>this.listMyTransactions=res)
   }
 
   open(content: any) {
